@@ -1,5 +1,5 @@
 ---
-const API_URL = 'https://app.zerionyx.fr/api/waitlist';
+const API_URL = import.meta.env.PUBLIC_API_URL;
 ---
 
 <div style="position:relative;z-index:1;background:linear-gradient(180deg,var(--bg) 0%,rgba(220,235,255,0.5) 100%);border-top:1px solid var(--border)" id="inscription">
@@ -10,29 +10,31 @@ const API_URL = 'https://app.zerionyx.fr/api/waitlist';
     </div>
     <div class="cta-form reveal" id="the-form">
       <div class="form-row">
-        <input type="text" class="f-input" id="fp" placeholder="Votre prénom *" required>
-        <input type="email" class="f-input" id="fe" placeholder="Email professionnel *" required>
+        <input type="text" class="f-input" id="fp" placeholder="Votre prénom *" required minlength="2" maxlength="100">
+        <input type="email" class="f-input" id="fe" placeholder="Email professionnel *" required maxlength="200">
       </div>
       <div class="form-row">
         <select class="f-select" id="fm">
-          <option value="" disabled selected>Votre métier *</option>
-          <option>Chauffagiste</option>
-          <option>Électricien</option>
-          <option>Plombier</option>
-          <option>Maçon</option>
-          <option>Climatisation / PAC</option>
-          <option>Maintenance industrielle</option>
-          <option>Autre</option>
+          <option value="" disabled selected>Votre métier</option>
+          <option value="Chauffagiste">Chauffagiste</option>
+          <option value="Électricien">Électricien</option>
+          <option value="Plombier">Plombier</option>
+          <option value="Maçon">Maçon</option>
+          <option value="Climatisation / PAC">Climatisation / PAC</option>
+          <option value="Maintenance industrielle">Maintenance industrielle</option>
+          <option value="Autre">Autre</option>
         </select>
         <select class="f-select" id="ft">
           <option value="" disabled selected>Taille équipe</option>
-          <option>Je travaille seul</option>
-          <option>2 à 5 techniciens</option>
-          <option>6 à 15 techniciens</option>
-          <option>Plus de 15 techniciens</option>
+          <option value="solo">Je travaille seul</option>
+          <option value="2-5">2 à 5 techniciens</option>
+          <option value="6-15">6 à 15 techniciens</option>
+          <option value="15+">Plus de 15 techniciens</option>
         </select>
       </div>
+      <input type="text" name="website" id="fh" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" tabindex="-1" autocomplete="off">
       <button type="button" class="f-submit" id="submit-btn">🚀 Rejoindre la liste — 2 mois offerts →</button>
+      <div class="f-error" id="f-error" style="display:none;color:#d32f2f;font-size:13px;margin-top:8px;text-align:center"></div>
       <div class="f-note">🔒 Données confidentielles · Sans engagement · Réponse sous 24h</div>
     </div>
     <div class="success-wrap" id="suc">
@@ -71,23 +73,69 @@ const API_URL = 'https://app.zerionyx.fr/api/waitlist';
 
 <script define:vars={{ API_URL }}>
   document.getElementById('submit-btn')?.addEventListener('click', async () => {
-    const name = document.getElementById('fp').value.trim();
+    const btn = document.getElementById('submit-btn');
+    const errEl = document.getElementById('f-error');
+    const first_name = document.getElementById('fp').value.trim();
     const email = document.getElementById('fe').value.trim();
-    const job = document.getElementById('fm').value;
-    const teamSize = document.getElementById('ft').value;
-    if (!name || !email || !job) { alert('Merci de remplir les champs obligatoires (*)'); return; }
+    const trade = document.getElementById('fm').value;
+    const team_size = document.getElementById('ft').value;
+    const website = document.getElementById('fh').value;
+
+    errEl.style.display = 'none';
+
+    if (!first_name || first_name.length < 2) {
+      errEl.textContent = 'Le prénom doit contenir au moins 2 caractères.';
+      errEl.style.display = 'block';
+      return;
+    }
+    if (!email) {
+      errEl.textContent = 'Veuillez entrer votre email.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours...';
+
     try {
-      await fetch(API_URL, {
+      const body = { first_name, email, website };
+      if (trade) body.trade = trade;
+      if (team_size) body.team_size = team_size;
+
+      const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, job, teamSize }),
+        body: JSON.stringify(body),
       });
-    } catch (e) {}
-    document.getElementById('the-form').style.display = 'none';
-    document.getElementById('suc').classList.add('show');
-    const cnt = document.getElementById('cnt');
-    const barSpots = document.getElementById('bar-spots');
-    if (cnt) cnt.textContent = String(Math.max(0, parseInt(cnt.textContent) - 1));
-    if (barSpots) barSpots.textContent = String(Math.max(0, parseInt(barSpots.textContent) - 1));
+
+      if (res.ok) {
+        document.getElementById('the-form').style.display = 'none';
+        document.getElementById('suc').classList.add('show');
+        const cnt = document.getElementById('cnt');
+        const barSpots = document.getElementById('bar-spots');
+        if (cnt) cnt.textContent = String(Math.max(0, parseInt(cnt.textContent) - 1));
+        if (barSpots) barSpots.textContent = String(Math.max(0, parseInt(barSpots.textContent) - 1));
+        return;
+      }
+
+      if (res.status === 409) {
+        errEl.textContent = 'Cet email est déjà inscrit sur la liste d\'attente.';
+      } else if (res.status === 429) {
+        errEl.textContent = 'Trop de tentatives. Veuillez patienter quelques minutes.';
+      } else if (res.status === 400) {
+        const data = await res.json().catch(() => null);
+        errEl.textContent = data?.message || 'Veuillez vérifier les informations saisies.';
+      } else {
+        errEl.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+      }
+      errEl.style.display = 'block';
+    } catch (e) {
+      console.error('Erreur waitlist:', e);
+      errEl.textContent = 'Impossible de contacter le serveur. Veuillez réessayer.';
+      errEl.style.display = 'block';
+    }
+
+    btn.disabled = false;
+    btn.textContent = '🚀 Rejoindre la liste — 2 mois offerts →';
   });
 </script>

@@ -1,0 +1,85 @@
+<h2>Améliorations visuelles & corrections</h2>
+<p class="subtitle">Polish du design existant, sans changer la direction</p>
+
+<div class="section">
+  <h3>1. Ajout de UrgencyBar en haut de page</h3>
+  <div class="mockup">
+    <div class="mockup-header">Barre d'urgence — tout en haut, avant la Nav</div>
+    <div class="mockup-body" style="background:linear-gradient(90deg,#1254A8,#1A6FD4,#0D2B6B);padding:10px 20px;text-align:center;color:white;font-size:13px;font-family:sans-serif;">
+      <span>⚡ Offre de lancement : <strong style="background:rgba(255,255,255,0.15);padding:2px 10px;border-radius:20px;margin:0 4px;">47 places restantes</strong> · 2 mois offerts pour les 50 premiers</span>
+    </div>
+  </div>
+  <p>→ Crée de l'urgence dès l'arrivée sur la page. Le compteur sera synchronisé avec celui de la section Offer.</p>
+</div>
+
+<div class="section">
+  <h3>2. Hero — Transitions plus fluides</h3>
+  <div class="mockup">
+    <div class="mockup-body">
+      <ul>
+        <li><strong>Transition crossfade</strong> entre les titres (au lieu d'un simple display:block/none)</li>
+        <li><strong>Intervalle 5s</strong> au lieu du JS actuel (pas d'intervalle défini → ajout d'un timer propre)</li>
+        <li><strong>Indicateurs</strong> : 3 petits dots sous le titre pour montrer quel titre est actif</li>
+        <li><strong>Retrait des émojis 🚀</strong> sur le CTA principal → texte seul, plus pro</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>3. Corrections de bugs</h3>
+  <div class="mockup">
+    <div class="mockup-body">
+      <ul>
+        <li><strong>Typo Features.astro</strong> : "synchronisee" → "synchronisée"</li>
+        <li><strong>Layout.astro</strong> : la prop <code>description</code> n'est pas utilisée dans le meta tag → correction</li>
+        <li><strong>Compteur spots</strong> : ajouter un minimum (ne descend pas en dessous de 43)</li>
+        <li><strong>Hero titres</strong> : pas de script de rotation actuellement → ajout du timer auto</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>4. Polish CSS global</h3>
+  <div class="split">
+    <div class="mockup">
+      <div class="mockup-header">Améliorations</div>
+      <div class="mockup-body">
+        <ul>
+          <li><strong>Hover cards</strong> : transition plus douce (0.3s ease au lieu de 0.22s)</li>
+          <li><strong>Border-radius</strong> : harmoniser à 12px pour les cards, 8px pour les petits éléments</li>
+          <li><strong>Spacing</strong> : plus d'air entre les sections (padding 100px → 120px vertical)</li>
+          <li><strong>Scroll reveal</strong> : stagger plus subtil (50ms au lieu de 70ms)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mockup">
+      <div class="mockup-header">Responsive</div>
+      <div class="mockup-body">
+        <ul>
+          <li><strong>Problem cards</strong> : passer à 2 colonnes sur tablette (actuellement 3→1 direct)</li>
+          <li><strong>Features tabs</strong> : scroll horizontal sur mobile au lieu d'empiler</li>
+          <li><strong>Pricing cards</strong> : ajouter un swipe hint sur mobile</li>
+          <li><strong>FAQ accordions</strong> : touch area plus grande (48px min)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>5. Pages secondaires</h3>
+  <div class="mockup">
+    <div class="mockup-body">
+      <ul>
+        <li><strong>Mêmes améliorations de copy</strong> appliquées sur fonctionnalités, tarifs, FAQ</li>
+        <li><strong>UrgencyBar</strong> ajouté sur toutes les pages</li>
+        <li><strong>Cohérence visuelle</strong> : même spacing, border-radius, transitions</li>
+        <li><strong>Tarifs</strong> : réécriture du texte ROI en haut pour être plus humain</li>
+        <li><strong>Fonctionnalités</strong> : reformulation des descriptions de chaque feature</li>
+        <li><strong>FAQ</strong> : réécriture des réponses en langage plus naturel</li>
+      </ul>
+    </div>
+  </div>
+</div>

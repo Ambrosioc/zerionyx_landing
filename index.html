@@ -4,11 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zerionyx — Stoppez de perdre 3h par semaine avec vos fiches papier</title>
-  <meta name="description"
-    content="L'app mobile qui remplace vos fiches papier en 2 minutes. Signature client, PDF automatique, planning d'équipe. Essai gratuit.">
+  <title>Zerionyx — L'IA au service des pros du terrain</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap"
     rel="stylesheet">
   <style>
     *,
@@ -20,25 +19,27 @@
     }
 
     :root {
-      --blue: #185FA5;
-      --blue-dark: #0C447C;
-      --blue-light: #E6F1FB;
-      --blue-mid: #378ADD;
-      --green: #1D9E75;
-      --green-light: #E1F5EE;
-      --green-dark: #0F6E56;
-      --orange: #EA580C;
-      --orange-light: #FFF7ED;
-      --red: #DC2626;
-      --bg: #F8FAFD;
+      --blue: #1A6FD4;
+      --blue-dark: #1254A8;
+      --blue-glow: rgba(26, 111, 212, 0.15);
+      --cyan: #00C2FF;
+      --cyan-light: rgba(0, 194, 255, 0.08);
+      --green: #00D084;
+      --green-light: rgba(0, 208, 132, 0.1);
+      --bg: #F0F5FF;
+      --bg2: #E8EFFC;
       --white: #FFFFFF;
-      --text: #0F172A;
-      --text2: #475569;
-      --text3: #94A3B8;
-      --border: #E2E8F0;
-      --border2: #CBD5E1;
-      --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+      --surface: rgba(255, 255, 255, 0.85);
+      --surface2: rgba(255, 255, 255, 0.6);
+      --text: #0A1628;
+      --text2: #3D5278;
+      --text3: #7A90B5;
+      --border: rgba(26, 111, 212, 0.12);
+      --border2: rgba(26, 111, 212, 0.2);
+      --grid-line: rgba(26, 111, 212, 0.06);
+      --shadow: 0 4px 24px rgba(26, 111, 212, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 16px 48px rgba(26, 111, 212, 0.14), 0 4px 12px rgba(0, 0, 0, 0.06);
+      --glow: 0 0 40px rgba(26, 111, 212, 0.12);
     }
 
     html {
@@ -46,32 +47,52 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
-      font-size: 16px
+    }
+
+    /* ── GRID BG PATTERN ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 48px 48px;
     }
 
     /* ── URGENCY BAR ── */
     .urgency-bar {
-      background: linear-gradient(135deg, var(--orange) 0%, #DC2626 100%);
+      position: relative;
+      z-index: 100;
+      background: linear-gradient(90deg, var(--blue-dark), var(--blue), #006FD4);
       color: #fff;
       text-align: center;
-      padding: 10px 20px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      position: relative;
-      z-index: 300;
+      padding: 11px 20px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
 
-    .urgency-bar span {
+    .urgency-bar strong {
+      font-weight: 700
+    }
+
+    .urgency-pill {
+      display: inline-block;
       background: rgba(255, 255, 255, 0.2);
-      padding: 2px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 100px;
-      margin: 0 6px
+      padding: 2px 12px;
+      margin: 0 6px;
+      font-weight: 700;
     }
 
     /* ── NAV ── */
@@ -79,11 +100,11 @@
       position: sticky;
       top: 0;
       z-index: 200;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(16px);
+      background: rgba(240, 245, 255, 0.88);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       padding: 0 48px;
-      height: 66px;
+      height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -97,23 +118,25 @@
     }
 
     .nav-icon {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       background: var(--blue);
-      border-radius: 9px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
-      justify-content: center
+      justify-content: center;
+      box-shadow: 0 0 16px rgba(26, 111, 212, 0.3);
     }
 
     .nav-icon svg {
-      width: 18px;
-      height: 18px
+      width: 20px;
+      height: 20px
     }
 
     .nav-name {
-      font-size: 18px;
-      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
       color: var(--text);
       letter-spacing: -0.3px
     }
@@ -139,171 +162,156 @@
       color: var(--blue)
     }
 
-    .nav-cta-wrap {
+    .nav-actions {
       display: flex;
-      align-items: center;
-      gap: 10px
+      gap: 10px;
+      align-items: center
     }
 
-    .btn-outline {
+    .btn-ghost {
       font-size: 13px;
       font-weight: 600;
       color: var(--blue);
       padding: 8px 16px;
       border-radius: 8px;
-      border: 1.5px solid var(--blue);
+      border: 1.5px solid var(--border2);
       background: transparent;
       cursor: pointer;
       transition: all .2s;
-      text-decoration: none;
-      white-space: nowrap
+      text-decoration: none
     }
 
-    .btn-outline:hover {
-      background: var(--blue-light)
+    .btn-ghost:hover {
+      background: var(--blue-glow)
     }
 
-    .btn-cta {
-      font-size: 14px;
+    .btn-nav {
+      font-size: 13px;
       font-weight: 700;
       color: #fff;
-      padding: 10px 22px;
-      border-radius: 9px;
+      padding: 9px 20px;
+      border-radius: 8px;
       background: var(--blue);
       border: none;
       cursor: pointer;
       transition: all .2s;
       text-decoration: none;
-      white-space: nowrap;
       display: flex;
       align-items: center;
       gap: 6px
     }
 
-    .btn-cta:hover {
+    .btn-nav:hover {
       background: var(--blue-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(24, 95, 165, 0.35)
-    }
-
-    .btn-cta-green {
-      background: var(--green)
-    }
-
-    .btn-cta-green:hover {
-      background: var(--green-dark);
-      box-shadow: 0 4px 14px rgba(29, 158, 117, 0.35)
-    }
-
-    .btn-cta-large {
-      font-size: 16px;
-      padding: 15px 32px;
-      border-radius: 10px;
-      width: 100%
-    }
-
-    .btn-rdv {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--green-dark);
-      padding: 10px 22px;
-      border-radius: 9px;
-      background: var(--green-light);
-      border: 1.5px solid rgba(29, 158, 117, 0.3);
-      cursor: pointer;
-      transition: all .2s;
-      text-decoration: none;
-      white-space: nowrap
-    }
-
-    .btn-rdv:hover {
-      background: #C6F0E2;
+      box-shadow: 0 4px 16px rgba(26, 111, 212, 0.3);
       transform: translateY(-1px)
     }
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(180deg, #fff 0%, #EEF6FF 60%, #F8FAFD 100%);
-      padding: 72px 48px 80px;
-      text-align: center;
       position: relative;
+      z-index: 1;
+      padding: 80px 48px 100px;
+      text-align: center;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    .hero-orb1 {
       position: absolute;
-      top: 0;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26, 111, 212, 0.1) 0%, transparent 65%);
+      top: -200px;
       left: 50%;
       transform: translateX(-50%);
-      width: 900px;
-      height: 600px;
-      background: radial-gradient(ellipse, rgba(24, 95, 165, 0.07) 0%, transparent 70%);
       pointer-events: none;
     }
 
-    .hero-label {
+    .hero-orb2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 208, 132, 0.07) 0%, transparent 65%);
+      bottom: -100px;
+      right: 5%;
+      pointer-events: none;
+    }
+
+    .hero-orb3 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 194, 255, 0.06) 0%, transparent 65%);
+      top: 20%;
+      left: 2%;
+      pointer-events: none;
+    }
+
+    /* AI badge */
+    .ai-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--blue-light);
-      border: 1px solid rgba(24, 95, 165, 0.25);
-      color: var(--blue-dark);
-      font-size: 13px;
-      font-weight: 700;
-      padding: 6px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border2);
       border-radius: 100px;
-      margin-bottom: 26px;
+      padding: 7px 18px;
+      margin-bottom: 28px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      box-shadow: var(--shadow);
+      animation: fadeUp .6s .1s ease both;
     }
 
-    .label-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--green);
+    .ai-badge-dot {
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      animation: pulse 1.8s infinite
+      background: var(--cyan);
+      box-shadow: 0 0 8px rgba(0, 194, 255, 0.6);
+      animation: pulse-cyan 2s infinite;
     }
 
-    /* 3 VARIANTES TITRE (A/B) — seul variant-A visible par défaut */
-    .hero-title {
-      font-size: clamp(36px, 5.5vw, 66px);
-      font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1.05;
-      margin-bottom: 22px;
-      max-width: 820px;
-      margin-left: auto;
-      margin-right: auto
+    .ai-badge-icon {
+      font-size: 15px
     }
 
-    .t-blue {
-      color: var(--blue)
+    /* A/B Test */
+    .ab-wrap {
+      margin-bottom: 20px;
+      animation: fadeUp .5s .05s ease both
     }
 
-    .t-green {
-      color: var(--green)
-    }
-
-    .t-orange {
-      color: var(--orange)
-    }
-
-    .ab-selector {
+    .ab-btns {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 20px;
+      gap: 6px;
       flex-wrap: wrap
     }
 
-    .ab-btn {
-      font-size: 12px;
+    .ab-lbl {
+      font-size: 11px;
       font-weight: 600;
-      padding: 5px 14px;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-right: 4px
+    }
+
+    .ab-btn {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
       border-radius: 100px;
-      border: 1.5px solid var(--border2);
-      background: #fff;
+      border: 1px solid var(--border2);
+      background: var(--surface2);
       color: var(--text3);
       cursor: pointer;
       transition: all .2s
@@ -312,42 +320,113 @@
     .ab-btn.active {
       border-color: var(--blue);
       color: var(--blue);
-      background: var(--blue-light)
+      background: var(--blue-glow)
     }
 
-    .title-variant {
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.04;
+      margin-bottom: 22px;
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .title-v {
       display: none
     }
 
-    .title-variant.active {
-      display: block
+    .title-v.active {
+      display: block;
+      animation: fadeUp .5s ease both
+    }
+
+    .t-gradient {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .t-green {
+      color: var(--green)
     }
 
     .hero-sub {
-      font-size: clamp(16px, 2vw, 20px);
+      font-size: clamp(16px, 2vw, 19px);
       color: var(--text2);
-      max-width: 580px;
-      margin: 0 auto 36px;
+      max-width: 560px;
+      margin: 0 auto 40px;
       font-weight: 400;
-      line-height: 1.7
+      line-height: 1.7;
+      animation: fadeUp .6s .3s ease both;
     }
 
-    .hero-cta-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px
+    .hero-cta-wrap {
+      animation: fadeUp .6s .4s ease both
     }
 
     .hero-cta-row {
       display: flex;
       gap: 12px;
+      justify-content: center;
       flex-wrap: wrap;
-      justify-content: center
+      margin-bottom: 16px
     }
 
-    .hero-reassurance {
+    .btn-hero-primary {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      padding: 15px 36px;
+      border-radius: 12px;
+      background: var(--blue);
+      border: none;
+      cursor: pointer;
+      transition: all .22s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(26, 111, 212, 0.35);
+    }
+
+    .btn-hero-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(26, 111, 212, 0.4)
+    }
+
+    .btn-hero-secondary {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--blue);
+      padding: 14px 28px;
+      border-radius: 12px;
+      background: var(--surface);
+      border: 1.5px solid var(--border2);
+      cursor: pointer;
+      transition: all .22s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-hero-secondary:hover {
+      background: #fff;
+      border-color: var(--blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg)
+    }
+
+    .hero-reassure {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -355,7 +434,7 @@
       flex-wrap: wrap
     }
 
-    .r-item {
+    .hr-item {
       display: flex;
       align-items: center;
       gap: 6px;
@@ -363,141 +442,165 @@
       color: var(--text3)
     }
 
-    .r-check {
-      width: 16px;
-      height: 16px;
-      background: var(--green-light);
+    .hr-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0
+      background: var(--green);
+      box-shadow: 0 0 6px rgba(0, 208, 132, 0.5)
     }
 
-    /* ── SOCIAL PROOF BAR ── */
-    .sp-bar {
-      background: #fff;
+    /* ── STATS BAR ── */
+    .stats-bar {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 20px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    .sp-stat {
-      display: flex;
-      align-items: center;
-      gap: 10px
+    .stat-cell {
+      padding: 32px 20px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background .25s;
     }
 
-    .sp-num {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -1px
+    .stat-cell:last-child {
+      border-right: none
     }
 
-    .sp-lbl {
+    .stat-cell:hover {
+      background: rgba(255, 255, 255, 0.9)
+    }
+
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-lbl {
       font-size: 13px;
-      color: var(--text2);
-      line-height: 1.3
+      color: var(--text2)
     }
 
-    .sp-div {
-      width: 1px;
-      height: 36px;
-      background: var(--border)
-    }
-
-    .stars-row {
-      display: flex;
-      gap: 2px
-    }
-
-    .star {
-      color: #F59E0B;
-      font-size: 15px
-    }
-
-    /* ── PROBLEM ── */
-    .problem {
-      background: var(--bg);
-      padding: 88px 48px
-    }
-
-    .problem-inner {
-      max-width: 1100px;
+    /* ── SECTION BASE ── */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 96px 48px;
+      max-width: 1200px;
       margin: 0 auto
     }
 
     .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .12em;
       color: var(--blue);
-      background: var(--blue-light);
-      padding: 4px 14px;
+      background: var(--blue-glow);
+      border: 1px solid var(--border2);
+      padding: 5px 14px;
       border-radius: 100px;
-      display: inline-block;
-      margin-bottom: 16px
+      margin-bottom: 18px;
+    }
+
+    .section-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 6px rgba(0, 194, 255, 0.5)
     }
 
     .section-title {
-      font-size: clamp(26px, 3.5vw, 44px);
-      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 700;
       letter-spacing: -1.5px;
       line-height: 1.1;
-      margin-bottom: 14px
+      margin-bottom: 16px;
     }
 
     .section-sub {
       font-size: 17px;
       color: var(--text2);
       max-width: 500px;
-      line-height: 1.7;
+      line-height: 1.75;
       margin-bottom: 52px
     }
 
-    .problem-grid {
+    /* ── PROBLEM ── */
+    .problem-wrap {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.5);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 96px 0;
+    }
+
+    .problem-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px
+    }
+
+    .prob-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px
+      gap: 16px;
+      margin-top: 48px
     }
 
     .prob-card {
-      background: #fff;
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 26px;
+      padding: 28px;
       transition: all .3s;
       cursor: default;
+      backdrop-filter: blur(8px);
     }
 
     .prob-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
-      border-color: rgba(24, 95, 165, 0.3)
+      border-color: var(--border2);
+      background: #fff
     }
 
-    .prob-icon-wrap {
-      width: 46px;
-      height: 46px;
+    .prob-icon {
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
-      background: #FEF2F2;
+      background: linear-gradient(135deg, #FFF0F0, #FFE0E0);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 14px;
-      font-size: 22px
+      font-size: 22px;
+      margin-bottom: 16px;
     }
 
     .prob-title {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 600;
       margin-bottom: 8px;
       color: var(--text)
     }
@@ -514,40 +617,35 @@
       color: var(--text2);
       font-style: italic;
       padding: 10px 12px;
-      background: #FEF2F2;
-      border-left: 3px solid #FCA5A5;
-      border-radius: 0 8px 8px 0
+      background: var(--bg2);
+      border-left: 3px solid rgba(220, 80, 80, 0.3);
+      border-radius: 0 8px 8px 0;
     }
 
     /* ── SOLUTION ── */
-    .solution {
-      background: #fff;
-      padding: 88px 48px;
-      border-top: 1px solid var(--border)
-    }
-
     .solution-inner {
-      max-width: 1100px;
-      margin: 0 auto
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 96px 48px
     }
 
     .solution-steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      gap: 24px;
       margin-top: 56px;
-      position: relative
+      position: relative;
     }
 
     .solution-steps::before {
       content: '';
       position: absolute;
-      top: 36px;
-      left: calc(16.66% + 16px);
-      right: calc(16.66% + 16px);
-      height: 2px;
-      background: linear-gradient(90deg, var(--blue-light), var(--blue), var(--green-light));
-      z-index: 0;
+      top: 40px;
+      left: calc(16.67% + 20px);
+      right: calc(16.67% + 20px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan), var(--green));
+      opacity: .4;
     }
 
     .step-card {
@@ -557,24 +655,26 @@
     }
 
     .step-num {
-      width: 72px;
-      height: 72px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      background: var(--blue);
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 22px;
-      font-weight: 800;
+      margin: 0 auto 22px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
       color: #fff;
-      border: 5px solid #fff;
-      box-shadow: 0 0 0 2px var(--blue);
+      border: 4px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--blue), 0 8px 24px rgba(26, 111, 212, 0.25);
     }
 
     .step-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 17px;
-      font-weight: 700;
+      font-weight: 600;
       margin-bottom: 10px;
       color: var(--text)
     }
@@ -586,44 +686,52 @@
     }
 
     .step-time {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       font-size: 11px;
       font-weight: 700;
-      color: var(--green-dark);
+      color: var(--green);
       background: var(--green-light);
+      border: 1px solid rgba(0, 208, 132, 0.2);
       padding: 3px 10px;
       border-radius: 100px;
-      margin-top: 10px
+      margin-top: 10px;
     }
 
-    /* ── TABS FEATURES ── */
-    .features {
-      background: var(--bg);
-      padding: 88px 48px;
-      border-top: 1px solid var(--border)
+    /* ── TABS ── */
+    .tabs-wrap {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      padding: 96px 0;
     }
 
-    .features-inner {
-      max-width: 1100px;
-      margin: 0 auto
+    .tabs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px
     }
 
     .tabs-nav {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin: 40px 0 44px;
-      justify-content: center
+      justify-content: center;
+      margin: 40px 0 48px
     }
 
     .tab-pill {
-      font-family: inherit;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 13px;
       font-weight: 600;
       padding: 9px 20px;
       border-radius: 100px;
       border: 1.5px solid var(--border2);
-      background: #fff;
+      background: var(--surface);
       color: var(--text2);
       cursor: pointer;
       transition: all .22s;
@@ -634,14 +742,15 @@
 
     .tab-pill:hover {
       border-color: var(--blue);
-      color: var(--blue)
+      color: var(--blue);
+      background: var(--blue-glow)
     }
 
     .tab-pill.active {
       background: var(--blue);
       color: #fff;
       border-color: var(--blue);
-      box-shadow: 0 4px 12px rgba(24, 95, 165, 0.25)
+      box-shadow: 0 4px 16px rgba(26, 111, 212, 0.3);
     }
 
     .tab-panel {
@@ -656,157 +765,175 @@
       align-items: center
     }
 
-    .tab-text h3 {
-      font-size: 26px;
-      font-weight: 800;
+    .tab-txt h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
       letter-spacing: -1px;
       margin-bottom: 12px;
-      line-height: 1.2
+      line-height: 1.2;
+      color: var(--text);
     }
 
-    .tab-text p {
+    .tab-txt p {
       font-size: 15px;
       color: var(--text2);
       line-height: 1.75;
-      margin-bottom: 26px
+      margin-bottom: 24px
     }
 
     .tab-feats {
       display: flex;
       flex-direction: column;
-      gap: 12px
+      gap: 11px
     }
 
-    .tab-feat-item {
+    .tab-feat {
       display: flex;
       align-items: flex-start;
       gap: 10px;
       font-size: 14px;
-      color: var(--text2);
-      line-height: 1.5
+      color: var(--text2)
     }
 
-    .feat-check-icon {
+    .tf-check {
       width: 22px;
       height: 22px;
-      background: var(--green-light);
       border-radius: 6px;
+      background: var(--green-light);
+      border: 1px solid rgba(0, 208, 132, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-top: 1px
+      margin-top: 1px;
     }
 
-    .tab-micro-cta {
-      margin-top: 24px
+    .tab-cta {
+      margin-top: 22px
     }
 
     .tab-visual {
-      background: linear-gradient(145deg, #EEF6FF 0%, #fff 100%);
+      background: linear-gradient(145deg, rgba(240, 247, 255, 0.9), rgba(255, 255, 255, 0.95));
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 28px;
+      padding: 24px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Mock UI components */
-    .mock-card {
+    .tab-visual::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26, 111, 212, 0.08), transparent);
+      pointer-events: none;
+    }
+
+    /* Mock UI */
+    .m-card {
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 18px;
-      box-shadow: var(--shadow)
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(26, 111, 212, 0.06)
     }
 
-    .mock-hd {
+    .m-hd {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
-      padding-bottom: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
       border-bottom: 1px solid var(--border)
     }
 
-    .mock-title {
+    .m-title {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--text)
     }
 
-    .badge {
-      font-size: 11px;
-      font-weight: 600;
+    .m-badge {
+      font-size: 10px;
+      font-weight: 700;
       padding: 3px 9px;
       border-radius: 100px
     }
 
-    .b-green {
-      background: var(--green-light);
-      color: var(--green-dark)
-    }
-
-    .b-blue {
-      background: var(--blue-light);
+    .mb-blue {
+      background: rgba(26, 111, 212, 0.1);
       color: var(--blue-dark)
     }
 
-    .b-amber {
+    .mb-green {
+      background: var(--green-light);
+      color: #006B44
+    }
+
+    .mb-amber {
       background: #FEF3C7;
       color: #92400E
     }
 
-    .mock-row {
+    .m-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 9px 0;
-      border-bottom: 1px solid #F8FAFD;
+      padding: 8px 0;
+      border-bottom: 1px solid #F5F8FF;
       font-size: 12px
     }
 
-    .mock-row:last-child {
+    .m-row:last-child {
       border-bottom: none
     }
 
-    .mock-label {
+    .m-lbl {
       color: var(--text2);
       display: flex;
       align-items: center;
       gap: 6px
     }
 
-    .mock-dot {
-      width: 7px;
-      height: 7px;
+    .m-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%
     }
 
-    .mock-val {
-      font-weight: 700;
+    .m-val {
+      font-weight: 600;
       color: var(--text);
       font-size: 12px
     }
 
-    .mock-prog {
-      height: 5px;
-      background: var(--border);
-      border-radius: 3px;
+    .m-prog {
+      height: 4px;
+      background: var(--bg2);
+      border-radius: 2px;
       overflow: hidden;
       margin-top: 10px
     }
 
-    .mock-prog-fill {
+    .m-prog-fill {
       height: 100%;
-      border-radius: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--green))
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan))
     }
 
-    .mock-sig-box {
-      background: #F8FAFD;
+    .m-sig {
+      background: var(--bg);
       border: 1.5px dashed var(--border2);
       border-radius: 8px;
-      height: 72px;
+      height: 64px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -814,22 +941,22 @@
       gap: 4px;
       font-size: 11px;
       color: var(--text3);
-      margin-top: 12px
+      margin-top: 10px
     }
 
-    .mock-pdf-row {
+    .m-pdf-row {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 11px 14px;
-      background: var(--blue-light);
+      padding: 10px 12px;
+      background: rgba(26, 111, 212, 0.06);
       border-radius: 10px;
       margin-top: 10px
     }
 
-    .mock-pdf-ico {
-      width: 30px;
-      height: 30px;
+    .m-pdf-ico {
+      width: 28px;
+      height: 28px;
       background: var(--blue);
       border-radius: 7px;
       display: flex;
@@ -838,77 +965,78 @@
       flex-shrink: 0
     }
 
-    .mock-pdf-info .t1 {
+    .m-pdf-t1 {
       font-size: 12px;
       font-weight: 700;
       color: var(--text)
     }
 
-    .mock-pdf-info .t2 {
+    .m-pdf-t2 {
       font-size: 10px;
       color: var(--text3)
     }
 
-    .mock-sent {
-      padding: 10px 12px;
+    .m-sent {
+      padding: 9px 12px;
       background: var(--green-light);
       border-radius: 8px;
       font-size: 11px;
-      color: var(--green-dark);
+      color: #006B44;
       font-weight: 600;
-      margin-top: 8px
+      margin-top: 7px
     }
 
-    .mock-plan-item {
+    .m-plan {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 9px 10px;
+      gap: 9px;
+      padding: 8px 10px;
       background: var(--bg);
       border-radius: 8px;
-      margin-bottom: 7px
+      margin-bottom: 6px
     }
 
-    .mock-av {
-      width: 28px;
-      height: 28px;
+    .m-av {
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 700;
       flex-shrink: 0
     }
 
-    .mock-plan-name {
-      font-size: 12px;
-      font-weight: 700;
+    .m-pname {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
       color: var(--text)
     }
 
-    .mock-plan-addr {
+    .m-paddr {
       font-size: 10px;
       color: var(--text3)
     }
 
-    .mock-time {
-      font-size: 11px;
+    .m-time {
+      font-size: 10px;
       font-weight: 700;
       color: var(--blue);
       margin-left: auto
     }
 
-    .mock-photo-grid {
+    .m-ph {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 7px;
-      margin-top: 11px
+      gap: 6px;
+      margin-top: 10px
     }
 
-    .mock-photo {
+    .m-phcell {
       aspect-ratio: 1;
-      border-radius: 7px;
+      border-radius: 6px;
       background: var(--bg);
       border: 1px solid var(--border);
       display: flex;
@@ -916,234 +1044,242 @@
       justify-content: center
     }
 
-    .mock-hist-item {
+    .m-hist {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
+      gap: 9px;
+      padding: 9px 11px;
       background: var(--bg);
-      border-radius: 8px;
-      border-left: 3px solid var(--blue);
-      margin-bottom: 8px
+      border-radius: 7px;
+      border-left: 2px solid var(--blue);
+      margin-bottom: 7px
     }
 
-    .hist-date {
+    .m-hdate {
       font-size: 10px;
       color: var(--text3);
       white-space: nowrap
     }
 
-    .hist-title {
-      font-size: 12px;
-      font-weight: 700;
+    .m-htitle {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
       color: var(--text)
     }
 
-    .hist-tech {
+    .m-htech {
       font-size: 10px;
       color: var(--text3)
     }
 
     /* ── BENEFITS ── */
-    .benefits {
-      background: #fff;
-      padding: 88px 48px;
-      border-top: 1px solid var(--border)
-    }
-
     .benefits-inner {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 0 48px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: center
     }
 
-    .benefits-visual {
-      background: linear-gradient(145deg, #E1F5EE, #fff);
-      border: 1px solid rgba(29, 158, 117, 0.2);
+    .ba-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 28px
+      padding: 28px;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
     }
 
-    .before-after {
+    .ba-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px
+      gap: 14px
     }
 
     .ba-col h4 {
-      font-size: 13px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: .08em;
+      letter-spacing: .1em;
       margin-bottom: 14px;
-      padding: 8px 14px;
+      padding: 7px 12px;
       border-radius: 8px;
-      text-align: center
+      text-align: center;
     }
 
     .ba-col.before h4 {
       background: #FEF2F2;
-      color: #DC2626
+      color: #B91C1C
     }
 
     .ba-col.after h4 {
       background: var(--green-light);
-      color: var(--green-dark)
+      color: #005C35
     }
 
     .ba-item {
       display: flex;
       align-items: flex-start;
-      gap: 8px;
+      gap: 7px;
       font-size: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
       color: var(--text2);
       line-height: 1.4
     }
 
-    .ba-icon {
-      font-size: 14px;
-      flex-shrink: 0
-    }
-
-    .roi-banner {
-      margin-top: 20px;
-      background: var(--blue);
+    .roi-strip {
+      margin-top: 18px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
       border-radius: 12px;
-      padding: 18px 20px;
+      padding: 16px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
     }
 
-    .roi-item {
+    .roi-cell {
       text-align: center
     }
 
     .roi-num {
-      font-size: 26px;
-      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
       color: #fff;
       letter-spacing: -1px
     }
 
     .roi-lbl {
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.65)
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.6)
     }
 
-    .benefits-list {
+    .ben-list {
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      margin-top: 36px
+      gap: 14px
     }
 
-    .benefit-row {
+    .ben-item {
       display: flex;
       align-items: flex-start;
       gap: 14px;
       padding: 16px;
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--bg);
-      transition: all .25s
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+      transition: all .25s;
     }
 
-    .benefit-row:hover {
-      border-color: var(--blue-mid);
+    .ben-item:hover {
+      border-color: var(--border2);
+      box-shadow: var(--shadow);
       background: #fff;
       transform: translateX(4px)
     }
 
-    .benefit-ico {
+    .ben-ico {
       width: 44px;
       height: 44px;
       border-radius: 10px;
-      background: var(--blue-light);
+      background: var(--blue-glow);
+      border: 1px solid var(--border2);
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 18px;
       flex-shrink: 0;
-      font-size: 18px
     }
 
-    .benefit-text h4 {
-      font-size: 15px;
-      font-weight: 700;
+    .ben-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
       color: var(--text);
       margin-bottom: 3px
     }
 
-    .benefit-text p {
+    .ben-desc {
       font-size: 13px;
       color: var(--text2);
       line-height: 1.5
     }
 
-    .benefit-kpi {
-      font-size: 12px;
+    .ben-kpi {
+      font-size: 11px;
       font-weight: 700;
-      color: var(--green-dark);
+      color: var(--green);
       background: var(--green-light);
+      border: 1px solid rgba(0, 208, 132, 0.2);
       padding: 2px 9px;
       border-radius: 100px;
       margin-top: 5px;
-      display: inline-block
+      display: inline-block;
     }
 
-    /* ── SOCIAL PROOF ── */
-    .social-proof {
-      background: var(--bg);
-      padding: 88px 48px;
-      border-top: 1px solid var(--border)
+    /* ── TESTI ── */
+    .testi-wrap {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 96px 0;
     }
 
-    .sp-inner {
-      max-width: 1100px;
-      margin: 0 auto
+    .testi-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px
     }
 
     .testi-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 52px
+      margin-top: 48px
     }
 
     .testi-card {
       background: #fff;
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 26px;
       transition: all .3s;
-      position: relative;
     }
 
     .testi-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-lg)
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border2)
     }
 
-    .testi-card.featured {
+    .testi-card.feat {
       border-color: var(--blue);
       border-width: 1.5px
     }
 
-    .testi-quote-icon {
-      font-size: 32px;
-      color: var(--blue-light);
+    .testi-quote {
+      font-size: 30px;
+      color: rgba(26, 111, 212, 0.15);
       margin-bottom: 10px;
-      line-height: 1
+      font-family: Georgia, serif
     }
 
     .testi-stars {
       display: flex;
       gap: 3px;
-      margin-bottom: 14px
+      margin-bottom: 12px
+    }
+
+    .st {
+      color: #F59E0B;
+      font-size: 14px
     }
 
     .testi-text {
@@ -1166,41 +1302,42 @@
       border-top: 1px solid var(--border)
     }
 
-    .testi-av {
+    .t-av {
       width: 36px;
       height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       flex-shrink: 0
     }
 
-    .testi-name {
+    .t-name {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--text)
     }
 
-    .testi-role {
+    .t-role {
       font-size: 11px;
       color: var(--text3)
     }
 
-    .kpi-band {
+    .kpi-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 40px;
+      gap: 14px;
+      margin-top: 36px
     }
 
     .kpi-card {
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 22px;
+      padding: 20px;
       text-align: center;
       transition: all .25s;
     }
@@ -1211,58 +1348,58 @@
     }
 
     .kpi-num {
-      font-size: 38px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      color: var(--blue);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -1px;
       line-height: 1;
-      margin-bottom: 4px
-    }
-
-    .kpi-num span {
-      color: var(--green)
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .kpi-lbl {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text2)
     }
 
-    /* ── OFFRE IRRESISTIBLE ── */
-    .offre {
-      background: linear-gradient(135deg, #0C447C 0%, #185FA5 50%, #1D9E75 100%);
-      padding: 88px 48px;
-      text-align: center;
+    /* ── OFFRE ── */
+    .offre-wrap {
       position: relative;
+      z-index: 1;
       overflow: hidden;
+      background: linear-gradient(135deg, #0D2B6B 0%, #1A6FD4 50%, #0A8F7A 100%);
+      padding: 96px 48px;
+      text-align: center;
     }
 
-    .offre::before {
+    .offre-wrap::before {
       content: '';
       position: absolute;
-      top: -80px;
-      right: -80px;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      pointer-events: none
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
     }
 
-    .offre::after {
+    .offre-wrap::after {
       content: '';
       position: absolute;
-      bottom: -60px;
-      left: -40px;
-      width: 250px;
-      height: 250px;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.04);
-      pointer-events: none
+      background: radial-gradient(circle, rgba(0, 194, 255, 0.15), transparent);
+      pointer-events: none;
     }
 
     .offre-inner {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
       position: relative;
       z-index: 1
@@ -1270,75 +1407,83 @@
 
     .offre-badge {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.25);
       color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .1em;
       padding: 5px 16px;
       border-radius: 100px;
-      margin-bottom: 22px
+      margin-bottom: 22px;
     }
 
     .offre-title {
-      font-size: clamp(28px, 4vw, 46px);
-      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 4vw, 50px);
+      font-weight: 700;
       color: #fff;
       letter-spacing: -1.5px;
       line-height: 1.1;
-      margin-bottom: 14px
+      margin-bottom: 14px;
     }
 
     .offre-sub {
       font-size: 17px;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.75);
       margin-bottom: 36px;
       line-height: 1.7
     }
 
-    .offre-items {
+    .offre-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
       margin-bottom: 36px;
-      text-align: left;
+      text-align: left
     }
 
     .offre-item {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 12px;
       padding: 16px;
       display: flex;
       align-items: flex-start;
       gap: 10px;
+      transition: background .2s;
     }
 
-    .offre-item-ico {
-      font-size: 22px;
+    .offre-item:hover {
+      background: rgba(255, 255, 255, 0.13)
+    }
+
+    .offre-item-ic {
+      font-size: 20px;
       flex-shrink: 0
     }
 
     .offre-item h4 {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 600;
       color: #fff;
       margin-bottom: 3px
     }
 
     .offre-item p {
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.65);
+      color: rgba(255, 255, 255, 0.6);
       line-height: 1.4
     }
 
     .offre-urgency {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 215, 0, 0.3);
       border-radius: 12px;
-      padding: 16px 20px;
+      padding: 14px 20px;
       margin-bottom: 28px;
       display: flex;
       align-items: center;
@@ -1349,148 +1494,151 @@
       font-weight: 600;
     }
 
-    .urgency-pulse {
+    .u-pulse {
       width: 10px;
       height: 10px;
-      background: #FCD34D;
+      background: #FFD700;
       border-radius: 50%;
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
       animation: pulse 1.5s infinite
     }
 
-    .counter {
+    .counter-num {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 28px;
-      font-weight: 800;
-      color: #FCD34D;
+      font-weight: 700;
+      color: #FFD700;
       letter-spacing: -1px
     }
 
-    .offre-cta-block {
+    .offre-btns {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      align-items: center
+      align-items: center;
+      gap: 12px
     }
 
-    .btn-white {
+    .btn-offre-main {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 16px;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--blue);
       background: #fff;
       border: none;
-      padding: 16px 40px;
-      border-radius: 10px;
+      padding: 16px 44px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all .2s;
+      transition: all .22s;
       display: flex;
       align-items: center;
       gap: 8px;
-      white-space: nowrap
     }
 
-    .btn-white:hover {
-      background: var(--blue-light);
+    .btn-offre-main:hover {
+      background: var(--bg);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2)
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2)
     }
 
-    .btn-white-rdv {
-      font-size: 15px;
-      font-weight: 700;
+    .btn-offre-rdv {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
       color: #fff;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1.5px solid rgba(255, 255, 255, 0.35);
-      padding: 13px 32px;
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      padding: 12px 32px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all .2s;
+      transition: all .22s;
       display: flex;
       align-items: center;
-      gap: 8px
+      gap: 8px;
     }
 
-    .btn-white-rdv:hover {
-      background: rgba(255, 255, 255, 0.22)
+    .btn-offre-rdv:hover {
+      background: rgba(255, 255, 255, 0.2)
     }
 
     .offre-note {
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.45);
       margin-top: 14px
     }
 
     /* ── PRICING ── */
-    .pricing {
-      background: #fff;
-      padding: 88px 48px;
-      border-top: 1px solid var(--border)
-    }
-
     .pricing-inner {
-      max-width: 1100px;
-      margin: 0 auto
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 96px 48px
     }
 
-    .pricing-grid {
+    .price-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 52px
+      gap: 18px;
+      margin-top: 48px
     }
 
     .price-card {
-      background: var(--bg);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: 20px;
-      padding: 32px;
+      padding: 30px;
+      backdrop-filter: blur(8px);
       transition: all .25s;
-      position: relative
+      position: relative;
     }
 
     .price-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-lg)
+      box-shadow: var(--shadow-lg);
+      background: #fff
     }
 
-    .price-card.featured {
+    .price-card.feat {
       background: #fff;
       border-color: var(--blue);
-      box-shadow: 0 0 0 4px rgba(24, 95, 165, 0.08)
+      box-shadow: 0 0 0 4px rgba(26, 111, 212, 0.07);
     }
 
-    .price-popular {
+    .price-pop {
       position: absolute;
-      top: -13px;
+      top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--blue);
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
       color: #fff;
-      font-size: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
       font-weight: 700;
-      padding: 4px 18px;
+      padding: 4px 16px;
       border-radius: 100px;
-      white-space: nowrap
+      white-space: nowrap;
     }
 
     .price-name {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .1em;
-      color: var(--text2);
+      color: var(--text3);
       margin-bottom: 12px
     }
 
     .price-num {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 50px;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: -2px;
       color: var(--text);
       line-height: 1;
-      margin-bottom: 4px
+      margin-bottom: 4px;
     }
 
     .price-num sup {
-      font-size: 22px;
+      font-size: 20px;
       vertical-align: top;
       margin-top: 10px;
       display: inline-block;
@@ -1513,29 +1661,29 @@
     .price-div {
       height: 1px;
       background: var(--border);
-      margin-bottom: 20px
+      margin-bottom: 18px
     }
 
     .price-feats {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px
+      gap: 9px
     }
 
     .price-feats li {
       display: flex;
       align-items: flex-start;
-      gap: 9px;
+      gap: 8px;
       font-size: 13px;
       color: var(--text2)
     }
 
-    .pf-check {
-      width: 17px;
-      height: 17px;
+    .pf-ck {
+      width: 16px;
+      height: 16px;
       background: var(--green-light);
-      border-radius: 50%;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1547,99 +1695,97 @@
       display: block;
       width: 100%;
       text-align: center;
-      margin-top: 24px;
+      margin-top: 22px;
       padding: 12px;
-      border-radius: 9px;
-      font-family: inherit;
+      border-radius: 10px;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 14px;
       font-weight: 700;
       cursor: pointer;
       transition: all .2s;
       text-decoration: none;
-      border: 2px solid var(--blue);
+      border: 1.5px solid var(--blue);
       color: var(--blue);
-      background: #fff
+      background: transparent;
     }
 
     .price-btn:hover {
-      background: var(--blue-light)
+      background: var(--blue-glow)
     }
 
-    .price-card.featured .price-btn {
+    .price-card.feat .price-btn {
       background: var(--blue);
-      color: #fff
+      color: #fff;
+      border-color: var(--blue)
     }
 
-    .price-card.featured .price-btn:hover {
+    .price-card.feat .price-btn:hover {
       background: var(--blue-dark)
     }
 
     /* ── FAQ ── */
-    .faq {
-      background: var(--bg);
-      padding: 88px 48px;
-      border-top: 1px solid var(--border)
-    }
-
     .faq-inner {
       max-width: 760px;
-      margin: 0 auto
+      margin: 0 auto;
+      padding: 96px 48px
     }
 
     .faq-list {
-      margin-top: 48px;
+      margin-top: 44px;
       display: flex;
       flex-direction: column;
-      gap: 10px
+      gap: 9px
     }
 
     .faq-item {
-      background: #fff;
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
-      transition: border-color .2s
+      backdrop-filter: blur(8px);
+      transition: border-color .2s;
     }
 
     .faq-item.open {
-      border-color: var(--blue-mid)
+      border-color: var(--blue-dark) !important
     }
 
     .faq-q {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 22px;
+      padding: 17px 20px;
       cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 15px;
-      font-weight: 700;
-      color: var(--text)
+      font-weight: 600;
+      color: var(--text);
     }
 
     .faq-q:hover {
       color: var(--blue)
     }
 
-    .faq-arrow {
-      width: 20px;
-      height: 20px;
+    .faq-arr {
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      background: var(--bg);
+      background: var(--bg2);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      transition: transform .25s
+      transition: transform .25s, background .2s;
     }
 
-    .faq-item.open .faq-arrow {
+    .faq-item.open .faq-arr {
       transform: rotate(180deg);
-      background: var(--blue-light)
+      background: var(--blue-glow)
     }
 
     .faq-a {
       display: none;
-      padding: 0 22px 18px;
+      padding: 0 20px 16px;
       font-size: 14px;
       color: var(--text2);
       line-height: 1.7
@@ -1647,102 +1793,100 @@
 
     .faq-item.open .faq-a {
       display: block;
-      animation: fadeIn .25s ease
+      animation: fadeUp .2s ease
     }
 
     /* ── CTA FINAL ── */
-    .final-cta {
-      background: linear-gradient(180deg, #fff 0%, #F0F7FF 100%);
-      padding: 88px 48px;
-      text-align: center;
-      border-top: 1px solid var(--border)
+    .cta-final-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 96px 48px;
+      text-align: center
     }
 
-    .final-cta-inner {
-      max-width: 680px;
-      margin: 0 auto
-    }
-
-    .final-title {
-      font-size: clamp(30px, 4vw, 50px);
-      font-weight: 800;
+    .cta-final-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(30px, 4vw, 52px);
+      font-weight: 700;
       letter-spacing: -1.5px;
       line-height: 1.1;
-      margin-bottom: 14px
+      margin-bottom: 14px;
+      color: var(--text);
     }
 
-    .final-sub {
+    .cta-final-sub {
       font-size: 17px;
       color: var(--text2);
       margin-bottom: 40px;
       line-height: 1.7
     }
 
-    .final-form {
-      background: #fff;
+    .cta-form {
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 28px;
-      box-shadow: var(--shadow)
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
     }
 
-    .form-grid {
+    .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
       margin-bottom: 10px
     }
 
-    .form-input {
+    .f-input {
       background: var(--bg);
       border: 1.5px solid var(--border2);
       border-radius: 9px;
       padding: 12px 14px;
-      font-family: inherit;
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
       color: var(--text);
       outline: none;
       width: 100%;
-      transition: border-color .2s
+      transition: border-color .2s;
     }
 
-    .form-input:focus {
+    .f-input:focus {
       border-color: var(--blue);
       background: #fff
     }
 
-    .form-input::placeholder {
+    .f-input::placeholder {
       color: var(--text3)
     }
 
-    .form-select {
+    .f-select {
       background: var(--bg);
       border: 1.5px solid var(--border2);
       border-radius: 9px;
       padding: 12px 14px;
-      font-family: inherit;
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
       color: var(--text2);
       outline: none;
       width: 100%;
       cursor: pointer;
       appearance: none;
-      transition: border-color .2s
+      transition: border-color .2s;
     }
 
-    .form-select:focus {
+    .f-select:focus {
       border-color: var(--blue)
     }
 
-    .form-submit {
+    .f-submit {
       width: 100%;
       background: var(--blue);
       color: #fff;
-      font-family: inherit;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 15px;
-      font-weight: 800;
+      font-weight: 700;
       padding: 15px;
-      border-radius: 9px;
+      border-radius: 10px;
       border: none;
       cursor: pointer;
       margin-top: 10px;
@@ -1750,116 +1894,120 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px
+      gap: 8px;
+      box-shadow: 0 4px 16px rgba(26, 111, 212, 0.3);
     }
 
-    .form-submit:hover {
+    .f-submit:hover {
       background: var(--blue-dark);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(24, 95, 165, 0.3)
+      box-shadow: 0 8px 24px rgba(26, 111, 212, 0.4)
     }
 
-    .form-rdv-or {
+    .f-or {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin: 18px 0;
+      gap: 12px;
+      margin: 16px 0;
       color: var(--text3);
       font-size: 13px
     }
 
-    .form-rdv-or::before,
-    .form-rdv-or::after {
+    .f-or::before,
+    .f-or::after {
       content: '';
       flex: 1;
       height: 1px;
       background: var(--border)
     }
 
-    .form-rdv-btn {
+    .f-rdv {
       width: 100%;
       background: var(--green-light);
-      color: var(--green-dark);
-      font-family: inherit;
-      font-size: 15px;
+      color: #005C35;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
       font-weight: 700;
-      padding: 14px;
-      border-radius: 9px;
-      border: 1.5px solid rgba(29, 158, 117, 0.3);
+      padding: 13px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(0, 208, 132, 0.25);
       cursor: pointer;
       transition: all .2s;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px
+      gap: 8px;
     }
 
-    .form-rdv-btn:hover {
-      background: #C6F0E2;
+    .f-rdv:hover {
+      background: rgba(0, 208, 132, 0.18);
       transform: translateY(-2px)
     }
 
-    .form-note {
+    .f-note {
       font-size: 12px;
       color: var(--text3);
-      margin-top: 14px;
+      margin-top: 12px;
       text-align: center
     }
 
-    .success-block {
+    .success-wrap {
       display: none;
       text-align: center;
-      padding: 24px
+      padding: 22px
     }
 
-    .success-block.show {
+    .success-wrap.show {
       display: block
     }
 
-    .success-ico {
+    .s-ico {
       width: 60px;
       height: 60px;
-      background: var(--green-light);
       border-radius: 50%;
+      background: var(--green-light);
+      border: 2px solid rgba(0, 208, 132, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
-      border: 2px solid rgba(29, 158, 117, 0.3)
+      margin: 0 auto 14px;
     }
 
-    .success-block h3 {
+    .success-wrap h3 {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 22px;
-      font-weight: 800;
-      color: var(--green-dark);
+      font-weight: 700;
+      color: #005C35;
       margin-bottom: 8px
     }
 
-    .success-block p {
+    .success-wrap p {
       font-size: 15px;
       color: var(--text2)
     }
 
     /* ── FOOTER ── */
     footer {
-      background: #fff;
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
       border-top: 1px solid var(--border);
-      padding: 36px 48px;
+      padding: 32px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 16px
+      gap: 16px;
     }
 
-    .footer-logo {
+    .f-logo {
       display: flex;
       align-items: center;
       gap: 8px;
       text-decoration: none
     }
 
-    .footer-ico {
+    .f-logo-ic {
       width: 28px;
       height: 28px;
       background: var(--blue);
@@ -1869,43 +2017,44 @@
       justify-content: center
     }
 
-    .footer-ico svg {
+    .f-logo-ic svg {
       width: 16px;
       height: 16px
     }
 
-    .footer-name {
+    .f-logo-name {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 15px;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--text)
     }
 
-    .footer-name span {
+    .f-logo-name span {
       color: var(--blue)
     }
 
-    .footer-links {
+    .f-links {
       display: flex;
-      gap: 22px
+      gap: 20px
     }
 
-    .footer-links a {
+    .f-links a {
       font-size: 13px;
       color: var(--text3);
       text-decoration: none;
       transition: color .2s
     }
 
-    .footer-links a:hover {
+    .f-links a:hover {
       color: var(--blue)
     }
 
-    .footer-copy {
+    .f-copy {
       font-size: 13px;
       color: var(--text3)
     }
 
-    /* ── STICKY CTA MOBILE ── */
+    /* ── STICKY CTA ── */
     .sticky-cta {
       display: none;
       position: fixed;
@@ -1913,15 +2062,15 @@
       left: 0;
       right: 0;
       z-index: 400;
-      background: #fff;
+      background: rgba(240, 245, 255, 0.95);
+      backdrop-filter: blur(12px);
       border-top: 1px solid var(--border);
       padding: 12px 16px;
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
     }
 
-    .sticky-cta-row {
+    .sticky-row {
       display: flex;
-      gap: 10px
+      gap: 8px
     }
 
     /* ── ANIMATIONS ── */
@@ -1956,15 +2105,27 @@
       }
 
       50% {
-        opacity: .6;
-        transform: scale(.85)
+        opacity: .5;
+        transform: scale(.8)
+      }
+    }
+
+    @keyframes pulse-cyan {
+
+      0%,
+      100% {
+        box-shadow: 0 0 8px rgba(0, 194, 255, 0.6)
+      }
+
+      50% {
+        box-shadow: 0 0 16px rgba(0, 194, 255, 0.9)
       }
     }
 
     .reveal {
       opacity: 0;
       transform: translateY(24px);
-      transition: opacity .6s ease, transform .6s ease
+      transition: opacity .65s ease, transform .65s ease
     }
 
     .reveal.visible {
@@ -1983,66 +2144,59 @@
       }
 
       .hero {
-        padding: 60px 16px 56px
+        padding: 60px 16px 72px
       }
 
-      .problem,
-      .solution,
-      .features,
-      .benefits,
-      .social-proof,
-      .offre,
-      .pricing,
-      .faq,
-      .final-cta {
-        padding: 64px 16px
-      }
-
-      .problem-grid {
-        grid-template-columns: 1fr
-      }
-
-      .solution-steps {
-        grid-template-columns: 1fr;
-        gap: 24px
-      }
-
-      .solution-steps::before {
-        display: none
-      }
-
-      .tab-panel.active {
-        grid-template-columns: 1fr
-      }
-
-      .benefits-inner {
-        grid-template-columns: 1fr;
-        gap: 40px
-      }
-
-      .before-after {
-        grid-template-columns: 1fr;
-        gap: 10px
-      }
-
-      .testi-grid {
-        grid-template-columns: 1fr
-      }
-
-      .kpi-band {
+      .stats-bar {
         grid-template-columns: 1fr 1fr
       }
 
-      .offre-items {
+      .stat-cell {
+        border-right: none;
+        border-bottom: 1px solid var(--border)
+      }
+
+      .prob-grid,
+      .testi-grid,
+      .kpi-row {
         grid-template-columns: 1fr
       }
 
-      .pricing-grid {
+      .solution-steps,
+      .tab-panel.active,
+      .benefits-inner,
+      .price-grid,
+      .offre-grid,
+      .ba-grid,
+      .form-row {
         grid-template-columns: 1fr
       }
 
-      .form-grid {
-        grid-template-columns: 1fr
+      .solution-steps::before,
+      .roi-strip {
+        display: none
+      }
+
+      .section,
+      .pricing-inner,
+      .testi-inner,
+      .faq-inner,
+      .cta-final-inner {
+        padding: 64px 16px
+      }
+
+      .problem-inner,
+      .tabs-inner,
+      .solution-inner,
+      .benefits-inner {
+        padding: 0 16px
+      }
+
+      .problem-wrap,
+      .tabs-wrap,
+      .testi-wrap,
+      .offre-wrap {
+        padding: 64px 0
       }
 
       footer {
@@ -2055,13 +2209,9 @@
         display: block
       }
 
-      .sp-bar {
-        padding: 16px;
-        gap: 16px
-      }
-
-      .sp-div {
-        display: none
+      .hero-cta-row {
+        flex-direction: column;
+        align-items: center
       }
     }
   </style>
@@ -2071,908 +2221,876 @@
 
   <!-- URGENCY BAR -->
   <div class="urgency-bar">
-    🔥 Offre de lancement : <span id="countdown-spots">47</span> places restantes — <strong>2 mois offerts</strong> pour
-    les premiers inscrits
+    ⚡ Offre de lancement : <span class="urgency-pill" id="bar-spots">47</span> places restantes · <strong>2 mois
+      offerts</strong> pour les 50 premiers inscrits
   </div>
 
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
-      <div class="nav-icon"><svg viewBox="0 0 18 18" fill="none">
-          <path d="M2 4h14M2 9h9M2 14h11" stroke="white" stroke-width="2" stroke-linecap="round" />
-          <circle cx="15" cy="14" r="3" fill="white" fill-opacity=".2" stroke="white" stroke-width="1.5" />
-          <path d="M14 14l.9 1.1 1.7-1.8" stroke="white" stroke-width="1.4" stroke-linecap="round"
+      <div class="nav-icon">
+        <svg viewBox="0 0 20 20" fill="none">
+          <path d="M3 5h14M3 10h9M3 15h11" stroke="white" stroke-width="2" stroke-linecap="round" />
+          <circle cx="16" cy="15" r="3.5" fill="white" fill-opacity=".2" stroke="white" stroke-width="1.5" />
+          <path d="M14.8 15l1.1 1.3 2.2-2.3" stroke="white" stroke-width="1.4" stroke-linecap="round"
             stroke-linejoin="round" />
-        </svg></div>
+        </svg>
+      </div>
       <span class="nav-name">Zerio<span>nyx</span></span>
     </a>
     <div class="nav-links">
-      <a href="#features">Fonctionnalités</a>
+      <a href="#fonctionnalites">Fonctionnalités</a>
       <a href="#temoignages">Témoignages</a>
       <a href="#tarifs">Tarifs</a>
       <a href="#faq">FAQ</a>
     </div>
-    <div class="nav-cta-wrap">
-      <a href="#rdv" class="btn-rdv">📅 Prendre RDV</a>
-      <a href="#inscription" class="btn-cta">Essai gratuit →</a>
+    <div class="nav-actions">
+      <a href="#rdv" class="btn-ghost">📅 Démo gratuite</a>
+      <a href="#inscription" class="btn-nav">🚀 Essai gratuit</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <!-- A/B Selector -->
-    <div class="ab-selector">
-      <span style="font-size:12px;color:var(--text3);font-weight:600">A/B test titres :</span>
-      <button class="ab-btn active" onclick="switchTitle('a',this)">Variante A</button>
-      <button class="ab-btn" onclick="switchTitle('b',this)">Variante B</button>
-      <button class="ab-btn" onclick="switchTitle('c',this)">Variante C</button>
-    </div>
+    <div class="hero-orb1"></div>
+    <div class="hero-orb2"></div>
+    <div class="hero-orb3"></div>
 
-    <div class="hero-label">
-      <div class="label-dot"></div>Application terrain — iOS & Android
-    </div>
-
-    <div class="title-variant active" id="title-a">
-      <h1 class="hero-title">Stoppez de perdre <span class="t-orange">3h par semaine</span><br>avec vos fiches papier.
-      </h1>
-    </div>
-    <div class="title-variant" id="title-b">
-      <h1 class="hero-title">Vos interventions signées,<br>archivées et <span class="t-green">envoyées en 2 min.</span>
-      </h1>
-    </div>
-    <div class="title-variant" id="title-c">
-      <h1 class="hero-title">L'app que <span class="t-blue">60 000 chauffagistes</span><br>attendaient sans le savoir.
-      </h1>
-    </div>
-
-    <p class="hero-sub">Zerionyx remplace vos fiches papier. Fiche numérique, signature client, PDF automatique — depuis
-      votre téléphone, en 2 minutes. Zéro formation.</p>
-
-    <div class="hero-cta-block">
-      <div class="hero-cta-row">
-        <a href="#inscription" class="btn-cta btn-cta-large" style="font-size:16px;padding:15px 36px">🚀 Démarrer
-          l'essai gratuit</a>
-        <a href="#rdv" class="btn-rdv" style="font-size:15px;padding:15px 28px">📅 Réserver une démo</a>
+    <div class="ab-wrap">
+      <div class="ab-btns">
+        <span class="ab-lbl">A/B :</span>
+        <button class="ab-btn active" onclick="setTitle('a',this)">Variante A</button>
+        <button class="ab-btn" onclick="setTitle('b',this)">Variante B</button>
+        <button class="ab-btn" onclick="setTitle('c',this)">Variante C</button>
       </div>
-      <div class="hero-reassurance">
-        <div class="r-item">
-          <div class="r-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-              <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg></div>Gratuit pendant la bêta
+    </div>
+
+    <div class="ai-badge">
+      <div class="ai-badge-dot"></div>
+      <span class="ai-badge-icon">🤖</span>
+      Propulsé par l'intelligence artificielle
+    </div>
+
+    <div class="title-v active" id="tv-a">
+      <h1 class="hero-title">Stoppez de perdre <span class="t-gradient">3h par semaine</span><br>avec vos fiches papier.
+      </h1>
+    </div>
+    <div class="title-v" id="tv-b">
+      <h1 class="hero-title">L'IA qui transforme vos<br>interventions terrain en <span class="t-green">2 minutes.</span>
+      </h1>
+    </div>
+    <div class="title-v" id="tv-c">
+      <h1 class="hero-title"><span class="t-gradient">60 000 chauffagistes.</span><br>Un seul outil qui change tout.
+      </h1>
+    </div>
+
+    <p class="hero-sub">Zerionyx digitalise vos interventions avec l'IA. Fiche numérique, signature client, rapport PDF
+      automatique — depuis votre téléphone, en 2 minutes. Zéro formation.</p>
+
+    <div class="hero-cta-wrap">
+      <div class="hero-cta-row">
+        <a href="#inscription" class="btn-hero-primary">🚀 Démarrer gratuitement</a>
+        <a href="#rdv" class="btn-hero-secondary">📅 Voir une démo live</a>
+      </div>
+      <div class="hero-reassure">
+        <div class="hr-item">
+          <div class="hr-dot"></div>Gratuit pendant la bêta
         </div>
-        <div class="r-item">
-          <div class="r-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-              <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg></div>Sans engagement
+        <div class="hr-item">
+          <div class="hr-dot"></div>Sans engagement
         </div>
-        <div class="r-item">
-          <div class="r-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-              <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg></div>Réponse sous 24h
+        <div class="hr-item">
+          <div class="hr-dot"></div>iOS & Android
         </div>
-        <div class="r-item">
-          <div class="r-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-              <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg></div>iOS & Android
+        <div class="hr-item">
+          <div class="hr-dot"></div>Réponse sous 24h
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SOCIAL PROOF BAR -->
-  <div class="sp-bar reveal">
-    <div class="sp-stat">
-      <div>
-        <div class="sp-num">60k+</div>
-        <div class="sp-lbl">Chauffagistes<br>en France</div>
-      </div>
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-cell reveal">
+      <div class="stat-num">60k+</div>
+      <div class="stat-lbl">Chauffagistes en France</div>
     </div>
-    <div class="sp-div"></div>
-    <div class="sp-stat">
-      <div>
-        <div class="sp-num">80%</div>
-        <div class="sp-lbl">Encore sur<br>papier ou Excel</div>
-      </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">80%</div>
+      <div class="stat-lbl">Encore sur papier ou Excel</div>
     </div>
-    <div class="sp-div"></div>
-    <div class="sp-stat">
-      <div>
-        <div class="sp-num">2 min</div>
-        <div class="sp-lbl">Pour une fiche<br>complète signée</div>
-      </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">2min</div>
+      <div class="stat-lbl">Pour une fiche complète</div>
     </div>
-    <div class="sp-div"></div>
-    <div class="sp-stat">
-      <div>
-        <div class="stars-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-            class="star">★</span><span class="star">★</span></div>
-        <div class="sp-lbl" style="margin-top:4px">Note client pilote<br>5/5 ⭐</div>
-      </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">5/5</div>
+      <div class="stat-lbl">Note client pilote ⭐</div>
     </div>
   </div>
 
   <!-- PROBLÈME -->
-  <section class="problem" id="probleme">
+  <div class="problem-wrap">
     <div class="problem-inner">
       <div class="reveal">
-        <div class="section-eyebrow">Le problème</div>
-        <h2 class="section-title">Vous perdez du temps et de l'argent<br>chaque jour sans le savoir.</h2>
-        <p class="section-sub">On a parlé à des dizaines d'artisans. Voici ce qu'ils vivent au quotidien :</p>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-dot"></div>Le problème
+        </div>
+        <h2 class="section-title">Vous perdez du temps<br>et de l'argent chaque jour.</h2>
+        <p class="section-sub">On a parlé à des dizaines d'artisans. Voici ce qu'ils vivent :</p>
       </div>
-      <div class="problem-grid">
+      <div class="prob-grid">
         <div class="prob-card reveal">
-          <div class="prob-icon-wrap">🔍</div>
+          <div class="prob-icon">🔍</div>
           <div class="prob-title">La fiche introuvable</div>
-          <div class="prob-body">20 minutes à chercher un document. Votre client attend. Votre journée tombe à l'eau.
-          </div>
+          <div class="prob-body">20 minutes à chercher. Votre client attend. Votre journée tombe à l'eau.</div>
           <div class="prob-quote">"J'ai cherché partout, impossible de retrouver la fiche de l'an dernier..."</div>
         </div>
         <div class="prob-card reveal">
-          <div class="prob-icon-wrap">📋</div>
-          <div class="prob-title">Aucune trace professionnelle</div>
-          <div class="prob-body">Votre client demande un rapport d'intervention. Vous n'avez rien de propre à lui
-            envoyer.</div>
+          <div class="prob-icon">📋</div>
+          <div class="prob-title">Aucune trace pro</div>
+          <div class="prob-body">Votre client demande un rapport. Vous n'avez rien de propre à lui envoyer.</div>
           <div class="prob-quote">"Mon client veut un compte-rendu, j'ai juste une fiche manuscrite illisible..."</div>
         </div>
         <div class="prob-card reveal">
-          <div class="prob-icon-wrap">⚖️</div>
+          <div class="prob-icon">⚖️</div>
           <div class="prob-title">Le litige sans preuve</div>
-          <div class="prob-body">Un client conteste. Pas de fiche signée, pas de preuve. Litige impossible à gérer.
-          </div>
-          <div class="prob-quote">"Il dit qu'on est pas venu, mais j'ai aucune preuve de l'intervention..."</div>
+          <div class="prob-body">Un client conteste. Pas de fiche signée. Litige impossible à gérer.</div>
+          <div class="prob-quote">"Il dit qu'on n'est pas venu, j'ai aucune preuve de l'intervention..."</div>
         </div>
         <div class="prob-card reveal">
-          <div class="prob-icon-wrap">📱</div>
+          <div class="prob-icon">📱</div>
           <div class="prob-title">Le planning sur WhatsApp</div>
-          <div class="prob-body">Coordination chaotique. Erreurs, oublis, doublons. Personne ne sait qui fait quoi.
-          </div>
-          <div class="prob-quote">"J'ai 4 techniciens, je gère tout par WhatsApp, c'est le bordel complet..."</div>
+          <div class="prob-body">Coordination chaotique. Erreurs, oublis. Personne ne sait qui fait quoi.</div>
+          <div class="prob-quote">"J'ai 4 techniciens, je gère tout par WhatsApp, c'est le bordel..."</div>
         </div>
         <div class="prob-card reveal">
-          <div class="prob-icon-wrap">📊</div>
-          <div class="prob-title">Zéro visibilité sur l'activité</div>
-          <div class="prob-body">Vous ne savez pas combien d'interventions vous avez faites ce mois. Ni quels clients
-            sont en contrat.</div>
+          <div class="prob-icon">📊</div>
+          <div class="prob-title">Zéro visibilité</div>
+          <div class="prob-body">Vous ne savez pas combien d'interventions vous avez faites ce mois.</div>
           <div class="prob-quote">"Je saurais même pas vous dire combien j'ai fait d'interventions en mars..."</div>
         </div>
         <div class="prob-card reveal">
-          <div class="prob-icon-wrap">🧾</div>
-          <div class="prob-title">Les justificatifs éparpillés</div>
-          <div class="prob-body">Votre comptable attend. Vous passez une demi-journée à chercher des papiers partout.
-          </div>
-          <div class="prob-quote">"Mon comptable m'a encore demandé les justificatifs. 4 heures de recherche..."</div>
+          <div class="prob-icon">🧾</div>
+          <div class="prob-title">Justificatifs éparpillés</div>
+          <div class="prob-body">Votre comptable attend. Demi-journée perdue à chercher partout.</div>
+          <div class="prob-quote">"Mon comptable m'a redemandé les justificatifs. 4 heures de recherche..."</div>
         </div>
       </div>
-      <div style="text-align:center;margin-top:44px" class="reveal">
-        <a href="#inscription" class="btn-cta" style="font-size:15px;padding:13px 32px;display:inline-flex">Découvrir la
+      <div style="text-align:center;margin-top:40px" class="reveal">
+        <a href="#inscription" class="btn-nav" style="display:inline-flex;font-size:14px;padding:12px 28px">Découvrir la
           solution →</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- SOLUTION -->
-  <section class="solution" id="solution">
+  <div style="position:relative;z-index:1;background:var(--bg)">
     <div class="solution-inner">
       <div class="reveal" style="text-align:center">
-        <div class="section-eyebrow">La solution</div>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-dot"></div>La solution
+        </div>
         <h2 class="section-title">En place en 10 minutes.<br>Résultats dès le premier jour.</h2>
         <p class="section-sub" style="margin:0 auto">Pas de formation. Pas de technicien. Vous créez votre compte et
-          vous commencez immédiatement.</p>
+          commencez immédiatement.</p>
       </div>
       <div class="solution-steps">
         <div class="step-card reveal">
           <div class="step-num">1</div>
           <h3>Créez votre compte</h3>
-          <p>Inscrivez-vous, ajoutez votre logo et vos coordonnées. Importez vos clients depuis Excel ou saisissez-les à
-            la main.</p>
+          <p>Inscrivez-vous, ajoutez votre logo. Importez vos clients depuis Excel ou saisissez-les à la main.</p>
           <span class="step-time">⏱ 5 minutes</span>
         </div>
         <div class="step-card reveal">
           <div class="step-num">2</div>
           <h3>Intervenez sur le terrain</h3>
-          <p>Remplissez votre fiche sur téléphone, prenez des photos, faites signer le client directement sur l'écran.
-          </p>
+          <p>Remplissez votre fiche sur téléphone, prenez des photos, faites signer le client sur l'écran.</p>
           <span class="step-time">⏱ 2 minutes</span>
         </div>
         <div class="step-card reveal">
           <div class="step-num">3</div>
-          <h3>Le PDF part tout seul</h3>
-          <p>Le rapport PDF professionnel est généré et envoyé au client par email automatiquement. Vous passez à la
-            suite.</p>
+          <h3>L'IA fait le reste</h3>
+          <p>Le rapport PDF est généré automatiquement par l'IA et envoyé au client par email. Zéro effort.</p>
           <span class="step-time">⏱ 0 seconde</span>
         </div>
       </div>
-      <div style="text-align:center;margin-top:44px" class="reveal">
-        <a href="#inscription" class="btn-cta btn-cta-green"
-          style="font-size:15px;padding:13px 32px;display:inline-flex">Démarrer maintenant — C'est gratuit →</a>
+      <div style="text-align:center;margin-top:40px" class="reveal">
+        <a href="#inscription" class="btn-hero-primary"
+          style="display:inline-flex;font-size:15px;padding:14px 32px">Démarrer maintenant — C'est gratuit →</a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FEATURES / TABS -->
-  <section class="features" id="features">
-    <div class="features-inner">
+  <!-- FONCTIONNALITÉS / TABS -->
+  <div class="tabs-wrap" id="fonctionnalites">
+    <div class="tabs-inner">
       <div class="reveal" style="text-align:center">
-        <div class="section-eyebrow">Fonctionnalités</div>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-dot"></div>Fonctionnalités
+        </div>
         <h2 class="section-title">Tout ce dont vous avez besoin.<br>Rien de superflu.</h2>
       </div>
       <div class="tabs-nav">
         <button class="tab-pill active" onclick="switchTab('fiche',this)">📋 Fiche d'intervention</button>
         <button class="tab-pill" onclick="switchTab('signature',this)">✍️ Signature client</button>
-        <button class="tab-pill" onclick="switchTab('pdf',this)">📄 Rapport PDF</button>
+        <button class="tab-pill" onclick="switchTab('pdf',this)">📄 Rapport PDF IA</button>
         <button class="tab-pill" onclick="switchTab('planning',this)">📅 Planning équipe</button>
         <button class="tab-pill" onclick="switchTab('photos',this)">📷 Photos</button>
         <button class="tab-pill" onclick="switchTab('historique',this)">🕐 Historique</button>
       </div>
 
       <div class="tab-panel active" id="tab-fiche">
-        <div class="tab-text">
-          <h3>Remplissez vos fiches en 2 minutes chrono</h3>
-          <p>Des templates prêts à l'emploi pour chaque type d'intervention. Checkboxes, mesures, observations — tout
-            est là, sur votre téléphone.</p>
+        <div class="tab-txt">
+          <h3>Fiches numériques en 2 minutes chrono</h3>
+          <p>Des templates intelligents pour chaque type d'intervention. Checkboxes, mesures, observations — depuis
+            votre téléphone. L'IA complète automatiquement ce qu'elle peut.</p>
           <div class="tab-feats">
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Templates par métier (chaudière, PAC, électricité...)
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Contrôles sous forme de cases à cocher
+                </svg></div>Saisie rapide : checkboxes, mesures, notes vocales
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Mode hors ligne — fonctionne sans réseau
+                </svg></div>Mode hors ligne — fonctionne en cave ou zone blanche
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Synchronisation automatique dès retour en ligne
+                </svg></div>Synchro automatique dès retour en ligne
             </div>
           </div>
-          <div class="tab-micro-cta">
-            <a href="#inscription" class="btn-cta" style="display:inline-flex;font-size:14px;padding:11px 24px">Essayer
-              gratuitement →</a>
-          </div>
+          <div class="tab-cta"><a href="#inscription" class="btn-nav"
+              style="display:inline-flex;font-size:13px;padding:10px 22px">Essayer gratuitement →</a></div>
         </div>
         <div class="tab-visual">
-          <div class="mock-card">
-            <div class="mock-hd">
-              <div class="mock-title">Entretien chaudière gaz</div>
-              <div class="badge b-blue">En cours</div>
+          <div class="m-card">
+            <div class="m-hd">
+              <div class="m-title">Entretien chaudière gaz</div>
+              <div class="m-badge mb-blue">En cours</div>
             </div>
-            <div class="mock-row">
-              <div class="mock-label">
-                <div class="mock-dot" style="background:#22C55E"></div>Nettoyage brûleur
+            <div class="m-row">
+              <div class="m-lbl">
+                <div class="m-dot" style="background:#22C55E"></div>Nettoyage brûleur
               </div>
-              <div class="badge b-green">✓ Fait</div>
+              <div class="m-badge mb-green">✓ Fait</div>
             </div>
-            <div class="mock-row">
-              <div class="mock-label">
-                <div class="mock-dot" style="background:#22C55E"></div>Vérification vacuité
+            <div class="m-row">
+              <div class="m-lbl">
+                <div class="m-dot" style="background:#22C55E"></div>Vérification vacuité
               </div>
-              <div class="badge b-green">✓ Fait</div>
+              <div class="m-badge mb-green">✓ Fait</div>
             </div>
-            <div class="mock-row">
-              <div class="mock-label">
-                <div class="mock-dot" style="background:#3B82F6"></div>Taux CO2
+            <div class="m-row">
+              <div class="m-lbl">
+                <div class="m-dot" style="background:var(--blue)"></div>Taux CO2
               </div>
-              <div class="mock-val">8.4%</div>
+              <div class="m-val">8.4%</div>
             </div>
-            <div class="mock-row">
-              <div class="mock-label">
-                <div class="mock-dot" style="background:#3B82F6"></div>Pression circuit
+            <div class="m-row">
+              <div class="m-lbl">
+                <div class="m-dot" style="background:var(--blue)"></div>Pression circuit
               </div>
-              <div class="mock-val">1.2 bar</div>
+              <div class="m-val">1.2 bar</div>
             </div>
-            <div class="mock-row">
-              <div class="mock-label">
-                <div class="mock-dot" style="background:#F59E0B"></div>Test combustion
+            <div class="m-row">
+              <div class="m-lbl">
+                <div class="m-dot" style="background:#F59E0B"></div>Test combustion
               </div>
-              <div class="badge b-amber">En attente</div>
+              <div class="m-badge mb-amber">En attente</div>
             </div>
-            <div class="mock-prog" style="margin-top:14px">
-              <div class="mock-prog-fill" style="width:75%"></div>
+            <div class="m-prog" style="margin-top:12px">
+              <div class="m-prog-fill" style="width:75%"></div>
             </div>
-            <div style="font-size:11px;color:var(--text3);text-align:right;margin-top:4px">75% complété</div>
+            <div style="font-size:10px;color:var(--text3);text-align:right;margin-top:3px">75% complété</div>
           </div>
         </div>
       </div>
 
       <div class="tab-panel" id="tab-signature">
-        <div class="tab-text">
-          <h3>Signature client légale en un geste</h3>
-          <p>Le client signe directement sur l'écran. Horodatée, archivée, conforme eIDAS. Aucun litige ne peut plus
-            vous prendre par surprise.</p>
+        <div class="tab-txt">
+          <h3>Signature légale en un geste</h3>
+          <p>Le client signe sur l'écran de votre téléphone. Horodatée, archivée, conforme eIDAS. Aucun litige ne peut
+            plus vous surprendre.</p>
           <div class="tab-feats">
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Signature tactile sur écran
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Horodatage automatique — date & heure
+                </svg></div>Horodatage automatique — date & heure précise
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Conforme eIDAS — valeur légale Europe
+                </svg></div>Conforme eIDAS — valeur légale en Europe
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Archivage sécurisé et infalsifiable
+                </svg></div>Archivage cloud sécurisé et infalsifiable
             </div>
           </div>
-          <div class="tab-micro-cta">
-            <a href="#inscription" class="btn-cta"
-              style="display:inline-flex;font-size:14px;padding:11px 24px">Protégez-vous dès aujourd'hui →</a>
-          </div>
+          <div class="tab-cta"><a href="#inscription" class="btn-nav"
+              style="display:inline-flex;font-size:13px;padding:10px 22px">Protégez-vous →</a></div>
         </div>
         <div class="tab-visual">
-          <div class="mock-card">
-            <div class="mock-hd">
-              <div class="mock-title">Bon d'intervention</div>
-              <div class="badge b-green">Prêt à signer</div>
+          <div class="m-card">
+            <div class="m-hd">
+              <div class="m-title">Bon d'intervention</div>
+              <div class="m-badge mb-green">Prêt à signer</div>
             </div>
-            <div style="font-size:12px;color:var(--text2);margin-bottom:6px">Client : <strong
-                style="color:var(--text)">M. Bernard</strong></div>
-            <div style="font-size:12px;color:var(--text2);margin-bottom:14px">Intervention : Entretien chaudière —
+            <div style="font-size:12px;color:var(--text2);margin-bottom:5px">Client : <strong>M. Bernard</strong></div>
+            <div style="font-size:12px;color:var(--text2);margin-bottom:12px">Intervention : Entretien chaudière —
               08/04/2026</div>
-            <div class="mock-sig-box">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M4 16c2-3 3-6 4-9m0 0c.5-2 2-3 3.5-2s1.5 3 .5 4.5M8 7c2 3 3 7.5 1 8.5" stroke="#94A3B8"
+            <div class="m-sig">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                <path d="M4 16c2-3 3-6 4-9m0 0c.5-2 2-3 3.5-2s1.5 3 .5 4.5M8 7c2 3 3 7.5 1 8.5" stroke="#7A90B5"
                   stroke-width="1.5" stroke-linecap="round" />
               </svg>
               <span>Zone de signature tactile</span>
-              <span style="font-size:10px;color:#CBD5E1">Le client signe ici</span>
             </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
               <span style="font-size:10px;color:var(--text3)">08/04/2026 — 14h32</span>
-              <div class="badge b-green">✓ Valide eIDAS</div>
+              <div class="m-badge mb-green">✓ Valide eIDAS</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="tab-panel" id="tab-pdf">
-        <div class="tab-text">
-          <h3>Rapport PDF professionnel en automatique</h3>
-          <p>Dès la signature, le PDF est généré avec votre logo et envoyé au client par email. Votre image de marque
-            devient irréprochable.</p>
+        <div class="tab-txt">
+          <h3>Rapport PDF généré par l'IA</h3>
+          <p>L'IA rédige et génère un rapport professionnel dès la signature, avec votre logo. Envoyé au client par
+            email en automatique. Image de marque irréprochable.</p>
           <div class="tab-feats">
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Généré en quelques secondes
+                </svg></div>Généré par l'IA en quelques secondes
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Envoi automatique par email au client
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Votre logo et coordonnées inclus
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Archivage cloud — accessible 24h/24
+                </svg></div>Archivage cloud permanent
             </div>
           </div>
-          <div class="tab-micro-cta">
-            <a href="#inscription" class="btn-cta"
-              style="display:inline-flex;font-size:14px;padding:11px 24px">Impressionnez vos clients →</a>
-          </div>
+          <div class="tab-cta"><a href="#inscription" class="btn-nav"
+              style="display:inline-flex;font-size:13px;padding:10px 22px">Impressionnez vos clients →</a></div>
         </div>
         <div class="tab-visual">
-          <div class="mock-card">
-            <div class="mock-hd">
-              <div class="mock-title">Rapport généré</div>
-              <div class="badge b-green">Envoyé ✓</div>
+          <div class="m-card">
+            <div class="m-hd">
+              <div class="m-title">Rapport IA généré</div>
+              <div class="m-badge mb-green">Envoyé ✓</div>
             </div>
-            <div class="mock-pdf-row">
-              <div class="mock-pdf-ico"><svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <div class="m-pdf-row">
+              <div class="m-pdf-ico"><svg width="12" height="14" viewBox="0 0 16 16" fill="none">
                   <path d="M9 2H4a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V6L9 2z" stroke="white" stroke-width="1.5" />
                   <path d="M9 2v4h4" stroke="white" stroke-width="1.5" />
                 </svg></div>
-              <div class="mock-pdf-info">
-                <div class="t1">Rapport_Bernard_08042026.pdf</div>
-                <div class="t2">284 Ko — 08/04/2026 14h35</div>
+              <div>
+                <div class="m-pdf-t1">Rapport_Bernard_08042026.pdf</div>
+                <div class="m-pdf-t2">Généré par IA · 284 Ko</div>
               </div>
             </div>
-            <div class="mock-sent">✅ Envoyé à m.bernard@email.fr — 14h35</div>
-            <div class="mock-row">
-              <div class="mock-label">Client</div>
-              <div class="mock-val">M. Bernard</div>
+            <div class="m-sent">✅ Envoyé à m.bernard@email.fr — 14h35</div>
+            <div class="m-row">
+              <div class="m-lbl">Client</div>
+              <div class="m-val">M. Bernard</div>
             </div>
-            <div class="mock-row">
-              <div class="mock-label">Technicien</div>
-              <div class="mock-val">Jordan D.</div>
+            <div class="m-row">
+              <div class="m-lbl">Technicien</div>
+              <div class="m-val">Jordan D.</div>
             </div>
-            <div class="mock-row">
-              <div class="mock-label">Durée</div>
-              <div class="mock-val">1h45</div>
+            <div class="m-row">
+              <div class="m-lbl">Durée</div>
+              <div class="m-val">1h45</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="tab-panel" id="tab-planning">
-        <div class="tab-text">
-          <h3>Toute l'équipe synchronisée en temps réel</h3>
-          <p>Planifiez depuis le dashboard web, vos techniciens voient leur planning sur mobile. Fini le chaos WhatsApp.
-            Tout le monde sait quoi faire et où aller.</p>
+        <div class="tab-txt">
+          <h3>Toute l'équipe synchronisée</h3>
+          <p>Planifiez depuis le dashboard web, vos techniciens voient leur planning sur mobile en temps réel. L'IA
+            détecte les conflits et suggest des optimisations.</p>
           <div class="tab-feats">
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Vue calendrier par technicien
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Notifications push temps réel
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Statuts en live (en route, sur place, terminé)
+                </svg></div>Statuts live (en route, sur place, terminé)
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Assignation en glisser-déposer
+                </svg></div>Optimisation IA des tournées
             </div>
           </div>
-          <div class="tab-micro-cta">
-            <a href="#inscription" class="btn-cta"
-              style="display:inline-flex;font-size:14px;padding:11px 24px">Organiser mon équipe →</a>
-          </div>
+          <div class="tab-cta"><a href="#inscription" class="btn-nav"
+              style="display:inline-flex;font-size:13px;padding:10px 22px">Organiser mon équipe →</a></div>
         </div>
         <div class="tab-visual">
-          <div class="mock-card">
-            <div class="mock-hd">
-              <div class="mock-title">Planning — 10 avril</div>
-              <div class="badge b-blue">3 interventions</div>
+          <div class="m-card">
+            <div class="m-hd">
+              <div class="m-title">Planning — 10 avril</div>
+              <div class="m-badge mb-blue">3 interventions</div>
             </div>
-            <div class="mock-plan-item">
-              <div class="mock-av" style="background:#DBEAFE;color:#1E40AF">JD</div>
+            <div class="m-plan">
+              <div class="m-av" style="background:#DBEAFE;color:#1E40AF">JD</div>
               <div>
-                <div class="mock-plan-name">Entretien chaudière gaz</div>
-                <div class="mock-plan-addr">M. Bernard — 12 rue de la Paix</div>
+                <div class="m-pname">Entretien chaudière gaz</div>
+                <div class="m-paddr">M. Bernard — 12 rue de la Paix</div>
               </div>
-              <div class="mock-time">9h00</div>
+              <div class="m-time">9h00</div>
             </div>
-            <div class="mock-plan-item">
-              <div class="mock-av" style="background:#D1FAE5;color:#065F46">AM</div>
+            <div class="m-plan">
+              <div class="m-av" style="background:#D1FAE5;color:#065F46">AM</div>
               <div>
-                <div class="mock-plan-name">Dépannage PAC</div>
-                <div class="mock-plan-addr">Mme Dupont — 8 allée des Roses</div>
+                <div class="m-pname">Dépannage PAC</div>
+                <div class="m-paddr">Mme Dupont — 8 allée des Roses</div>
               </div>
-              <div class="mock-time">11h30</div>
+              <div class="m-time">11h30</div>
             </div>
-            <div class="mock-plan-item">
-              <div class="mock-av" style="background:#FEF3C7;color:#92400E">XL</div>
+            <div class="m-plan">
+              <div class="m-av" style="background:#FEF3C7;color:#92400E">XL</div>
               <div>
-                <div class="mock-plan-name">Installation chaudière</div>
-                <div class="mock-plan-addr">SCI Martin — 45 bd Voltaire</div>
+                <div class="m-pname">Installation chaudière</div>
+                <div class="m-paddr">SCI Martin — 45 bd Voltaire</div>
               </div>
-              <div class="mock-time">14h00</div>
+              <div class="m-time">14h00</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="tab-panel" id="tab-photos">
-        <div class="tab-text">
-          <h3>Documentez chaque intervention en photos</h3>
-          <p>Prenez des photos depuis l'app, attachez-les à la fiche. Avant, pendant, après — tout est archivé et
-            consultable même 3 ans plus tard.</p>
+        <div class="tab-txt">
+          <h3>Documenter, analyser, prouver</h3>
+          <p>Prenez des photos depuis l'app. L'IA les tague automatiquement et les inclut dans le rapport. Avant,
+            pendant, après — tout est archivé.</p>
           <div class="tab-feats">
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Photo depuis l'app en un clic
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></div>Taguage IA automatique
+            </div>
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Incluses dans le rapport PDF
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Annotation et légende par photo
-            </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </svg></div>Stockage cloud sécurisé illimité
+                </svg></div>Stockage cloud illimité
             </div>
           </div>
-          <div class="tab-micro-cta">
-            <a href="#inscription" class="btn-cta" style="display:inline-flex;font-size:14px;padding:11px 24px">Essayer
-              l'app →</a>
-          </div>
+          <div class="tab-cta"><a href="#inscription" class="btn-nav"
+              style="display:inline-flex;font-size:13px;padding:10px 22px">Essayer l'app →</a></div>
         </div>
         <div class="tab-visual">
-          <div class="mock-card">
-            <div class="mock-hd">
-              <div class="mock-title">Photos de l'intervention</div>
-              <div class="badge b-blue">6 photos</div>
+          <div class="m-card">
+            <div class="m-hd">
+              <div class="m-title">Photos de l'intervention</div>
+              <div class="m-badge mb-blue">6 photos</div>
             </div>
-            <div class="mock-photo-grid">
-              <div class="mock-photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <div class="m-ph">
+              <div class="m-phcell"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M3 9a2 2 0 012-2h.93l.81-1.22A2 2 0 0110.07 4h3.86l.81 1.22A2 2 0 0016.07 7H17a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
                     stroke="#CBD5E1" stroke-width="1.5" />
                   <circle cx="12" cy="13" r="3" stroke="#CBD5E1" stroke-width="1.5" />
                 </svg></div>
-              <div class="mock-photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <div class="m-phcell"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M3 9a2 2 0 012-2h.93l.81-1.22A2 2 0 0110.07 4h3.86l.81 1.22A2 2 0 0016.07 7H17a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
                     stroke="#CBD5E1" stroke-width="1.5" />
                   <circle cx="12" cy="13" r="3" stroke="#CBD5E1" stroke-width="1.5" />
                 </svg></div>
-              <div class="mock-photo" style="background:var(--blue-light);border-color:var(--blue)"><svg width="16"
-                  height="16" viewBox="0 0 20 20" fill="none">
-                  <path d="M10 4v12M4 10h12" stroke="#185FA5" stroke-width="2" stroke-linecap="round" />
+              <div class="m-phcell" style="background:rgba(26,111,212,0.08);border-color:var(--border2)"><svg width="14"
+                  height="14" viewBox="0 0 20 20" fill="none">
+                  <path d="M10 4v12M4 10h12" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" />
                 </svg></div>
-              <div class="mock-photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <div class="m-phcell"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M3 9a2 2 0 012-2h.93l.81-1.22A2 2 0 0110.07 4h3.86l.81 1.22A2 2 0 0016.07 7H17a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
                     stroke="#CBD5E1" stroke-width="1.5" />
                   <circle cx="12" cy="13" r="3" stroke="#CBD5E1" stroke-width="1.5" />
                 </svg></div>
-              <div class="mock-photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <div class="m-phcell"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M3 9a2 2 0 012-2h.93l.81-1.22A2 2 0 0110.07 4h3.86l.81 1.22A2 2 0 0016.07 7H17a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
                     stroke="#CBD5E1" stroke-width="1.5" />
                   <circle cx="12" cy="13" r="3" stroke="#CBD5E1" stroke-width="1.5" />
                 </svg></div>
-              <div class="mock-photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <div class="m-phcell"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M3 9a2 2 0 012-2h.93l.81-1.22A2 2 0 0110.07 4h3.86l.81 1.22A2 2 0 0016.07 7H17a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
                     stroke="#CBD5E1" stroke-width="1.5" />
                   <circle cx="12" cy="13" r="3" stroke="#CBD5E1" stroke-width="1.5" />
                 </svg></div>
             </div>
-            <div style="font-size:11px;color:var(--text3);margin-top:8px">Avant · Pendant · Après — Jointes au rapport
-              PDF</div>
+            <div style="font-size:10px;color:var(--text3);margin-top:7px">🤖 IA : Avant · Pendant · Après détectés
+              automatiquement</div>
           </div>
         </div>
       </div>
 
       <div class="tab-panel" id="tab-historique">
-        <div class="tab-text">
+        <div class="tab-txt">
           <h3>Retrouvez tout en 2 secondes</h3>
-          <p>L'historique complet de toutes vos interventions. Filtrez par client, équipement, technicien, date. Fini
-            les 20 minutes de recherche.</p>
+          <p>Historique complet. Filtrez par client, équipement, technicien ou date. L'IA vous alerte sur les
+            équipements qui approchent de leur date de révision.</p>
           <div class="tab-feats">
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Recherche instantanée par client
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Filtres multiples (date, statut, technicien)
+                </svg></div>Alertes IA — révisions à venir
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Accès fiches et photos archivées
+                </svg></div>Accès aux fiches et photos archivées
             </div>
-            <div class="tab-feat-item">
-              <div class="feat-check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                  <path d="M1 5l3.5 4L11 1" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"
+            <div class="tab-feat">
+              <div class="tf-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Export CSV pour votre comptable
             </div>
           </div>
-          <div class="tab-micro-cta">
-            <a href="#inscription" class="btn-cta"
-              style="display:inline-flex;font-size:14px;padding:11px 24px">Organiser mon historique →</a>
-          </div>
+          <div class="tab-cta"><a href="#inscription" class="btn-nav"
+              style="display:inline-flex;font-size:13px;padding:10px 22px">Organiser mon historique →</a></div>
         </div>
         <div class="tab-visual">
-          <div class="mock-card">
-            <div class="mock-hd">
-              <div class="mock-title">Historique — M. Bernard</div>
-              <div class="badge b-blue">5 interventions</div>
+          <div class="m-card">
+            <div class="m-hd">
+              <div class="m-title">Historique — M. Bernard</div>
+              <div class="m-badge mb-blue">5 interventions</div>
             </div>
-            <div class="mock-hist-item">
+            <div class="m-hist">
               <div>
-                <div class="hist-date">08/04/2026</div>
-                <div class="hist-title">Entretien chaudière gaz</div>
-                <div class="hist-tech">Jordan D. — 1h45</div>
+                <div class="m-hdate">08/04/2026</div>
+                <div class="m-htitle">Entretien chaudière gaz</div>
+                <div class="m-htech">Jordan D. · 1h45</div>
               </div>
-              <div class="badge b-green" style="margin-left:auto">✓</div>
+              <div class="m-badge mb-green" style="margin-left:auto;flex-shrink:0">✓</div>
             </div>
-            <div class="mock-hist-item">
+            <div class="m-hist">
               <div>
-                <div class="hist-date">12/01/2026</div>
-                <div class="hist-title">Dépannage — pression basse</div>
-                <div class="hist-tech">Jordan D. — 45min</div>
+                <div class="m-hdate">12/01/2026</div>
+                <div class="m-htitle">Dépannage — pression basse</div>
+                <div class="m-htech">Jordan D. · 45min</div>
               </div>
-              <div class="badge b-green" style="margin-left:auto">✓</div>
+              <div class="m-badge mb-green" style="margin-left:auto;flex-shrink:0">✓</div>
             </div>
-            <div class="mock-hist-item">
+            <div class="m-hist" style="border-left-color:var(--cyan)">
               <div>
-                <div class="hist-date">15/04/2025</div>
-                <div class="hist-title">Entretien annuel</div>
-                <div class="hist-tech">Jordan D. — 2h00</div>
+                <div class="m-hdate" style="color:var(--blue)">🤖 Alerte IA</div>
+                <div class="m-htitle">Révision annuelle dans 6 jours</div>
+                <div class="m-htech">Programmer maintenant</div>
               </div>
-              <div class="badge b-green" style="margin-left:auto">✓</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- BÉNÉFICES -->
-  <section class="benefits" id="benefices">
+  <div style="position:relative;z-index:1;background:var(--bg);padding:96px 0">
     <div class="benefits-inner">
       <div class="reveal">
-        <div class="before-after">
-          <div class="ba-col before">
-            <h4>❌ Avant Zerionyx</h4>
-            <div class="ba-item"><span class="ba-icon">😤</span>20 min à chercher une fiche</div>
-            <div class="ba-item"><span class="ba-icon">😓</span>Rapports manuscrits illisibles</div>
-            <div class="ba-item"><span class="ba-icon">😰</span>Litiges sans preuve</div>
-            <div class="ba-item"><span class="ba-icon">🤯</span>Planning sur WhatsApp</div>
-            <div class="ba-item"><span class="ba-icon">😩</span>Zéro visibilité sur l'activité</div>
-            <div class="ba-item"><span class="ba-icon">⏰</span>3h+ perdues par semaine</div>
+        <div class="ba-wrap">
+          <div class="ba-grid">
+            <div class="ba-col before">
+              <h4>❌ Avant</h4>
+              <div class="ba-item">😤 20 min à chercher une fiche</div>
+              <div class="ba-item">😓 Rapports manuscrits illisibles</div>
+              <div class="ba-item">😰 Litiges sans preuve</div>
+              <div class="ba-item">🤯 Planning sur WhatsApp</div>
+              <div class="ba-item">😩 Zéro visibilité activité</div>
+              <div class="ba-item">⏰ 3h+ perdues/semaine</div>
+            </div>
+            <div class="ba-col after">
+              <h4>✅ Après</h4>
+              <div class="ba-item">⚡ Fiche trouvée en 2 sec</div>
+              <div class="ba-item">📄 PDF IA envoyé auto</div>
+              <div class="ba-item">🛡️ Signature horodatée</div>
+              <div class="ba-item">📅 Planning centralisé</div>
+              <div class="ba-item">📊 Dashboard temps réel</div>
+              <div class="ba-item">🎯 +3h/semaine récupérées</div>
+            </div>
           </div>
-          <div class="ba-col after">
-            <h4>✅ Après Zerionyx</h4>
-            <div class="ba-item"><span class="ba-icon">⚡</span>Fiche trouvée en 2 secondes</div>
-            <div class="ba-item"><span class="ba-icon">📄</span>PDF pro envoyé automatiquement</div>
-            <div class="ba-item"><span class="ba-icon">🛡️</span>Signature horodatée, infalsifiable</div>
-            <div class="ba-item"><span class="ba-icon">📅</span>Planning centralisé, équipe alignée</div>
-            <div class="ba-item"><span class="ba-icon">📊</span>Dashboard clair, chiffres en temps réel</div>
-            <div class="ba-item"><span class="ba-icon">🎯</span>Gain de 3h+ par semaine</div>
-          </div>
-        </div>
-        <div class="roi-banner">
-          <div class="roi-item">
-            <div class="roi-num">3h</div>
-            <div class="roi-lbl">Gagnées/semaine</div>
-          </div>
-          <div class="roi-item">
-            <div class="roi-num">2min</div>
-            <div class="roi-lbl">Par intervention</div>
-          </div>
-          <div class="roi-item">
-            <div class="roi-num">100%</div>
-            <div class="roi-lbl">Fiches retrouvables</div>
-          </div>
-          <div class="roi-item">
-            <div class="roi-num">0€</div>
-            <div class="roi-lbl">De litige non documenté</div>
+          <div class="roi-strip">
+            <div class="roi-cell">
+              <div class="roi-num">3h</div>
+              <div class="roi-lbl">Gagnées/sem.</div>
+            </div>
+            <div class="roi-cell">
+              <div class="roi-num">2min</div>
+              <div class="roi-lbl">Par fiche</div>
+            </div>
+            <div class="roi-cell">
+              <div class="roi-num">100%</div>
+              <div class="roi-lbl">Retrouvable</div>
+            </div>
+            <div class="roi-cell">
+              <div class="roi-num">0€</div>
+              <div class="roi-lbl">Litige non doc.</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="reveal">
-        <div class="section-eyebrow">Bénéfices concrets</div>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-dot"></div>Bénéfices concrets
+        </div>
         <h2 class="section-title">Ce que vous gagnez vraiment</h2>
-        <div class="benefits-list">
-          <div class="benefit-row">
-            <div class="benefit-ico">⏱️</div>
-            <div class="benefit-text">
-              <h4>3 heures récupérées par semaine</h4>
-              <p>Finis les rapports manuels, les recherches de fiches, la coordination chaotique. Zerionyx automatise
-                tout ça.</p><span class="benefit-kpi">= 12h/mois × votre taux horaire</span>
+        <div class="ben-list">
+          <div class="ben-item">
+            <div class="ben-ico">⏱️</div>
+            <div>
+              <div class="ben-title">3 heures récupérées par semaine</div>
+              <div class="ben-desc">L'IA automatise les rapports, les recherches, la coordination. Vous gardez le temps
+                pour votre vrai métier.</div><span class="ben-kpi">= 12h/mois × votre taux horaire</span>
             </div>
           </div>
-          <div class="benefit-row">
-            <div class="benefit-ico">💼</div>
-            <div class="benefit-text">
-              <h4>Une image professionnelle irréprochable</h4>
-              <p>Vos clients reçoivent un rapport PDF avec votre logo dès la fin de l'intervention. Vous vous démarquez
-                des concurrents encore sur papier.</p><span class="benefit-kpi">= Fidélisation + recommandations</span>
+          <div class="ben-item">
+            <div class="ben-ico">💼</div>
+            <div>
+              <div class="ben-title">Image professionnelle premium</div>
+              <div class="ben-desc">Vos clients reçoivent un rapport PDF avec votre logo dès la fin de l'intervention.
+                Vous vous démarquez instantanément.</div><span class="ben-kpi">= Fidélisation + recommandations</span>
             </div>
           </div>
-          <div class="benefit-row">
-            <div class="benefit-ico">🛡️</div>
-            <div class="benefit-text">
-              <h4>Zéro litige non documenté</h4>
-              <p>Chaque intervention est signée, horodatée, archivée. En cas de contestation, vous avez la preuve en 2
-                secondes.</p><span class="benefit-kpi">= 1 litige évité = 500€+ économisés</span>
+          <div class="ben-item">
+            <div class="ben-ico">🛡️</div>
+            <div>
+              <div class="ben-title">Zéro litige non documenté</div>
+              <div class="ben-desc">Chaque intervention est signée, horodatée, archivée. La preuve en 2 secondes si
+                nécessaire.</div><span class="ben-kpi">= 1 litige évité = 500€+ économisés</span>
             </div>
           </div>
-          <div class="benefit-row">
-            <div class="benefit-ico">📈</div>
-            <div class="benefit-text">
-              <h4>Visibilité totale sur votre activité</h4>
-              <p>Dashboard en temps réel. Vous savez exactement combien d'interventions, quel CA, quels clients sont en
-                contrat.</p><span class="benefit-kpi">= Meilleures décisions, plus vite</span>
+          <div class="ben-item">
+            <div class="ben-ico">🤖</div>
+            <div>
+              <div class="ben-title">L'IA qui anticipe pour vous</div>
+              <div class="ben-desc">Alertes de révision, anomalies détectées, optimisation des tournées. L'IA travaille
+                pendant que vous dormez.</div><span class="ben-kpi">= Contrats entretien jamais manqués</span>
             </div>
           </div>
         </div>
-        <div style="margin-top:28px">
-          <a href="#inscription" class="btn-cta" style="display:inline-flex;font-size:15px;padding:13px 28px">Commencer
-            à gagner du temps →</a>
+        <div style="margin-top:24px">
+          <a href="#inscription" class="btn-hero-primary"
+            style="display:inline-flex;font-size:14px;padding:13px 28px">Commencer à gagner du temps →</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- SOCIAL PROOF / TÉMOIGNAGES -->
-  <section class="social-proof" id="temoignages">
-    <div class="sp-inner">
+  <!-- TÉMOIGNAGES -->
+  <div class="testi-wrap" id="temoignages">
+    <div class="testi-inner">
       <div class="reveal" style="text-align:center">
-        <div class="section-eyebrow">Témoignages</div>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-dot"></div>Témoignages
+        </div>
         <h2 class="section-title">Ce que disent nos premiers clients</h2>
         <p class="section-sub" style="margin:0 auto">Nos clients pilotes ont testé Zerionyx avant tout le monde.</p>
       </div>
       <div class="testi-grid">
-        <div class="testi-card featured reveal">
-          <div class="testi-quote-icon">"</div>
-          <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span
-              class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-text">Avant je passais <strong>30 minutes</strong> à rédiger mes rapports à la main.
-            Maintenant c'est fait automatiquement pendant que je range mes outils. Je récupère facilement <strong>2
-              heures par jour</strong>.</p>
+        <div class="testi-card feat reveal">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars"><span class="st">★</span><span class="st">★</span><span class="st">★</span><span
+              class="st">★</span><span class="st">★</span></div>
+          <p class="testi-text">Avant je passais <strong>30 minutes</strong> à rédiger mes rapports. Maintenant l'IA
+            génère tout pendant que je range mes outils. Je récupère <strong>2 heures par jour</strong>.</p>
           <div class="testi-author">
-            <div class="testi-av" style="background:#DBEAFE;color:#1E40AF">ML</div>
+            <div class="t-av" style="background:#DBEAFE;color:#1E40AF">ML</div>
             <div>
-              <div class="testi-name">Marc L.</div>
-              <div class="testi-role">Chauffagiste indépendant, Lyon</div>
+              <div class="t-name">Marc L.</div>
+              <div class="t-role">Chauffagiste indépendant, Lyon</div>
             </div>
           </div>
         </div>
         <div class="testi-card reveal">
-          <div class="testi-quote-icon">"</div>
-          <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span
-              class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-text">J'ai 4 techniciens et je gérais tout par WhatsApp. Depuis Zerionyx, chacun voit son
-            planning, les rapports partent seuls. Je gagne <strong>2h par jour</strong>. Indispensable.</p>
+          <div class="testi-quote">"</div>
+          <div class="testi-stars"><span class="st">★</span><span class="st">★</span><span class="st">★</span><span
+              class="st">★</span><span class="st">★</span></div>
+          <p class="testi-text">J'ai 4 techniciens. Depuis Zerionyx, chacun voit son planning sur son téléphone, les
+            rapports partent seuls. Je gagne <strong>2h par jour</strong>. Indispensable.</p>
           <div class="testi-author">
-            <div class="testi-av" style="background:#D1FAE5;color:#065F46">SR</div>
+            <div class="t-av" style="background:#D1FAE5;color:#065F46">SR</div>
             <div>
-              <div class="testi-name">Sophie R.</div>
-              <div class="testi-role">Gérante, entreprise maintenance, Bordeaux</div>
+              <div class="t-name">Sophie R.</div>
+              <div class="t-role">Gérante, entreprise maintenance, Bordeaux</div>
             </div>
           </div>
         </div>
         <div class="testi-card reveal">
-          <div class="testi-quote-icon">"</div>
-          <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span
-              class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-text">Un client a contesté une intervention. J'avais la fiche signée, horodatée, les photos.
-            Le litige réglé en <strong>5 minutes</strong>. Ça vaut l'abonnement à lui seul.</p>
+          <div class="testi-quote">"</div>
+          <div class="testi-stars"><span class="st">★</span><span class="st">★</span><span class="st">★</span><span
+              class="st">★</span><span class="st">★</span></div>
+          <p class="testi-text">Un client a contesté. J'avais la fiche signée, horodatée, les photos. Litige réglé en
+            <strong>5 minutes</strong>. Ça vaut l'abonnement à lui seul.
+          </p>
           <div class="testi-author">
-            <div class="testi-av" style="background:#FEF3C7;color:#92400E">PD</div>
+            <div class="t-av" style="background:#FEF3C7;color:#92400E">PD</div>
             <div>
-              <div class="testi-name">Philippe D.</div>
-              <div class="testi-role">Chauffagiste, 12 ans d'expérience, Paris</div>
+              <div class="t-name">Philippe D.</div>
+              <div class="t-role">Chauffagiste, 12 ans d'expérience, Paris</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="kpi-band reveal">
+      <div class="kpi-row reveal">
         <div class="kpi-card">
-          <div class="kpi-num">3h<span>+</span></div>
+          <div class="kpi-num">3h+</div>
           <div class="kpi-lbl">Gagnées par semaine</div>
         </div>
         <div class="kpi-card">
-          <div class="kpi-num">5<span>/5</span></div>
+          <div class="kpi-num">5/5</div>
           <div class="kpi-lbl">Note client pilote</div>
         </div>
         <div class="kpi-card">
-          <div class="kpi-num">2<span>min</span></div>
+          <div class="kpi-num">2min</div>
           <div class="kpi-lbl">Par fiche complète</div>
         </div>
         <div class="kpi-card">
-          <div class="kpi-num">0<span>€</span></div>
+          <div class="kpi-num">0€</div>
           <div class="kpi-lbl">Litige non documenté</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- OFFRE IRRÉSISTIBLE -->
-  <section class="offre" id="offre">
+  <!-- OFFRE -->
+  <div class="offre-wrap" id="offre">
     <div class="offre-inner">
       <div class="offre-badge reveal">🎁 Offre de lancement — Limitée</div>
       <h2 class="offre-title reveal">Rejoignez les 50 premiers.<br>Obtenez 2 mois offerts.</h2>
-      <p class="offre-sub reveal">Cette offre ne sera plus disponible après les 50 premières inscriptions. Agissez
-        maintenant.</p>
-      <div class="offre-items reveal">
+      <p class="offre-sub reveal">Cette offre disparaît après les 50 premières inscriptions. Agissez maintenant.</p>
+      <div class="offre-grid reveal">
         <div class="offre-item">
-          <div class="offre-item-ico">🆓</div>
+          <div class="offre-item-ic">🆓</div>
           <div>
             <h4>2 mois 100% offerts</h4>
-            <p>Testez sans risque. Aucun paiement pendant 2 mois.</p>
+            <p>Testez sans risque. Aucun paiement.</p>
           </div>
         </div>
         <div class="offre-item">
-          <div class="offre-item-ico">⚡</div>
+          <div class="offre-item-ic">⚡</div>
           <div>
             <h4>Accès prioritaire</h4>
-            <p>Avant tout le monde. Testez les nouvelles fonctionnalités en premier.</p>
+            <p>Avant tout le monde. Nouvelles fonctions en premier.</p>
           </div>
         </div>
         <div class="offre-item">
-          <div class="offre-item-ico">🎯</div>
+          <div class="offre-item-ic">🎯</div>
           <div>
             <h4>Onboarding personnalisé</h4>
-            <p>30 min avec Jordan, notre expert métier, pour une prise en main parfaite.</p>
+            <p>30 min avec Jordan, expert terrain.</p>
           </div>
         </div>
         <div class="offre-item">
-          <div class="offre-item-ico">📞</div>
+          <div class="offre-item-ic">📞</div>
           <div>
-            <h4>Support direct fondateurs</h4>
-            <p>Ligne directe avec l'équipe. Votre avis façonne le produit.</p>
+            <h4>Ligne directe fondateurs</h4>
+            <p>Votre avis façonne le produit.</p>
           </div>
         </div>
       </div>
       <div class="offre-urgency reveal">
-        <div class="urgency-pulse"></div>
-        <span>Il ne reste que</span>
-        <span class="counter" id="spots-counter">47</span>
-        <span>places sur 50 — offre valable jusqu'à épuisement</span>
+        <div class="u-pulse"></div>
+        Il ne reste que <span class="counter-num" id="cnt">47</span> places · Offre valable jusqu'à épuisement
       </div>
-      <div class="offre-cta-block reveal">
-        <button class="btn-white" onclick="document.getElementById('inscription').scrollIntoView({behavior:'smooth'})">
-          🚀 Je réserve ma place maintenant
-        </button>
-        <button class="btn-white-rdv" onclick="document.getElementById('rdv').scrollIntoView({behavior:'smooth'})">
-          📅 Préférer une démo — Réserver un créneau
-        </button>
+      <div class="offre-btns reveal">
+        <button class="btn-offre-main"
+          onclick="document.getElementById('inscription').scrollIntoView({behavior:'smooth'})">🚀 Réserver ma place
+          maintenant</button>
+        <button class="btn-offre-rdv" onclick="document.getElementById('rdv').scrollIntoView({behavior:'smooth'})">📅
+          Préférer une démo — Réserver un créneau</button>
       </div>
       <div class="offre-note reveal">Sans engagement · Annulation à tout moment · Réponse sous 24h</div>
     </div>
-  </section>
+  </div>
 
   <!-- PRICING -->
-  <section class="pricing" id="tarifs">
+  <div style="position:relative;z-index:1;background:var(--bg)" id="tarifs">
     <div class="pricing-inner">
       <div class="reveal" style="text-align:center">
-        <div class="section-eyebrow">Tarifs</div>
-        <h2 class="section-title">Simple. Transparent. Sans surprise.</h2>
-        <p class="section-sub" style="margin:0 auto 0">Pas de frais cachés. Résiliable à tout moment. ROI dès le premier
-          mois.</p>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-dot"></div>Tarifs
+        </div>
+        <h2 class="section-title">Simple. Transparent.<br>ROI dès le premier mois.</h2>
       </div>
-      <div class="pricing-grid">
+      <div class="price-grid">
         <div class="price-card reveal">
           <div class="price-name">Starter</div>
           <div class="price-num"><sup>€</sup>29<span>/mois</span></div>
@@ -2980,72 +3098,72 @@
           <div class="price-div"></div>
           <ul class="price-feats">
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Clients illimités
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Fiches numériques + Photos
+                </svg></div>Fiches + photos
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Signature + PDF automatique
+                </svg></div>Signature + PDF IA
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Historique complet
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>App iOS & Android
             </li>
           </ul>
           <a href="#inscription" class="price-btn">Commencer — 2 mois offerts →</a>
         </div>
-        <div class="price-card featured reveal">
-          <div class="price-popular">⭐ Le plus populaire</div>
+        <div class="price-card feat reveal">
+          <div class="price-pop">⭐ Le plus populaire</div>
           <div class="price-name">Pro</div>
           <div class="price-num"><sup>€</sup>79<span>/mois</span></div>
           <div class="price-for">Jusqu'à 5 techniciens</div>
           <div class="price-div"></div>
           <ul class="price-feats">
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Tout le Starter inclus
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Planning des interventions
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Gestion équipements clients
+                </svg></div>Gestion équipements
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Statistiques & tableaux de bord
+                </svg></div>IA — alertes & optimisations
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Support prioritaire
             </li>
@@ -3059,146 +3177,142 @@
           <div class="price-div"></div>
           <ul class="price-feats">
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Tout le Pro inclus
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Techniciens illimités
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Contrats d'entretien
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg></div>Multi-équipes & API
             </li>
             <li>
-              <div class="pf-check"><svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                  <path d="M1 3.5l2.2 2.6L8 1" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round"
+              <div class="pf-ck"><svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                  <path d="M1 4l2.2 3L8 1" stroke="#00D084" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>Onboarding dédié + SLA
+                </svg></div>Onboarding dédié
             </li>
           </ul>
           <a href="#inscription" class="price-btn">Commencer — 2 mois offerts →</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- FAQ -->
-  <section class="faq" id="faq">
+  <div style="position:relative;z-index:1;background:rgba(255,255,255,0.5);border-top:1px solid var(--border)" id="faq">
     <div class="faq-inner">
       <div class="reveal" style="text-align:center">
-        <div class="section-eyebrow">FAQ</div>
-        <h2 class="section-title">Vos questions, nos réponses.</h2>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-dot"></div>FAQ
+        </div>
+        <h2 class="section-title">Vos questions,<br>nos réponses.</h2>
       </div>
       <div class="faq-list reveal">
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            C'est vraiment gratuit pendant la bêta ?
-            <div class="faq-arrow"><svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          <div class="faq-q" onclick="toggleFaq(this)">C'est vraiment gratuit pendant la bêta ?<div class="faq-arr"><svg
+                width="11" height="7" viewBox="0 0 11 7" fill="none">
+                <path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
               </svg></div>
           </div>
-          <div class="faq-a">Oui, 100%. Pendant la période bêta vous accédez à toutes les fonctionnalités gratuitement.
-            En plus, les 50 premiers inscrits bénéficient de 2 mois offerts même après le lancement officiel. Aucune
-            carte bancaire requise pour s'inscrire.</div>
+          <div class="faq-a">Oui, 100%. Toutes les fonctionnalités sont accessibles gratuitement pendant la bêta. Les 50
+            premiers inscrits bénéficient en plus de 2 mois offerts après le lancement. Aucune carte bancaire requise
+            pour s'inscrire.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Est-ce que ça fonctionne sur mon téléphone ?
-            <div class="faq-arrow"><svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-              </svg></div>
+          <div class="faq-q" onclick="toggleFaq(this)">Est-ce que ça fonctionne sur mon téléphone ?<div class="faq-arr">
+              <svg width="11" height="7" viewBox="0 0 11 7" fill="none">
+                <path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </div>
           </div>
           <div class="faq-a">Zerionyx fonctionne sur iOS (iPhone, iPad) et Android. L'app est optimisée pour une
             utilisation terrain — elle fonctionne même sans réseau et synchronise automatiquement dès que vous retrouvez
             une connexion. Parfait pour les caves, zones rurales ou bâtiments mal couverts.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Combien de temps pour prendre en main l'application ?
-            <div class="faq-arrow"><svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          <div class="faq-q" onclick="toggleFaq(this)">Je ne suis pas à l'aise avec la technologie. C'est compliqué ?
+            <div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none">
+                <path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
               </svg></div>
           </div>
-          <div class="faq-a">10 minutes maximum. L'app a été conçue pour des artisans, pas des informaticiens.
-            L'interface est intuitive, les formulaires sont clairs. En plus, Jordan — notre expert métier chauffagiste —
-            vous accompagne en 30 minutes lors de l'onboarding pour configurer vos templates.</div>
+          <div class="faq-a">L'app a été conçue spécifiquement pour les artisans, pas pour les informaticiens.
+            L'interface est aussi simple qu'un formulaire papier. En plus, Jordan — notre expert chauffagiste — vous
+            accompagne en 30 minutes lors de l'onboarding. 10 minutes suffisent pour démarrer.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            La signature électronique est-elle légalement valide ?
-            <div class="faq-arrow"><svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          <div class="faq-q" onclick="toggleFaq(this)">La signature électronique est-elle légalement valide ?<div
+              class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none">
+                <path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
               </svg></div>
           </div>
           <div class="faq-a">Oui. Zerionyx utilise DocuSeal, conforme au règlement eIDAS européen. Chaque signature est
-            horodatée, liée à l'identité du signataire et archivée de façon infalsifiable. En cas de litige, cette
-            preuve est recevable devant les tribunaux français et européens.</div>
+            horodatée et archivée de façon infalsifiable. En cas de litige, cette preuve est recevable devant les
+            tribunaux français et européens.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Est-ce que mes données sont sécurisées ?
-            <div class="faq-arrow"><svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          <div class="faq-q" onclick="toggleFaq(this)">29€/mois c'est rentabilisé comment ?<div class="faq-arr"><svg
+                width="11" height="7" viewBox="0 0 11 7" fill="none">
+                <path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
               </svg></div>
           </div>
-          <div class="faq-a">Vos données sont hébergées en Europe (conformité RGPD), chiffrées en transit et au repos.
-            Vous restez propriétaire de toutes vos données à tout moment. Vous pouvez les exporter ou les supprimer à
-            tout moment.</div>
+          <div class="faq-a">29€/mois = 1€/jour. Un technicien à 40€/h qui gagne 3h/semaine récupère 480€/mois de
+            valeur. Le ROI est immédiat. Sans compter les litiges évités (500€+ chacun) et l'image professionnelle qui
+            améliore la fidélisation client.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            29€/mois c'est rentabilisé comment ?
-            <div class="faq-arrow"><svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          <div class="faq-q" onclick="toggleFaq(this)">Mes données sont-elles en sécurité ?<div class="faq-arr"><svg
+                width="11" height="7" viewBox="0 0 11 7" fill="none">
+                <path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
               </svg></div>
           </div>
-          <div class="faq-a">29€/mois = 1€/jour. Un technicien qui gagne 3h par semaine à 40€/h récupère 120€/semaine de
-            valeur. Le ROI est immédiat. Sans compter les litiges évités (une contestation coûte souvent 500€+) et
-            l'image professionnelle qui améliore la fidélisation client.</div>
+          <div class="faq-a">Vos données sont hébergées en Europe (RGPD), chiffrées en transit et au repos. Vous êtes
+            propriétaire de toutes vos données. Export et suppression possibles à tout moment.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Puis-je annuler à tout moment ?
-            <div class="faq-arrow"><svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          <div class="faq-q" onclick="toggleFaq(this)">Puis-je annuler à tout moment ?<div class="faq-arr"><svg
+                width="11" height="7" viewBox="0 0 11 7" fill="none">
+                <path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
               </svg></div>
           </div>
-          <div class="faq-a">Oui, sans condition. Pas d'engagement minimum, pas de frais de résiliation. Vous annulez en
-            deux clics depuis votre espace. Vos données restent accessibles 30 jours après l'annulation pour vous
-            permettre de les exporter.</div>
+          <div class="faq-a">Oui, sans condition ni frais. Pas d'engagement minimum. Vous annulez en deux clics depuis
+            votre espace. Vos données restent accessibles 30 jours après pour exportation.</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- CTA FINAL -->
-  <section class="final-cta" id="inscription">
-    <div class="final-cta-inner">
+  <div
+    style="position:relative;z-index:1;background:linear-gradient(180deg,var(--bg) 0%,rgba(220,235,255,0.5) 100%);border-top:1px solid var(--border)"
+    id="inscription">
+    <div class="cta-final-inner">
       <div class="reveal">
-        <h2 class="final-title">Prenez la décision<br>qui change votre quotidien.</h2>
-        <p class="final-sub">Rejoignez la liste d'attente maintenant. Ou réservez une démo de 20 minutes — on vous
-          montre tout, sans pression.</p>
+        <h2 class="cta-final-title">Prenez la décision<br>qui change votre quotidien.</h2>
+        <p class="cta-final-sub">Rejoignez la liste d'attente — ou réservez une démo de 20 minutes pour voir le produit
+          en action.</p>
       </div>
-      <div class="final-form reveal" id="main-signup-form">
-        <div class="form-grid">
-          <input type="text" class="form-input" id="f-prenom" placeholder="Votre prénom *" required>
-          <input type="email" class="form-input" id="f-email" placeholder="Email professionnel *" required>
+      <div class="cta-form reveal" id="the-form">
+        <div class="form-row">
+          <input type="text" class="f-input" id="fp" placeholder="Votre prénom *" required>
+          <input type="email" class="f-input" id="fe" placeholder="Email professionnel *" required>
         </div>
-        <div class="form-grid">
-          <select class="form-select" id="f-metier">
+        <div class="form-row">
+          <select class="f-select" id="fm">
             <option value="" disabled selected>Votre métier *</option>
             <option>Chauffagiste</option>
             <option>Électricien</option>
@@ -3206,73 +3320,66 @@
             <option>Maçon</option>
             <option>Climatisation / PAC</option>
             <option>Maintenance industrielle</option>
-            <option>Autre métier terrain</option>
+            <option>Autre</option>
           </select>
-          <select class="form-select" id="f-equipe">
-            <option value="" disabled selected>Taille de votre équipe</option>
+          <select class="f-select" id="ft">
+            <option value="" disabled selected>Taille équipe</option>
             <option>Je travaille seul</option>
             <option>2 à 5 techniciens</option>
             <option>6 à 15 techniciens</option>
             <option>Plus de 15 techniciens</option>
           </select>
         </div>
-        <button type="button" class="form-submit" onclick="submitLead()">
-          🚀 Rejoindre la liste — 2 mois offerts →
-        </button>
-        <div class="form-rdv-or">ou</div>
-        <button type="button" class="form-rdv-btn" id="rdv"
-          onclick="window.open('https://calendly.com/zerionyx','_blank')">
-          📅 Réserver une démo gratuite de 20 min →
-        </button>
-        <div class="form-note">🔒 Vos données sont confidentielles · Sans engagement · Réponse sous 24h</div>
+        <button type="button" class="f-submit" onclick="doSubmit()">🚀 Rejoindre la liste — 2 mois offerts →</button>
+        <div class="f-or">ou</div>
+        <button type="button" class="f-rdv" id="rdv" onclick="window.open('https://calendly.com/zerionyx','_blank')">📅
+          Réserver une démo gratuite de 20 min →</button>
+        <div class="f-note">🔒 Données confidentielles · Sans engagement · Réponse sous 24h</div>
       </div>
-      <div class="success-block" id="success-block">
-        <div class="success-ico">
-          <svg width="28" height="22" viewBox="0 0 28 22" fill="none">
-            <path d="M2 11l7 8L26 2" stroke="#1D9E75" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </div>
+      <div class="success-wrap" id="suc">
+        <div class="s-ico"><svg width="28" height="22" viewBox="0 0 28 22" fill="none">
+            <path d="M2 11l7 8L26 2" stroke="#00D084" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg></div>
         <h3>Vous êtes sur la liste !</h3>
-        <p>On vous contacte en avant-première dès l'ouverture. En attendant, regardez votre boîte mail — un email de
-          confirmation arrive d'ici quelques minutes.</p>
+        <p>On vous contacte en avant-première dès l'ouverture de Zerionyx. Vérifiez votre boîte mail 👀</p>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <a href="#" class="footer-logo">
-      <div class="footer-ico"><svg viewBox="0 0 16 16" fill="none">
+    <a href="#" class="f-logo">
+      <div class="f-logo-ic"><svg viewBox="0 0 16 16" fill="none">
           <path d="M2 4h12M2 8h7M2 12h9" stroke="white" stroke-width="1.8" stroke-linecap="round" />
           <circle cx="13.5" cy="12" r="2.5" fill="white" fill-opacity=".2" stroke="white" stroke-width="1.2" />
           <path d="M12.5 12l.8.9 1.6-1.8" stroke="white" stroke-width="1.2" stroke-linecap="round"
             stroke-linejoin="round" />
         </svg></div>
-      <span class="footer-name">Zerio<span>nyx</span></span>
+      <span class="f-logo-name">Zerio<span>nyx</span></span>
     </a>
-    <span class="footer-copy">© 2026 Zerionyx — Tous droits réservés · <a href="mailto:contact@zerionyx.fr"
+    <span class="f-copy">© 2026 Zerionyx — <a href="mailto:contact@zerionyx.fr"
         style="color:inherit">contact@zerionyx.fr</a></span>
-    <div class="footer-links">
+    <div class="f-links">
       <a href="#">Mentions légales</a>
       <a href="#">Confidentialité</a>
       <a href="#">RGPD</a>
     </div>
   </footer>
 
-  <!-- STICKY CTA MOBILE -->
+  <!-- STICKY MOBILE -->
   <div class="sticky-cta">
-    <div class="sticky-cta-row">
-      <a href="#inscription" class="btn-cta" style="flex:1;justify-content:center;font-size:13px;padding:11px">🚀 Essai
+    <div class="sticky-row">
+      <a href="#inscription" class="btn-nav" style="flex:1;justify-content:center;font-size:13px;padding:11px">🚀 Essai
         gratuit</a>
-      <a href="#rdv" class="btn-rdv" style="flex:1;text-align:center;font-size:13px;padding:11px">📅 Prendre RDV</a>
+      <a href="#rdv" class="btn-ghost" style="flex:1;text-align:center;font-size:13px;padding:11px">📅 Démo</a>
     </div>
   </div>
 
   <script>
-    function switchTitle(v, btn) {
-      document.querySelectorAll('.title-variant').forEach(t => t.classList.remove('active'));
+    function setTitle(v, btn) {
+      document.querySelectorAll('.title-v').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.ab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('title-' + v).classList.add('active');
+      document.getElementById('tv-' + v).classList.add('active');
       btn.classList.add('active');
     }
     function switchTab(id, btn) {
@@ -3287,21 +3394,19 @@
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     }
-    function submitLead() {
-      const p = document.getElementById('f-prenom').value;
-      const e = document.getElementById('f-email').value;
-      const m = document.getElementById('f-metier').value;
+    function doSubmit() {
+      const p = document.getElementById('fp').value;
+      const e = document.getElementById('fe').value;
+      const m = document.getElementById('fm').value;
       if (!p || !e || !m) { alert('Merci de remplir les champs obligatoires (*)'); return; }
-      document.getElementById('main-signup-form').style.display = 'none';
-      const s = document.getElementById('success-block');
+      document.getElementById('the-form').style.display = 'none';
+      const s = document.getElementById('suc');
       s.classList.add('show');
-      // Décrémenter le compteur
-      const sc = document.getElementById('spots-counter');
-      const ub = document.getElementById('countdown-spots');
-      if (sc) sc.textContent = Math.max(0, parseInt(sc.textContent) - 1);
-      if (ub) ub.textContent = Math.max(0, parseInt(ub.textContent) - 1);
+      let n = parseInt(document.getElementById('cnt').textContent);
+      let b = parseInt(document.getElementById('bar-spots').textContent);
+      document.getElementById('cnt').textContent = Math.max(0, n - 1);
+      document.getElementById('bar-spots').textContent = Math.max(0, b - 1);
     }
-    // Scroll reveal
     const obs = new IntersectionObserver(entries => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
@@ -3311,31 +3416,24 @@
       });
     }, { threshold: 0.07 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    // Nav active
     window.addEventListener('scroll', () => {
-      const ids = ['probleme', 'solution', 'features', 'temoignages', 'tarifs', 'faq'];
+      const ids = ['fonctionnalites', 'temoignages', 'tarifs', 'faq'];
       let cur = '';
-      ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - 80) cur = id;
-      });
+      ids.forEach(id => { const el = document.getElementById(id); if (el && window.scrollY >= el.offsetTop - 90) cur = id; });
       document.querySelectorAll('.nav-links a').forEach(a => {
-        const href = a.getAttribute('href').replace('#', '');
-        a.style.color = href === cur ? 'var(--blue)' : '';
-        a.style.fontWeight = href === cur ? '700' : '';
+        const h = a.getAttribute('href').replace('#', '');
+        a.style.color = h === cur ? 'var(--blue)' : '';
+        a.style.fontWeight = h === cur ? '700' : '';
       });
     });
-    // Urgency counter simulation (slow countdown)
     let spots = 47;
     setInterval(() => {
-      if (spots > 43 && Math.random() < 0.08) {
+      if (spots > 43 && Math.random() < 0.07) {
         spots--;
-        const sc = document.getElementById('spots-counter');
-        const ub = document.getElementById('countdown-spots');
-        if (sc) sc.textContent = spots;
-        if (ub) ub.textContent = spots;
+        document.getElementById('cnt').textContent = spots;
+        document.getElementById('bar-spots').textContent = spots;
       }
-    }, 8000);
+    }, 9000);
   </script>
 </body>
 

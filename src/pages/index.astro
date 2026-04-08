@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import UrgencyBar from '../components/UrgencyBar.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import SocialProofBar from '../components/SocialProofBar.astro';
+import Problem from '../components/Problem.astro';
+import Solution from '../components/Solution.astro';
+import Features from '../components/Features.astro';
+import Benefits from '../components/Benefits.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Offer from '../components/Offer.astro';
+import Pricing from '../components/Pricing.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Zerionyx — Stoppez de perdre 3h par semaine avec vos fiches papier"
+  description="L'app mobile qui remplace vos fiches papier en 2 minutes. Signature client, PDF automatique, planning d'équipe. Essai gratuit."
+>
+  <UrgencyBar />
+  <Nav />
+  <Hero />
+  <SocialProofBar />
+  <Problem />
+  <Solution />
+  <Features />
+  <Benefits />
+  <Testimonials />
+  <Offer />
+  <Pricing />
+  <Faq />
+  <FinalCta />
+  <Footer />
+</Layout>
+
+<script>
+  // Reveal on scroll
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 70);
+          obs.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.07 }
+  );
+  document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
+
+  // Active nav link on scroll
+  window.addEventListener('scroll', () => {
+    const ids = ['fonctionnalites', 'temoignages', 'tarifs', 'faq'];
+    let cur = '';
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 90) cur = id;
+    });
+    document.querySelectorAll('.nav-links a').forEach((a) => {
+      const h = a.getAttribute('href')?.replace('#', '');
+      (a as HTMLElement).style.color = h === cur ? 'var(--blue)' : '';
+      (a as HTMLElement).style.fontWeight = h === cur ? '700' : '';
+    });
+  });
+
+  // Fake countdown spots
+  let spots = 47;
+  setInterval(() => {
+    if (spots > 43 && Math.random() < 0.07) {
+      spots--;
+      const cnt = document.getElementById('cnt');
+      const barSpots = document.getElementById('bar-spots');
+      if (cnt) cnt.textContent = String(spots);
+      if (barSpots) barSpots.textContent = String(spots);
+    }
+  }, 9000);
+</script>

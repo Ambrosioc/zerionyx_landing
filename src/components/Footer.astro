@@ -1,0 +1,98 @@
+<footer>
+  <a href="#" class="footer-logo">
+    <div class="footer-ico">
+      <svg viewBox="0 0 16 16" fill="none">
+        <path d="M2 4h12M2 8h7M2 12h9" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+        <circle cx="13.5" cy="12" r="2.5" fill="white" fill-opacity=".2" stroke="white" stroke-width="1.2" />
+        <path d="M12.5 12l.8.9 1.6-1.8" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+    <span class="footer-name">Zerio<span>nyx</span></span>
+  </a>
+  <span class="footer-copy">© 2026 Zerionyx — <a href="mailto:contact@zerionyx.fr" style="color:inherit">contact@zerionyx.fr</a></span>
+  <div class="footer-links">
+    <a href="#">Mentions légales</a>
+    <a href="#">Confidentialité</a>
+    <a href="#">RGPD</a>
+  </div>
+</footer>
+
+<!-- Sticky CTA Mobile -->
+<div class="sticky-cta">
+  <div class="sticky-cta-row">
+    <a href="#inscription" class="btn-cta" style="flex:1;justify-content:center;font-size:13px;padding:11px">🚀 Essai gratuit</a>
+    <a href="#rdv" class="btn-rdv" style="flex:1;text-align:center;font-size:13px;padding:11px">📅 Démo</a>
+  </div>
+</div>
+
+<style>
+  footer {
+    background: #fff;
+    border-top: 1px solid var(--border);
+    padding: 36px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .footer-ico {
+    width: 28px;
+    height: 28px;
+    background: var(--blue);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-ico svg { width: 16px; height: 16px; }
+
+  .footer-name { font-size: 15px; font-weight: 800; color: var(--text); }
+  .footer-name span { color: var(--blue); }
+
+  .footer-links { display: flex; gap: 22px; }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text3);
+    text-decoration: none;
+    transition: color .2s;
+  }
+
+  .footer-links a:hover { color: var(--blue); }
+
+  .footer-copy { font-size: 13px; color: var(--text3); }
+
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 400;
+    background: #fff;
+    border-top: 1px solid var(--border);
+    padding: 12px 16px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .sticky-cta-row { display: flex; gap: 10px; }
+
+  @media (max-width: 900px) {
+    footer {
+      padding: 24px 16px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .sticky-cta { display: block; }
+  }
+</style>

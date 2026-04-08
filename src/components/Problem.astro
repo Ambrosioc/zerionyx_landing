@@ -1,0 +1,124 @@
+<section class="problem" id="probleme">
+  <div class="problem-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Le problème</div>
+      <h2 class="section-title">Vous perdez du temps et de l'argent<br>chaque jour sans le savoir.</h2>
+      <p class="section-sub">On a parlé à des dizaines d'artisans. Voici ce qu'ils vivent au quotidien :</p>
+    </div>
+    <div class="problem-grid">
+      <div class="prob-card reveal">
+        <div class="prob-icon-wrap">🔍</div>
+        <div class="prob-title">La fiche introuvable</div>
+        <div class="prob-body">20 minutes à chercher un document. Votre client attend. Votre journée tombe à l'eau.</div>
+        <div class="prob-quote">"J'ai cherché partout, impossible de retrouver la fiche de l'an dernier..."</div>
+      </div>
+      <div class="prob-card reveal">
+        <div class="prob-icon-wrap">📋</div>
+        <div class="prob-title">Aucune trace professionnelle</div>
+        <div class="prob-body">Votre client demande un rapport d'intervention. Vous n'avez rien de propre à lui envoyer.</div>
+        <div class="prob-quote">"Mon client veut un compte-rendu, j'ai juste une fiche manuscrite illisible..."</div>
+      </div>
+      <div class="prob-card reveal">
+        <div class="prob-icon-wrap">⚖️</div>
+        <div class="prob-title">Le litige sans preuve</div>
+        <div class="prob-body">Un client conteste. Pas de fiche signée, pas de preuve. Litige impossible à gérer.</div>
+        <div class="prob-quote">"Il dit qu'on est pas venu, mais j'ai aucune preuve de l'intervention..."</div>
+      </div>
+      <div class="prob-card reveal">
+        <div class="prob-icon-wrap">📱</div>
+        <div class="prob-title">Le planning sur WhatsApp</div>
+        <div class="prob-body">Coordination chaotique. Erreurs, oublis, doublons. Personne ne sait qui fait quoi.</div>
+        <div class="prob-quote">"J'ai 4 techniciens, je gère tout par WhatsApp, c'est le bordel complet..."</div>
+      </div>
+      <div class="prob-card reveal">
+        <div class="prob-icon-wrap">📊</div>
+        <div class="prob-title">Zéro visibilité sur l'activité</div>
+        <div class="prob-body">Vous ne savez pas combien d'interventions vous avez faites ce mois. Ni quels clients sont en contrat.</div>
+        <div class="prob-quote">"Je saurais même pas vous dire combien j'ai fait d'interventions en mars..."</div>
+      </div>
+      <div class="prob-card reveal">
+        <div class="prob-icon-wrap">🧾</div>
+        <div class="prob-title">Les justificatifs éparpillés</div>
+        <div class="prob-body">Votre comptable attend. Vous passez une demi-journée à chercher des papiers partout.</div>
+        <div class="prob-quote">"Mon comptable m'a encore demandé les justificatifs. 4 heures de recherche..."</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px" class="reveal">
+      <a href="#inscription" class="btn-cta" style="font-size:15px;padding:13px 32px;display:inline-flex">Découvrir la solution →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem {
+    background: var(--bg);
+    padding: 88px 48px;
+  }
+
+  .problem-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .prob-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px;
+    transition: all .3s;
+    cursor: default;
+  }
+
+  .prob-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(24, 95, 165, 0.3);
+  }
+
+  .prob-icon-wrap {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: #FEF2F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    font-size: 22px;
+  }
+
+  .prob-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .prob-body {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+
+  .prob-quote {
+    font-size: 12px;
+    color: var(--text2);
+    font-style: italic;
+    padding: 10px 12px;
+    background: #FEF2F2;
+    border-left: 3px solid #FCA5A5;
+    border-radius: 0 8px 8px 0;
+  }
+
+  @media (max-width: 900px) {
+    .problem { padding: 64px 16px; }
+    .problem-grid { grid-template-columns: 1fr; }
+  }
+</style>

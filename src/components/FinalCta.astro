@@ -1,0 +1,265 @@
+---
+const API_URL = 'https://app.zerionyx.fr/api/waitlist';
+---
+
+<section class="final-cta" id="inscription">
+  <div class="final-cta-inner">
+    <div class="reveal">
+      <h2 class="final-title">Prenez la décision<br>qui change votre quotidien.</h2>
+      <p class="final-sub">Rejoignez la liste d'attente — ou réservez une démo de 20 minutes pour voir le produit en action.</p>
+    </div>
+    <div class="final-form reveal" id="the-form">
+      <div class="form-grid">
+        <input type="text" class="form-input" id="fp" placeholder="Votre prénom *" required>
+        <input type="email" class="form-input" id="fe" placeholder="Email professionnel *" required>
+      </div>
+      <div class="form-grid">
+        <select class="form-select" id="fm">
+          <option value="" disabled selected>Votre métier *</option>
+          <option>Chauffagiste</option>
+          <option>Électricien</option>
+          <option>Plombier</option>
+          <option>Maçon</option>
+          <option>Climatisation / PAC</option>
+          <option>Maintenance industrielle</option>
+          <option>Autre</option>
+        </select>
+        <select class="form-select" id="ft">
+          <option value="" disabled selected>Taille équipe</option>
+          <option>Je travaille seul</option>
+          <option>2 à 5 techniciens</option>
+          <option>6 à 15 techniciens</option>
+          <option>Plus de 15 techniciens</option>
+        </select>
+      </div>
+      <button type="button" class="form-submit" id="submit-btn">🚀 Rejoindre la liste — 2 mois offerts →</button>
+      <div class="form-rdv-or">ou</div>
+      <button type="button" class="form-rdv-btn" id="rdv">📅 Réserver une démo gratuite de 20 min →</button>
+      <div class="form-note">🔒 Données confidentielles · Sans engagement · Réponse sous 24h</div>
+    </div>
+    <div class="success-block" id="success">
+      <div class="success-ico">
+        <svg width="28" height="22" viewBox="0 0 28 22" fill="none"><path d="M2 11l7 8L26 2" stroke="#1D9E75" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </div>
+      <h3>Vous êtes sur la liste !</h3>
+      <p>On vous contacte en avant-première dès l'ouverture de Zerionyx. Vérifiez votre boîte mail.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta {
+    background: linear-gradient(180deg, #fff 0%, #F0F7FF 100%);
+    padding: 88px 48px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .final-cta-inner { max-width: 680px; margin: 0 auto; }
+
+  .final-title {
+    font-size: clamp(30px, 4vw, 50px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+
+  .final-sub {
+    font-size: 17px;
+    color: var(--text2);
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .final-form {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .form-input {
+    background: var(--bg);
+    border: 1.5px solid var(--border2);
+    border-radius: 9px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    width: 100%;
+    transition: border-color .2s;
+  }
+
+  .form-input:focus { border-color: var(--blue); background: #fff; }
+  .form-input::placeholder { color: var(--text3); }
+
+  .form-select {
+    background: var(--bg);
+    border: 1.5px solid var(--border2);
+    border-radius: 9px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text2);
+    outline: none;
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    transition: border-color .2s;
+  }
+
+  .form-select:focus { border-color: var(--blue); }
+
+  .form-submit {
+    width: 100%;
+    background: var(--blue);
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 15px;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .form-submit:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(24, 95, 165, 0.3);
+  }
+
+  .form-rdv-or {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 18px 0;
+    color: var(--text3);
+    font-size: 13px;
+  }
+
+  .form-rdv-or::before,
+  .form-rdv-or::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .form-rdv-btn {
+    width: 100%;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px;
+    border-radius: 9px;
+    border: 1.5px solid rgba(29, 158, 117, 0.3);
+    cursor: pointer;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .form-rdv-btn:hover {
+    background: #C6F0E2;
+    transform: translateY(-2px);
+  }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  .success-block {
+    display: none;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .success-block.show { display: block; }
+
+  .success-ico {
+    width: 60px;
+    height: 60px;
+    background: var(--green-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    border: 2px solid rgba(29, 158, 117, 0.3);
+  }
+
+  .success-block h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--green-dark);
+    margin-bottom: 8px;
+  }
+
+  .success-block p { font-size: 15px; color: var(--text2); }
+
+  @media (max-width: 900px) {
+    .final-cta { padding: 64px 16px; }
+    .form-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script define:vars={{ API_URL }}>
+  document.getElementById('submit-btn')?.addEventListener('click', async () => {
+    const name = document.getElementById('fp').value.trim();
+    const email = document.getElementById('fe').value.trim();
+    const job = document.getElementById('fm').value;
+    const teamSize = document.getElementById('ft').value;
+
+    if (!name || !email || !job) {
+      alert('Merci de remplir les champs obligatoires (*)');
+      return;
+    }
+
+    try {
+      await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, job, teamSize }),
+      });
+    } catch (e) {
+      // Silently continue — show success even if API is not yet deployed
+    }
+
+    document.getElementById('the-form').style.display = 'none';
+    document.getElementById('success').classList.add('show');
+
+    // Update counter
+    const cnt = document.getElementById('cnt');
+    const barSpots = document.getElementById('bar-spots');
+    if (cnt) cnt.textContent = String(Math.max(0, parseInt(cnt.textContent) - 1));
+    if (barSpots) barSpots.textContent = String(Math.max(0, parseInt(barSpots.textContent) - 1));
+  });
+
+  document.getElementById('rdv')?.addEventListener('click', () => {
+    window.open('https://calendly.com/zerionyx', '_blank');
+  });
+</script>

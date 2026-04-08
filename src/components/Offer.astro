@@ -1,0 +1,216 @@
+<section class="offre" id="offre">
+  <div class="offre-inner">
+    <div class="offre-badge reveal">🎁 Offre de lancement — Limitée</div>
+    <h2 class="offre-title reveal">Rejoignez les 50 premiers.<br>Obtenez 2 mois offerts.</h2>
+    <p class="offre-sub reveal">Cette offre disparaît après les 50 premières inscriptions. Agissez maintenant.</p>
+    <div class="offre-items reveal">
+      <div class="offre-item">
+        <div class="offre-item-ico">🆓</div>
+        <div><h4>2 mois 100% offerts</h4><p>Testez sans risque. Aucun paiement.</p></div>
+      </div>
+      <div class="offre-item">
+        <div class="offre-item-ico">⚡</div>
+        <div><h4>Accès prioritaire</h4><p>Avant tout le monde. Nouvelles fonctions en premier.</p></div>
+      </div>
+      <div class="offre-item">
+        <div class="offre-item-ico">🎯</div>
+        <div><h4>Onboarding personnalisé</h4><p>30 min avec un expert terrain.</p></div>
+      </div>
+      <div class="offre-item">
+        <div class="offre-item-ico">📞</div>
+        <div><h4>Ligne directe fondateurs</h4><p>Votre avis façonne le produit.</p></div>
+      </div>
+    </div>
+    <div class="offre-urgency reveal">
+      <div class="urgency-pulse"></div>
+      Il ne reste que <span class="counter" id="cnt">47</span> places · Offre valable jusqu'à épuisement
+    </div>
+    <div class="offre-cta-block reveal">
+      <a href="#inscription" class="btn-white">🚀 Réserver ma place maintenant</a>
+      <a href="#rdv" class="btn-white-rdv">📅 Préférer une démo — Réserver un créneau</a>
+    </div>
+    <div class="offre-note reveal">Sans engagement · Annulation à tout moment · Réponse sous 24h</div>
+  </div>
+</section>
+
+<style>
+  .offre {
+    background: linear-gradient(135deg, #0C447C 0%, #185FA5 50%, #1D9E75 100%);
+    padding: 88px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offre::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+  }
+
+  .offre::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -40px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+  }
+
+  .offre-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .offre-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: 5px 16px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+
+  .offre-title {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+
+  .offre-sub {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  .offre-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 36px;
+    text-align: left;
+  }
+
+  .offre-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .offre-item-ico { font-size: 22px; flex-shrink: 0; }
+  .offre-item h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .offre-item p { font-size: 12px; color: rgba(255, 255, 255, 0.65); line-height: 1.4; }
+
+  .offre-urgency {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .urgency-pulse {
+    width: 10px;
+    height: 10px;
+    background: #FCD34D;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  .counter {
+    font-size: 28px;
+    font-weight: 800;
+    color: #FCD34D;
+    letter-spacing: -1px;
+  }
+
+  .offre-cta-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .btn-white {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--blue);
+    background: #fff;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .btn-white:hover {
+    background: var(--blue-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-white-rdv {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    padding: 13px 32px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .btn-white-rdv:hover { background: rgba(255, 255, 255, 0.22); }
+
+  .offre-note {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 14px;
+  }
+
+  @media (max-width: 900px) {
+    .offre { padding: 64px 16px; }
+    .offre-items { grid-template-columns: 1fr; }
+  }
+</style>

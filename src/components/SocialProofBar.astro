@@ -1,0 +1,85 @@
+<div class="sp-bar reveal">
+  <div class="sp-stat">
+    <div>
+      <div class="sp-num">60k+</div>
+      <div class="sp-lbl">Chauffagistes<br>en France</div>
+    </div>
+  </div>
+  <div class="sp-div"></div>
+  <div class="sp-stat">
+    <div>
+      <div class="sp-num">80%</div>
+      <div class="sp-lbl">Encore sur<br>papier ou Excel</div>
+    </div>
+  </div>
+  <div class="sp-div"></div>
+  <div class="sp-stat">
+    <div>
+      <div class="sp-num">2 min</div>
+      <div class="sp-lbl">Pour une fiche<br>complète signée</div>
+    </div>
+  </div>
+  <div class="sp-div"></div>
+  <div class="sp-stat">
+    <div>
+      <div class="stars-row">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="sp-lbl" style="margin-top:4px">Note client pilote<br>5/5</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sp-bar {
+    background: #fff;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .sp-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sp-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -1px;
+  }
+
+  .sp-lbl {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.3;
+  }
+
+  .sp-div {
+    width: 1px;
+    height: 36px;
+    background: var(--border);
+  }
+
+  .stars-row {
+    display: flex;
+    gap: 2px;
+  }
+
+  .star {
+    color: #F59E0B;
+    font-size: 15px;
+  }
+
+  @media (max-width: 900px) {
+    .sp-bar { padding: 16px; gap: 16px; }
+    .sp-div { display: none; }
+  }
+</style>

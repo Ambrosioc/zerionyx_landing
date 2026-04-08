@@ -1,150 +1,63 @@
-<section class="social-proof" id="temoignages">
-  <div class="sp-inner">
+<div class="testi-wrap" id="temoignages">
+  <div class="testi-inner">
     <div class="reveal" style="text-align:center">
-      <div class="section-eyebrow">Témoignages</div>
+      <div class="section-eyebrow"><div class="section-eyebrow-dot"></div>Témoignages</div>
       <h2 class="section-title">Ce que disent nos premiers clients</h2>
       <p class="section-sub" style="margin:0 auto">Nos clients pilotes ont testé Zerionyx avant tout le monde.</p>
     </div>
     <div class="testi-grid">
-      <div class="testi-card featured reveal">
-        <div class="testi-quote-icon">"</div>
-        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text">Avant je passais <strong>30 minutes</strong> à rédiger mes rapports. Maintenant le PDF est généré pendant que je range mes outils. Je récupère <strong>2 heures par jour</strong>.</p>
-        <div class="testi-author">
-          <div class="testi-av" style="background:#DBEAFE;color:#1E40AF">ML</div>
-          <div><div class="testi-name">Marc L.</div><div class="testi-role">Chauffagiste indépendant, Lyon</div></div>
-        </div>
+      <div class="testi-card feat reveal">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars"><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span></div>
+        <p class="testi-text">Avant je passais <strong>30 minutes</strong> à rédiger mes rapports. Maintenant l'IA génère tout pendant que je range mes outils. Je récupère <strong>2 heures par jour</strong>.</p>
+        <div class="testi-author"><div class="t-av" style="background:#DBEAFE;color:#1E40AF">ML</div><div><div class="t-name">Marc L.</div><div class="t-role">Chauffagiste indépendant, Lyon</div></div></div>
       </div>
       <div class="testi-card reveal">
-        <div class="testi-quote-icon">"</div>
-        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="testi-quote">"</div>
+        <div class="testi-stars"><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span></div>
         <p class="testi-text">J'ai 4 techniciens. Depuis Zerionyx, chacun voit son planning sur son téléphone, les rapports partent seuls. Je gagne <strong>2h par jour</strong>. Indispensable.</p>
-        <div class="testi-author">
-          <div class="testi-av" style="background:#D1FAE5;color:#065F46">SR</div>
-          <div><div class="testi-name">Sophie R.</div><div class="testi-role">Gérante, entreprise maintenance, Bordeaux</div></div>
-        </div>
+        <div class="testi-author"><div class="t-av" style="background:#D1FAE5;color:#065F46">SR</div><div><div class="t-name">Sophie R.</div><div class="t-role">Gérante, entreprise maintenance, Bordeaux</div></div></div>
       </div>
       <div class="testi-card reveal">
-        <div class="testi-quote-icon">"</div>
-        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="testi-quote">"</div>
+        <div class="testi-stars"><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span><span class="st">★</span></div>
         <p class="testi-text">Un client a contesté. J'avais la fiche signée, horodatée, les photos. Litige réglé en <strong>5 minutes</strong>. Ça vaut l'abonnement à lui seul.</p>
-        <div class="testi-author">
-          <div class="testi-av" style="background:#FEF3C7;color:#92400E">PD</div>
-          <div><div class="testi-name">Philippe D.</div><div class="testi-role">Chauffagiste, 12 ans d'expérience, Paris</div></div>
-        </div>
+        <div class="testi-author"><div class="t-av" style="background:#FEF3C7;color:#92400E">PD</div><div><div class="t-name">Philippe D.</div><div class="t-role">Chauffagiste, 12 ans d'expérience, Paris</div></div></div>
       </div>
     </div>
-    <div class="kpi-band reveal">
+    <div class="kpi-row reveal">
       <div class="kpi-card"><div class="kpi-num">3h+</div><div class="kpi-lbl">Gagnées par semaine</div></div>
       <div class="kpi-card"><div class="kpi-num">5/5</div><div class="kpi-lbl">Note client pilote</div></div>
       <div class="kpi-card"><div class="kpi-num">2min</div><div class="kpi-lbl">Par fiche complète</div></div>
       <div class="kpi-card"><div class="kpi-num">0€</div><div class="kpi-lbl">Litige non documenté</div></div>
     </div>
   </div>
-</section>
+</div>
 
 <style>
-  .social-proof {
-    background: var(--bg);
-    padding: 88px 48px;
-    border-top: 1px solid var(--border);
-  }
-
-  .sp-inner { max-width: 1100px; margin: 0 auto; }
-
-  .testi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 52px;
-  }
-
-  .testi-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 26px;
-    transition: all .3s;
-    position: relative;
-  }
-
-  .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .testi-card.featured { border-color: var(--blue); border-width: 1.5px; }
-
-  .testi-quote-icon {
-    font-size: 32px;
-    color: var(--blue-light);
-    margin-bottom: 10px;
-    line-height: 1;
-  }
-
-  .testi-stars { display: flex; gap: 3px; margin-bottom: 14px; }
-  .star { color: #F59E0B; font-size: 15px; }
-
-  .testi-text {
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.7;
-    margin-bottom: 18px;
-  }
-
-  .testi-text strong { color: var(--blue); font-weight: 700; }
-
-  .testi-author {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-  }
-
-  .testi-av {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .testi-name { font-size: 13px; font-weight: 700; color: var(--text); }
-  .testi-role { font-size: 11px; color: var(--text3); }
-
-  .kpi-band {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-top: 40px;
-  }
-
-  .kpi-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px;
-    text-align: center;
-    transition: all .25s;
-  }
-
-  .kpi-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-
-  .kpi-num {
-    font-size: 38px;
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    color: var(--blue);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .kpi-lbl { font-size: 13px; color: var(--text2); }
-
-  @media (max-width: 900px) {
-    .social-proof { padding: 64px 16px; }
-    .testi-grid { grid-template-columns: 1fr; }
-    .kpi-band { grid-template-columns: 1fr 1fr; }
+  .testi-wrap{position:relative;z-index:1;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:96px 0}
+  .testi-inner{max-width:1200px;margin:0 auto;padding:0 48px}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+  .testi-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px;transition:all .3s}
+  .testi-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border2)}
+  .testi-card.feat{border-color:var(--blue);border-width:1.5px}
+  .testi-quote{font-size:30px;color:rgba(26,111,212,0.15);margin-bottom:10px;font-family:Georgia,serif}
+  .testi-stars{display:flex;gap:3px;margin-bottom:12px}
+  .st{color:#F59E0B;font-size:14px}
+  .testi-text{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:18px}
+  .testi-text strong{color:var(--blue);font-weight:700}
+  .testi-author{display:flex;align-items:center;gap:10px;padding-top:14px;border-top:1px solid var(--border)}
+  .t-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+  .t-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--text)}
+  .t-role{font-size:11px;color:var(--text3)}
+  .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+  .kpi-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;transition:all .25s}
+  .kpi-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .kpi-num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;letter-spacing:-1px;line-height:1;margin-bottom:4px;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .kpi-lbl{font-size:12px;color:var(--text2)}
+  @media(max-width:900px){
+    .testi-wrap{padding:64px 0}
+    .testi-inner{padding:0 16px}
+    .testi-grid,.kpi-row{grid-template-columns:1fr}
   }
 </style>

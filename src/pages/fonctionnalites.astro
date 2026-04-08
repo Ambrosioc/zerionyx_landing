@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const checkSvg = `<svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const features = [
+  {
+    icon: '📋',
+    title: 'Fiches d\'intervention numériques',
+    subtitle: 'Remplissez vos fiches en 2 minutes chrono',
+    description: 'Fini les formulaires papier illisibles et les fiches perdues. Zerionyx vous propose des templates intelligents adaptés à votre métier. Checkboxes, mesures, observations — tout se fait depuis votre téléphone, même sans connexion internet.',
+    description2: 'L\'app fonctionne en mode hors ligne. Vous pouvez travailler en cave, en zone rurale ou dans un bâtiment mal couvert. Dès que le réseau revient, tout se synchronise automatiquement.',
+    items: ['Templates par métier : chaudière, PAC, électricité, plomberie...', 'Saisie rapide avec checkboxes et mesures préremplies', 'Notes vocales pour gagner encore plus de temps', 'Mode hors ligne — fonctionne partout', 'Synchronisation automatique dès retour en ligne', 'Templates personnalisables selon vos besoins'],
+  },
+  {
+    icon: '✍️',
+    title: 'Signature client légale',
+    subtitle: 'Protégez-vous avec une preuve incontestable',
+    description: 'Le client signe directement sur l\'écran de votre téléphone. Chaque signature est horodatée automatiquement avec la date et l\'heure précises, puis archivée de façon sécurisée et infalsifiable.',
+    description2: 'Conforme au règlement eIDAS européen, la signature Zerionyx a une valeur légale en cas de litige. Plus jamais de "il dit qu\'on n\'est pas venu" — vous avez la preuve.',
+    items: ['Signature tactile directement sur l\'écran', 'Horodatage automatique (date + heure exacte)', 'Conforme eIDAS — valeur légale en Europe', 'Archivage cloud sécurisé et infalsifiable', 'Preuve recevable devant les tribunaux', 'Géolocalisation optionnelle de la signature'],
+  },
+  {
+    icon: '📄',
+    title: 'Rapport PDF automatique',
+    subtitle: 'Impressionnez vos clients sans effort',
+    description: 'Dès que le client signe, un rapport PDF professionnel est généré automatiquement avec votre logo, vos coordonnées, les détails de l\'intervention, les photos et la signature. Il est envoyé par email au client instantanément.',
+    description2: 'Votre image de marque est irréprochable. Vos clients reçoivent un document pro qui vous démarque de la concurrence — et vous n\'avez strictement rien à faire.',
+    items: ['Généré automatiquement en quelques secondes', 'Envoi par email au client sans action de votre part', 'Votre logo et coordonnées intégrés', 'Photos d\'intervention incluses', 'Signature client horodatée intégrée', 'Archivage cloud permanent et accessible'],
+  },
+  {
+    icon: '📅',
+    title: 'Planning d\'équipe',
+    subtitle: 'Toute l\'équipe synchronisée en temps réel',
+    description: 'Planifiez les interventions depuis votre tableau de bord web. Chaque technicien voit son planning sur son téléphone et reçoit des notifications push pour les nouvelles missions ou modifications.',
+    description2: 'Fini la coordination par WhatsApp ou les appels téléphoniques. Tout le monde sait qui fait quoi, où et quand. Les statuts se mettent à jour en temps réel : en route, sur place, terminé.',
+    items: ['Vue calendrier par technicien', 'Notifications push en temps réel', 'Statuts live : en route, sur place, terminé', 'Drag & drop pour réorganiser facilement', 'Détection des conflits de planning', 'Historique des modifications'],
+  },
+  {
+    icon: '📷',
+    title: 'Photos d\'intervention',
+    subtitle: 'Documentez, prouvez, archivez',
+    description: 'Prenez des photos directement depuis l\'app. Elles sont automatiquement classées et rattachées à la bonne intervention. Avant, pendant, après — tout est documenté et archivé.',
+    description2: 'Les photos sont incluses dans le rapport PDF envoyé au client. En cas de litige ou de contrôle, vous avez une trace visuelle complète de votre travail.',
+    items: ['Photo en un clic depuis l\'app', 'Classement automatique par intervention', 'Incluses dans le rapport PDF', 'Stockage cloud illimité', 'Annotation et commentaires sur les photos', 'Horodatage et géolocalisation automatiques'],
+  },
+  {
+    icon: '🕐',
+    title: 'Historique complet',
+    subtitle: 'Retrouvez n\'importe quelle fiche en 2 secondes',
+    description: 'Toutes vos interventions sont archivées et consultables instantanément. Recherchez par client, par équipement, par technicien ou par date. Plus jamais de fiche introuvable.',
+    description2: 'Exportez vos données en CSV pour votre comptable en quelques clics. Votre historique est aussi un outil de pilotage : suivez votre activité, identifiez vos meilleurs clients, et ne manquez plus aucun contrat d\'entretien.',
+    items: ['Recherche instantanée par client ou équipement', 'Filtres par date, technicien, type d\'intervention', 'Accès aux fiches, photos et PDF archivés', 'Export CSV pour votre comptable', 'Statistiques d\'activité', 'Alertes pour les révisions à venir'],
+  },
+];
+---
+
+<Layout
+  title="Fonctionnalités — Zerionyx"
+  description="Découvrez toutes les fonctionnalités de Zerionyx : fiches numériques, signature client, rapport PDF, planning d'équipe, photos et historique complet."
+>
+  <Nav />
+
+  <section class="feat-hero">
+    <h1 class="feat-hero-title">Toutes nos <span class="t-gradient">fonctionnalités</span></h1>
+    <p class="feat-hero-sub">Tout ce dont vous avez besoin pour digitaliser vos interventions terrain. Rien de superflu.</p>
+  </section>
+
+  {features.map((feat, i) => (
+    <section class={`feat-section ${i % 2 === 1 ? 'feat-reverse' : ''}`}>
+      <div class="feat-section-inner reveal">
+        <div class="feat-text">
+          <div class="feat-icon-wrap"><span class="feat-icon">{feat.icon}</span></div>
+          <h2 class="feat-title">{feat.title}</h2>
+          <h3 class="feat-subtitle">{feat.subtitle}</h3>
+          <p class="feat-desc">{feat.description}</p>
+          <p class="feat-desc">{feat.description2}</p>
+          <ul class="feat-list">
+            {feat.items.map(item => (
+              <li>
+                <div class="feat-check" set:html={checkSvg} />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div class="feat-cta">
+            <a href="/#inscription" class="btn-nav" style="display:inline-flex;font-size:14px;padding:12px 24px">Rejoindre la liste d'attente →</a>
+          </div>
+        </div>
+        <div class="feat-visual">
+          <div class="feat-visual-card">
+            <div class="feat-visual-header">
+              <span class="feat-visual-icon">{feat.icon}</span>
+              <span class="feat-visual-label">{feat.title}</span>
+            </div>
+            <div class="feat-visual-body">
+              {feat.items.slice(0, 4).map(item => (
+                <div class="feat-visual-row">
+                  <div class="feat-visual-dot"></div>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- CTA -->
+  <section class="feat-final-cta reveal">
+    <div class="feat-final-inner">
+      <h2 class="feat-final-title">Convaincu ?</h2>
+      <p class="feat-final-sub">Rejoignez la liste d'attente et soyez parmi les premiers à utiliser Zerionyx.</p>
+      <a href="/#inscription" class="btn-hero-primary" style="display:inline-flex;margin-top:24px">🚀 Rejoindre la liste d'attente</a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .feat-hero{position:relative;z-index:1;padding:80px 48px 48px;text-align:center}
+  .feat-hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:700;letter-spacing:-2px;line-height:1.05;margin-bottom:16px}
+  .feat-hero-sub{font-size:17px;color:var(--text2);max-width:560px;margin:0 auto;line-height:1.7}
+
+  .feat-section{position:relative;z-index:1;border-top:1px solid var(--border);padding:80px 0}
+  .feat-section:nth-child(even){background:rgba(255,255,255,0.5)}
+  .feat-section-inner{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+  .feat-reverse .feat-section-inner{direction:rtl}
+  .feat-reverse .feat-section-inner > *{direction:ltr}
+
+  .feat-icon-wrap{margin-bottom:16px}
+  .feat-icon{font-size:36px}
+  .feat-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-1px;line-height:1.1;margin-bottom:8px;color:var(--text)}
+  .feat-subtitle{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--blue);margin-bottom:20px}
+  .feat-desc{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:16px}
+  .feat-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:24px 0}
+  .feat-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text2);line-height:1.5}
+  .feat-check{width:22px;height:22px;border-radius:6px;background:var(--green-light);border:1px solid rgba(0,208,132,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+  .feat-cta{margin-top:24px}
+
+  .feat-visual{background:linear-gradient(145deg,rgba(240,247,255,0.9),rgba(255,255,255,0.95));border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:var(--shadow);backdrop-filter:blur(8px);position:relative;overflow:hidden}
+  .feat-visual::before{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(26,111,212,0.08),transparent);pointer-events:none}
+  .feat-visual-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(26,111,212,0.06)}
+  .feat-visual-header{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--border);margin-bottom:14px}
+  .feat-visual-icon{font-size:20px}
+  .feat-visual-label{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text)}
+  .feat-visual-body{display:flex;flex-direction:column;gap:10px}
+  .feat-visual-row{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text2);line-height:1.5}
+  .feat-visual-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));flex-shrink:0;margin-top:5px}
+
+  .feat-final-cta{position:relative;z-index:1;padding:80px 48px;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,rgba(220,235,255,0.5) 100%);border-top:1px solid var(--border)}
+  .feat-final-inner{max-width:600px;margin:0 auto}
+  .feat-final-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;letter-spacing:-1px;margin-bottom:12px}
+  .feat-final-sub{font-size:17px;color:var(--text2);line-height:1.7}
+
+  @media(max-width:900px){
+    .feat-hero{padding:60px 16px 32px}
+    .feat-section{padding:48px 0}
+    .feat-section-inner{grid-template-columns:1fr;padding:0 16px;gap:32px}
+    .feat-reverse .feat-section-inner{direction:ltr}
+    .feat-final-cta{padding:64px 16px}
+  }
+</style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 70); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
+</script>

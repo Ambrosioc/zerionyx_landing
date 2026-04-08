@@ -1,0 +1,206 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="FAQ — Zerionyx"
+  description="Toutes les réponses à vos questions sur Zerionyx : fonctionnalités, tarifs, sécurité, données et plus encore."
+>
+  <Nav />
+
+  <section class="faq-hero">
+    <h1 class="faq-hero-title">Questions <span class="t-gradient">fréquentes</span></h1>
+    <p class="faq-hero-sub">Tout ce que vous devez savoir sur Zerionyx. Si vous ne trouvez pas la réponse ici, écrivez-nous à <a href="mailto:contact@zerionyx.fr">contact@zerionyx.fr</a></p>
+  </section>
+
+  <div class="faq-page">
+    <div class="faq-page-inner">
+
+      <!-- Général -->
+      <div class="faq-category reveal">
+        <div class="faq-cat-header">
+          <div class="faq-cat-icon">💡</div>
+          <h2 class="faq-cat-title">Général</h2>
+        </div>
+        <div class="faq-list" data-group="general">
+          <div class="faq-item">
+            <div class="faq-q">C'est quoi Zerionyx exactement ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Zerionyx est une application mobile (iOS & Android) conçue pour les artisans et techniciens de terrain. Elle remplace vos fiches papier par des fiches numériques que vous remplissez en 2 minutes sur votre téléphone. Le client signe directement sur l'écran, et un rapport PDF professionnel est généré et envoyé automatiquement par email. Vous gagnez du temps, vous avez une image professionnelle, et vous êtes protégé en cas de litige.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">À qui s'adresse Zerionyx ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Zerionyx s'adresse à tous les professionnels qui interviennent chez des clients : chauffagistes, électriciens, plombiers, climaticiens, techniciens de maintenance, maçons, et bien d'autres. Que vous soyez indépendant ou que vous gériez une équipe de techniciens, Zerionyx s'adapte à votre organisation.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Est-ce que ça fonctionne sur mon téléphone ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Zerionyx fonctionne sur iOS (iPhone, iPad) et Android. L'app est optimisée pour une utilisation terrain — elle fonctionne même sans réseau et synchronise automatiquement dès que vous retrouvez une connexion. Parfait pour les caves, zones rurales ou bâtiments mal couverts.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Faut-il une connexion internet pour utiliser l'app ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Non. Zerionyx fonctionne en mode hors ligne. Vous pouvez remplir vos fiches, prendre des photos et faire signer le client même sans connexion. Toutes les données se synchronisent automatiquement dès que votre téléphone retrouve du réseau (Wi-Fi ou données mobiles).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Combien de temps faut-il pour démarrer ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">10 minutes maximum. Vous créez votre compte, ajoutez votre logo et vos coordonnées, et vous êtes prêt. Vous pouvez importer vos clients depuis un fichier Excel ou les saisir à la main au fur et à mesure. Aucune formation technique n'est nécessaire — l'interface est aussi simple qu'un formulaire papier.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fonctionnalités -->
+      <div class="faq-category reveal">
+        <div class="faq-cat-header">
+          <div class="faq-cat-icon">⚙️</div>
+          <h2 class="faq-cat-title">Fonctionnalités</h2>
+        </div>
+        <div class="faq-list" data-group="features">
+          <div class="faq-item">
+            <div class="faq-q">Quels types de fiches d'intervention sont disponibles ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Zerionyx propose des templates prêts à l'emploi pour les métiers les plus courants : entretien chaudière gaz, dépannage PAC, installation électrique, maintenance climatisation, et bien d'autres. Chaque template contient les contrôles, mesures et observations propres au type d'intervention. Vous pouvez aussi créer vos propres templates personnalisés.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Comment fonctionne la signature électronique ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Le client signe directement sur l'écran de votre téléphone avec son doigt. La signature est horodatée automatiquement (date et heure précises), archivée de façon sécurisée et conforme au règlement eIDAS européen. Elle a une valeur légale en cas de litige et constitue une preuve recevable devant les tribunaux français et européens.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Le rapport PDF est-il personnalisable ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Oui. Le rapport PDF inclut automatiquement votre logo, vos coordonnées, les détails de l'intervention, les photos prises, et la signature du client. Il est généré automatiquement dès la fin de l'intervention et envoyé par email au client. Vous n'avez rien à faire — tout est automatique.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Puis-je gérer plusieurs techniciens ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Oui, à partir du forfait Pro. Vous pouvez ajouter jusqu'à 5 techniciens (illimité en Business), leur assigner des interventions via le planning, et suivre leur activité en temps réel. Chaque technicien voit son planning sur son téléphone et reçoit des notifications push pour les nouvelles missions.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Comment fonctionne le mode hors ligne ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Toutes les données sont stockées localement sur votre téléphone. Vous pouvez remplir des fiches, prendre des photos et faire signer le client même en cave ou en zone blanche. Dès que votre téléphone retrouve une connexion, toutes les données se synchronisent automatiquement avec le cloud. Aucune perte de données possible.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarifs & Facturation -->
+      <div class="faq-category reveal">
+        <div class="faq-cat-header">
+          <div class="faq-cat-icon">💰</div>
+          <h2 class="faq-cat-title">Tarifs & Facturation</h2>
+        </div>
+        <div class="faq-list" data-group="pricing">
+          <div class="faq-item">
+            <div class="faq-q">C'est vraiment gratuit pendant la bêta ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Oui, 100%. Toutes les fonctionnalités sont accessibles gratuitement pendant la bêta. Les 50 premiers inscrits bénéficient en plus de 2 mois offerts après le lancement officiel. Aucune carte bancaire n'est requise pour s'inscrire.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">29€/mois c'est rentabilisé comment ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">29€/mois = 1€/jour. Un technicien à 40€/h qui gagne 3h/semaine grâce à Zerionyx récupère 480€/mois de valeur. Le ROI est immédiat. Sans compter les litiges évités (500€+ chacun) et l'image professionnelle qui améliore la fidélisation client et génère des recommandations.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Puis-je changer de forfait à tout moment ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Oui. Vous pouvez upgrader ou downgrader votre forfait à tout moment depuis votre espace. Le changement prend effet immédiatement. Si vous passez à un forfait supérieur, vous ne payez que la différence au prorata. Si vous descendez, le crédit est reporté sur les mois suivants.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Puis-je annuler à tout moment ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Oui, sans condition ni frais. Pas d'engagement minimum. Vous annulez en deux clics depuis votre espace. Vos données restent accessibles 30 jours après l'annulation pour exportation.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sécurité & Données -->
+      <div class="faq-category reveal">
+        <div class="faq-cat-header">
+          <div class="faq-cat-icon">🔒</div>
+          <h2 class="faq-cat-title">Sécurité & Données</h2>
+        </div>
+        <div class="faq-list" data-group="security">
+          <div class="faq-item">
+            <div class="faq-q">Mes données sont-elles en sécurité ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Oui. Vos données sont hébergées en Europe, chiffrées en transit (TLS 1.3) et au repos (AES-256). Nous utilisons des infrastructures certifiées ISO 27001. Vous êtes propriétaire de toutes vos données à tout moment.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">La signature électronique est-elle légalement valide ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Oui. Zerionyx utilise une solution conforme au règlement eIDAS européen. Chaque signature est horodatée et archivée de façon infalsifiable. En cas de litige, cette preuve est recevable devant les tribunaux français et européens.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Puis-je exporter mes données ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Oui, à tout moment. Vous pouvez exporter vos fiches d'intervention, vos rapports PDF, vos photos et votre liste de clients au format CSV ou PDF. L'export est accessible en quelques clics depuis votre tableau de bord.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Êtes-vous conforme au RGPD ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+            <div class="faq-a">Oui, totalement. Zerionyx respecte le Règlement Général sur la Protection des Données (RGPD). Vos données et celles de vos clients sont traitées en conformité avec la réglementation européenne. Droit d'accès, de rectification et de suppression garantis. Aucune donnée n'est revendue à des tiers.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="faq-cta reveal">
+    <div class="faq-cta-inner">
+      <h2 class="faq-cta-title">Vous avez une autre question ?</h2>
+      <p class="faq-cta-sub">Écrivez-nous à <a href="mailto:contact@zerionyx.fr" class="faq-cta-link">contact@zerionyx.fr</a> — on répond sous 24h.</p>
+      <a href="/#inscription" class="btn-hero-primary" style="display:inline-flex;margin-top:24px">🚀 Rejoindre la liste d'attente</a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .faq-hero{position:relative;z-index:1;padding:80px 48px 48px;text-align:center}
+  .faq-hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:700;letter-spacing:-2px;line-height:1.05;margin-bottom:16px}
+  .faq-hero-sub{font-size:17px;color:var(--text2);max-width:560px;margin:0 auto;line-height:1.7}
+  .faq-hero-sub a{color:var(--blue);text-decoration:none;font-weight:600}
+  .faq-hero-sub a:hover{text-decoration:underline}
+
+  .faq-page{position:relative;z-index:1;padding:24px 0 64px}
+  .faq-page-inner{max-width:800px;margin:0 auto;padding:0 48px}
+
+  .faq-category{margin-bottom:40px}
+  .faq-cat-header{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .faq-cat-icon{width:44px;height:44px;border-radius:12px;background:var(--blue-glow);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:20px}
+  .faq-cat-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--text)}
+
+  .faq-list{display:flex;flex-direction:column;gap:9px}
+  .faq-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;backdrop-filter:blur(8px);transition:border-color .2s}
+  .faq-item.open{border-color:var(--blue-dark) !important}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;padding:17px 20px;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);gap:12px}
+  .faq-q:hover{color:var(--blue)}
+  .faq-arr{width:22px;height:22px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s,background .2s}
+  .faq-item.open .faq-arr{transform:rotate(180deg);background:var(--blue-glow)}
+  .faq-a{display:none;padding:0 20px 16px;font-size:14px;color:var(--text2);line-height:1.7}
+  .faq-item.open .faq-a{display:block;animation:fadeUp .2s ease}
+
+  .faq-cta{position:relative;z-index:1;padding:80px 48px;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,rgba(220,235,255,0.5) 100%);border-top:1px solid var(--border)}
+  .faq-cta-inner{max-width:600px;margin:0 auto}
+  .faq-cta-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;letter-spacing:-1px;margin-bottom:12px}
+  .faq-cta-sub{font-size:17px;color:var(--text2);line-height:1.7}
+  .faq-cta-link{color:var(--blue);text-decoration:none;font-weight:600}
+  .faq-cta-link:hover{text-decoration:underline}
+
+  @media(max-width:900px){
+    .faq-hero{padding:60px 16px 32px}
+    .faq-page-inner{padding:0 16px}
+    .faq-cta{padding:64px 16px}
+  }
+</style>
+
+<script>
+  // Reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 70); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
+
+  // FAQ accordion — scoped per category
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement!;
+      const list = item.parentElement!;
+      const isOpen = item.classList.contains('open');
+      list.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>

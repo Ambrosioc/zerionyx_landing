@@ -8,7 +8,6 @@ import Problem from '../components/Problem.astro';
 import Solution from '../components/Solution.astro';
 import Features from '../components/Features.astro';
 import Benefits from '../components/Benefits.astro';
-import Testimonials from '../components/Testimonials.astro';
 import Offer from '../components/Offer.astro';
 import Pricing from '../components/Pricing.astro';
 import Faq from '../components/Faq.astro';
@@ -17,7 +16,7 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-  title="Zerionyx — Stoppez de perdre 3h par semaine avec vos fiches papier"
+  title="Zerionyx — L'IA au service des pros du terrain"
   description="L'app mobile qui remplace vos fiches papier en 2 minutes. Signature client, PDF automatique, planning d'équipe. Essai gratuit."
 >
   <UrgencyBar />
@@ -28,7 +27,6 @@ import Footer from '../components/Footer.astro';
   <Solution />
   <Features />
   <Benefits />
-  <Testimonials />
   <Offer />
   <Pricing />
   <Faq />
@@ -51,19 +49,14 @@ import Footer from '../components/Footer.astro';
   );
   document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
 
-  // Active nav link on scroll
-  window.addEventListener('scroll', () => {
-    const ids = ['fonctionnalites', 'temoignages', 'tarifs', 'faq'];
-    let cur = '';
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - 90) cur = id;
-    });
-    document.querySelectorAll('.nav-links a').forEach((a) => {
-      const h = a.getAttribute('href')?.replace('#', '');
-      (a as HTMLElement).style.color = h === cur ? 'var(--blue)' : '';
-      (a as HTMLElement).style.fontWeight = h === cur ? '700' : '';
-    });
+  // Active nav link based on current page
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('.nav-links a').forEach((a) => {
+    const href = a.getAttribute('href') || '';
+    if (href === currentPath) {
+      (a as HTMLElement).style.color = 'var(--blue)';
+      (a as HTMLElement).style.fontWeight = '700';
+    }
   });
 
   // Fake countdown spots

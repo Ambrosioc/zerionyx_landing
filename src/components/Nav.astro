@@ -117,24 +117,25 @@
   }
 </style>
 
-<script>
-  document.addEventListener('astro:page-load', () => {
-    const burger = document.getElementById('nav-burger');
-    const mobile = document.getElementById('nav-mobile');
+<script is:inline>
+  (function() {
+    var burger = document.getElementById('nav-burger');
+    var mobile = document.getElementById('nav-mobile');
     if (!burger || !mobile) return;
 
-    burger.addEventListener('click', () => {
+    burger.addEventListener('click', function() {
       burger.classList.toggle('open');
       mobile.classList.toggle('open');
       document.body.style.overflow = mobile.classList.contains('open') ? 'hidden' : '';
     });
 
-    mobile.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+    var links = mobile.querySelectorAll('a');
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', function() {
         burger.classList.remove('open');
         mobile.classList.remove('open');
         document.body.style.overflow = '';
       });
-    });
-  });
+    }
+  })();
 </script>

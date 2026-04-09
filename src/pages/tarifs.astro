@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import SignupModal from '../components/SignupModal.astro';
 ---
 
 <Layout
@@ -11,8 +12,8 @@ import Footer from '../components/Footer.astro';
   <Nav />
 
   <section class="pricing-hero">
-    <h1 class="pricing-hero-title">Des tarifs <span class="t-gradient">simples et transparents</span></h1>
-    <p class="pricing-hero-sub">Rentabilisé dès le premier mois. Un technicien à 40€/h qui gagne 3h/semaine récupère 480€/mois de valeur.</p>
+    <h1 class="pricing-hero-title">Des tarifs <span class="t-gradient">clairs, sans surprise</span></h1>
+    <p class="pricing-hero-sub">Si vous facturez 40€/h et gagnez 3h par semaine, ça vous rapporte 480€/mois. L'abonnement se rentabilise dès la première semaine.</p>
   </section>
 
   <!-- Pricing Cards -->
@@ -124,13 +125,14 @@ import Footer from '../components/Footer.astro';
   <!-- CTA -->
   <section class="pricing-cta reveal">
     <div class="pricing-cta-inner">
-      <h2 class="pricing-cta-title">Prêt à gagner du temps ?</h2>
-      <p class="pricing-cta-sub">Rejoignez la liste d'attente et bénéficiez de 2 mois offerts au lancement.</p>
-      <a href="/#inscription" class="btn-hero-primary" style="display:inline-flex;margin-top:24px">🚀 Rejoindre la liste d'attente</a>
+      <h2 class="pricing-cta-title">Prêt à essayer ?</h2>
+      <p class="pricing-cta-sub">Inscrivez-vous, les 50 premiers ont 2 mois offerts.</p>
+      <a href="/#inscription" class="btn-hero-primary" style="display:inline-flex;margin-top:24px">Essayer gratuitement</a>
     </div>
   </section>
 
   <Footer />
+  <SignupModal />
 </Layout>
 
 <style>

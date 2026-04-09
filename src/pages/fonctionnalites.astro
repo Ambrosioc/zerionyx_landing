@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import SignupModal from '../components/SignupModal.astro';
 
 const checkSvg = `<svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="#00D084" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
@@ -9,49 +10,49 @@ const features = [
   {
     icon: '📋',
     title: 'Fiches d\'intervention numériques',
-    subtitle: 'Remplissez vos fiches en 2 minutes chrono',
-    description: 'Fini les formulaires papier illisibles et les fiches perdues. Zerionyx vous propose des templates intelligents adaptés à votre métier. Checkboxes, mesures, observations — tout se fait depuis votre téléphone, même sans connexion internet.',
-    description2: 'L\'app fonctionne en mode hors ligne. Vous pouvez travailler en cave, en zone rurale ou dans un bâtiment mal couvert. Dès que le réseau revient, tout se synchronise automatiquement.',
+    subtitle: 'Vos fiches, sur votre tel, en 2 minutes',
+    description: 'Plus de formulaires papier illisibles. Vous avez des templates prêts pour votre métier : checkboxes, mesures, observations. Tout se fait sur le téléphone, même sans internet.',
+    description2: 'En cave, en zone blanche, en pleine campagne — ça marche. Dès que le réseau revient, tout se synchronise tout seul.',
     items: ['Templates par métier : chaudière, PAC, électricité, plomberie...', 'Saisie rapide avec checkboxes et mesures préremplies', 'Notes vocales pour gagner encore plus de temps', 'Mode hors ligne — fonctionne partout', 'Synchronisation automatique dès retour en ligne', 'Templates personnalisables selon vos besoins'],
   },
   {
     icon: '✍️',
     title: 'Signature client légale',
-    subtitle: 'Protégez-vous avec une preuve incontestable',
-    description: 'Le client signe directement sur l\'écran de votre téléphone. Chaque signature est horodatée automatiquement avec la date et l\'heure précises, puis archivée de façon sécurisée et infalsifiable.',
-    description2: 'Conforme au règlement eIDAS européen, la signature Zerionyx a une valeur légale en cas de litige. Plus jamais de "il dit qu\'on n\'est pas venu" — vous avez la preuve.',
+    subtitle: 'Fini les litiges sans preuve',
+    description: 'Le client signe sur l\'écran de votre tel. C\'est horodaté, archivé, impossible à falsifier.',
+    description2: 'Conforme eIDAS, valeur légale en Europe. Si un client dit "vous n\'êtes pas venu", vous avez la preuve que si.',
     items: ['Signature tactile directement sur l\'écran', 'Horodatage automatique (date + heure exacte)', 'Conforme eIDAS — valeur légale en Europe', 'Archivage cloud sécurisé et infalsifiable', 'Preuve recevable devant les tribunaux', 'Géolocalisation optionnelle de la signature'],
   },
   {
     icon: '📄',
     title: 'Rapport PDF automatique',
-    subtitle: 'Impressionnez vos clients sans effort',
-    description: 'Dès que le client signe, un rapport PDF professionnel est généré automatiquement avec votre logo, vos coordonnées, les détails de l\'intervention, les photos et la signature. Il est envoyé par email au client instantanément.',
-    description2: 'Votre image de marque est irréprochable. Vos clients reçoivent un document pro qui vous démarque de la concurrence — et vous n\'avez strictement rien à faire.',
+    subtitle: 'Un rapport pro envoyé sans lever le petit doigt',
+    description: 'Dès la signature, un PDF avec votre logo, les photos, les détails — tout part par email au client. Automatiquement.',
+    description2: 'Vos clients reçoivent un document propre qui change l\'image qu\'ils ont de vous. Et vous, vous n\'avez rien fait de plus.',
     items: ['Généré automatiquement en quelques secondes', 'Envoi par email au client sans action de votre part', 'Votre logo et coordonnées intégrés', 'Photos d\'intervention incluses', 'Signature client horodatée intégrée', 'Archivage cloud permanent et accessible'],
   },
   {
     icon: '📅',
     title: 'Planning d\'équipe',
-    subtitle: 'Toute l\'équipe synchronisée en temps réel',
-    description: 'Planifiez les interventions depuis votre tableau de bord web. Chaque technicien voit son planning sur son téléphone et reçoit des notifications push pour les nouvelles missions ou modifications.',
-    description2: 'Fini la coordination par WhatsApp ou les appels téléphoniques. Tout le monde sait qui fait quoi, où et quand. Les statuts se mettent à jour en temps réel : en route, sur place, terminé.',
+    subtitle: 'Tout le monde sait qui fait quoi',
+    description: 'Vous planifiez depuis le tableau de bord, vos techs voient leur planning sur le tel avec des notifications pour chaque mission.',
+    description2: 'Plus besoin de WhatsApp ou d\'appels. Les statuts se mettent à jour en direct : en route, sur place, terminé.',
     items: ['Vue calendrier par technicien', 'Notifications push en temps réel', 'Statuts live : en route, sur place, terminé', 'Drag & drop pour réorganiser facilement', 'Détection des conflits de planning', 'Historique des modifications'],
   },
   {
     icon: '📷',
     title: 'Photos d\'intervention',
-    subtitle: 'Documentez, prouvez, archivez',
-    description: 'Prenez des photos directement depuis l\'app. Elles sont automatiquement classées et rattachées à la bonne intervention. Avant, pendant, après — tout est documenté et archivé.',
-    description2: 'Les photos sont incluses dans le rapport PDF envoyé au client. En cas de litige ou de contrôle, vous avez une trace visuelle complète de votre travail.',
+    subtitle: 'Une photo vaut mieux qu\'un long rapport',
+    description: 'Prenez des photos depuis l\'app, elles se classent toutes seules. Avant, pendant, après — tout est documenté.',
+    description2: 'Elles sont incluses dans le PDF envoyé au client. Si un jour on vous demande des comptes, vous avez tout.',
     items: ['Photo en un clic depuis l\'app', 'Classement automatique par intervention', 'Incluses dans le rapport PDF', 'Stockage cloud illimité', 'Annotation et commentaires sur les photos', 'Horodatage et géolocalisation automatiques'],
   },
   {
     icon: '🕐',
     title: 'Historique complet',
-    subtitle: 'Retrouvez n\'importe quelle fiche en 2 secondes',
-    description: 'Toutes vos interventions sont archivées et consultables instantanément. Recherchez par client, par équipement, par technicien ou par date. Plus jamais de fiche introuvable.',
-    description2: 'Exportez vos données en CSV pour votre comptable en quelques clics. Votre historique est aussi un outil de pilotage : suivez votre activité, identifiez vos meilleurs clients, et ne manquez plus aucun contrat d\'entretien.',
+    subtitle: 'Plus jamais "j\'arrive pas à retrouver la fiche"',
+    description: 'Tout est archivé. Cherchez par client, équipement, technicien ou date. Vous trouvez en 2 secondes.',
+    description2: 'Exportez en CSV pour le comptable. Suivez votre activité, repérez vos meilleurs clients, et ne loupez plus aucun contrat d\'entretien.',
     items: ['Recherche instantanée par client ou équipement', 'Filtres par date, technicien, type d\'intervention', 'Accès aux fiches, photos et PDF archivés', 'Export CSV pour votre comptable', 'Statistiques d\'activité', 'Alertes pour les révisions à venir'],
   },
 ];
@@ -64,8 +65,8 @@ const features = [
   <Nav />
 
   <section class="feat-hero">
-    <h1 class="feat-hero-title">Toutes nos <span class="t-gradient">fonctionnalités</span></h1>
-    <p class="feat-hero-sub">Tout ce dont vous avez besoin pour digitaliser vos interventions terrain. Rien de superflu.</p>
+    <h1 class="feat-hero-title">Ce que <span class="t-gradient">Zerionyx</span> fait pour vous</h1>
+    <p class="feat-hero-sub">Tout ce qu'il faut pour arrêter le papier et bosser plus vite. Rien en trop.</p>
   </section>
 
   {features.map((feat, i) => (
@@ -86,7 +87,7 @@ const features = [
             ))}
           </ul>
           <div class="feat-cta">
-            <a href="/#inscription" class="btn-nav" style="display:inline-flex;font-size:14px;padding:12px 24px">Rejoindre la liste d'attente →</a>
+            <a href="/#inscription" class="btn-nav" style="display:inline-flex;font-size:14px;padding:12px 24px">Essayer gratuitement →</a>
           </div>
         </div>
         <div class="feat-visual">
@@ -112,13 +113,14 @@ const features = [
   <!-- CTA -->
   <section class="feat-final-cta reveal">
     <div class="feat-final-inner">
-      <h2 class="feat-final-title">Convaincu ?</h2>
-      <p class="feat-final-sub">Rejoignez la liste d'attente et soyez parmi les premiers à utiliser Zerionyx.</p>
-      <a href="/#inscription" class="btn-hero-primary" style="display:inline-flex;margin-top:24px">🚀 Rejoindre la liste d'attente</a>
+      <h2 class="feat-final-title">Prêt à essayer ?</h2>
+      <p class="feat-final-sub">Inscrivez-vous, on vous contacte dès l'ouverture.</p>
+      <a href="/#inscription" class="btn-hero-primary" style="display:inline-flex;margin-top:24px">Essayer gratuitement</a>
     </div>
   </section>
 
   <Footer />
+  <SignupModal />
 </Layout>
 
 <style>

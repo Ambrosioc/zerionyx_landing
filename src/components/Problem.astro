@@ -2,16 +2,16 @@
   <div class="problem-inner">
     <div class="reveal">
       <div class="section-eyebrow"><div class="section-eyebrow-dot"></div>Le problème</div>
-      <h2 class="section-title">Vous perdez du temps<br>et de l'argent chaque jour.</h2>
-      <p class="section-sub">On a parlé à des dizaines d'artisans. Voici ce qu'ils vivent :</p>
+      <h2 class="section-title">Vous le vivez tous les jours.<br>On le sait.</h2>
+      <p class="section-sub">On a discuté avec des dizaines d'artisans. Voilà ce qu'ils nous racontent :</p>
     </div>
     <div class="prob-grid">
-      <div class="prob-card reveal"><div class="prob-icon">🔍</div><div class="prob-title">La fiche introuvable</div><div class="prob-body">20 minutes à chercher. Votre client attend. Votre journée tombe à l'eau.</div><div class="prob-quote">"J'ai cherché partout, impossible de retrouver la fiche de l'an dernier..."</div></div>
-      <div class="prob-card reveal"><div class="prob-icon">📋</div><div class="prob-title">Aucune trace pro</div><div class="prob-body">Votre client demande un rapport. Vous n'avez rien de propre à lui envoyer.</div><div class="prob-quote">"Mon client veut un compte-rendu, j'ai juste une fiche manuscrite illisible..."</div></div>
-      <div class="prob-card reveal"><div class="prob-icon">⚖️</div><div class="prob-title">Le litige sans preuve</div><div class="prob-body">Un client conteste. Pas de fiche signée. Litige impossible à gérer.</div><div class="prob-quote">"Il dit qu'on n'est pas venu, j'ai aucune preuve de l'intervention..."</div></div>
-      <div class="prob-card reveal"><div class="prob-icon">📱</div><div class="prob-title">Le planning sur WhatsApp</div><div class="prob-body">Coordination chaotique. Erreurs, oublis. Personne ne sait qui fait quoi.</div><div class="prob-quote">"J'ai 4 techniciens, je gère tout par WhatsApp, c'est le bordel..."</div></div>
-      <div class="prob-card reveal"><div class="prob-icon">📊</div><div class="prob-title">Zéro visibilité</div><div class="prob-body">Vous ne savez pas combien d'interventions vous avez faites ce mois.</div><div class="prob-quote">"Je saurais même pas vous dire combien j'ai fait d'interventions en mars..."</div></div>
-      <div class="prob-card reveal"><div class="prob-icon">🧾</div><div class="prob-title">Justificatifs éparpillés</div><div class="prob-body">Votre comptable attend. Demi-journée perdue à chercher partout.</div><div class="prob-quote">"Mon comptable m'a redemandé les justificatifs. 4 heures de recherche..."</div></div>
+      <div class="prob-card reveal"><div class="prob-icon">🔍</div><div class="prob-title">Encore 20 min à chercher une fiche</div><div class="prob-body">Le client est au téléphone, il attend. Vous, vous fouinez dans un classeur. Ça vous parle ?</div><div class="prob-quote">"J'ai retourné le bureau, impossible de retrouver la fiche de l'an dernier..."</div></div>
+      <div class="prob-card reveal"><div class="prob-icon">📋</div><div class="prob-title">Un rapport que même vous, vous relisez pas</div><div class="prob-body">Le client demande un compte-rendu. Tout ce que vous avez, c'est une fiche remplie au stylo entre deux interventions.</div><div class="prob-quote">"Mon client veut un récap propre, j'ai juste un truc gribouillé à la va-vite..."</div></div>
+      <div class="prob-card reveal"><div class="prob-icon">⚖️</div><div class="prob-title">Le client conteste, vous avez aucune preuve</div><div class="prob-body">Pas de fiche signée, pas de photo. Le client dit que le travail n'a pas été fait. Vous pouvez rien prouver.</div><div class="prob-quote">"Il dit qu'on n'est jamais passé. J'ai rien pour prouver le contraire..."</div></div>
+      <div class="prob-card reveal"><div class="prob-icon">📱</div><div class="prob-title">Le planning ? C'est un groupe WhatsApp</div><div class="prob-body">Un message par-ci, un appel par-là. Personne sait qui va où. Les oublis, ça arrive toutes les semaines.</div><div class="prob-quote">"J'ai 4 techs, on gère tout sur WhatsApp... c'est le bazar permanent."</div></div>
+      <div class="prob-card reveal"><div class="prob-icon">📊</div><div class="prob-title">Aucune idée de ce que fait l'équipe</div><div class="prob-body">Combien d'interventions ce mois ? Quel tech est le plus chargé ? Vous n'en savez rien.</div><div class="prob-quote">"Je serais même pas capable de dire combien on a fait d'interventions en mars."</div></div>
+      <div class="prob-card reveal"><div class="prob-icon">🧾</div><div class="prob-title">Des bouts de papier dans tous les tiroirs</div><div class="prob-body">Le comptable demande les justificatifs. Vous partez pour une demi-journée de fouille.</div><div class="prob-quote">"Mon comptable m'a relancé. J'ai passé 4 heures à chercher des bouts de papier."</div></div>
     </div>
     <div style="text-align:center;margin-top:40px" class="reveal">
       <a href="#inscription" class="btn-nav" style="display:inline-flex;font-size:14px;padding:12px 28px">Découvrir la solution →</a>
@@ -48,6 +48,9 @@
   @media(max-width:900px){
     .problem-wrap{padding:64px 0}
     .problem-inner{padding:0 16px}
+    .prob-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
     .prob-grid{grid-template-columns:1fr}
   }
 </style>

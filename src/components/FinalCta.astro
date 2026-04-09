@@ -5,8 +5,8 @@ const API_URL = import.meta.env.PUBLIC_API_URL;
 <div style="position:relative;z-index:1;background:linear-gradient(180deg,var(--bg) 0%,rgba(220,235,255,0.5) 100%);border-top:1px solid var(--border)" id="inscription">
   <div class="cta-final-inner">
     <div class="reveal">
-      <h2 class="cta-final-title">Prenez la décision<br>qui change votre quotidien.</h2>
-      <p class="cta-final-sub">Rejoignez la liste d'attente et soyez parmi les premiers à utiliser Zerionyx.</p>
+      <h2 class="cta-final-title">Prêt à lâcher<br>le papier ?</h2>
+      <p class="cta-final-sub">Inscrivez-vous, on vous contacte dès l'ouverture de Zerionyx.</p>
     </div>
     <div class="cta-form reveal" id="the-form">
       <div class="form-row">
@@ -33,7 +33,7 @@ const API_URL = import.meta.env.PUBLIC_API_URL;
         </select>
       </div>
       <input type="text" name="website" id="fh" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" tabindex="-1" autocomplete="off">
-      <button type="button" class="f-submit" id="submit-btn">🚀 Rejoindre la liste — 2 mois offerts →</button>
+      <button type="button" class="f-submit" id="submit-btn">Rejoindre la liste — 2 mois offerts →</button>
       <div class="f-error" id="f-error" style="display:none;color:#d32f2f;font-size:13px;margin-top:8px;text-align:center"></div>
       <div class="f-note">🔒 Données confidentielles · Sans engagement · Réponse sous 24h</div>
     </div>
@@ -113,8 +113,8 @@ const API_URL = import.meta.env.PUBLIC_API_URL;
         document.getElementById('suc').classList.add('show');
         const cnt = document.getElementById('cnt');
         const barSpots = document.getElementById('bar-spots');
-        if (cnt) cnt.textContent = String(Math.max(0, parseInt(cnt.textContent) - 1));
-        if (barSpots) barSpots.textContent = String(Math.max(0, parseInt(barSpots.textContent) - 1));
+        if (cnt) cnt.textContent = String(Math.max(43, parseInt(cnt.textContent) - 1));
+        if (barSpots) barSpots.textContent = String(Math.max(43, parseInt(barSpots.textContent) - 1));
         return;
       }
 
@@ -136,6 +136,6 @@ const API_URL = import.meta.env.PUBLIC_API_URL;
     }
 
     btn.disabled = false;
-    btn.textContent = '🚀 Rejoindre la liste — 2 mois offerts →';
+    btn.textContent = 'Rejoindre la liste — 2 mois offerts →';
   });
 </script>

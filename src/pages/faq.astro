@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import SignupModal from '../components/SignupModal.astro';
 ---
 
 <Layout
@@ -11,8 +12,8 @@ import Footer from '../components/Footer.astro';
   <Nav />
 
   <section class="faq-hero">
-    <h1 class="faq-hero-title">Questions <span class="t-gradient">fréquentes</span></h1>
-    <p class="faq-hero-sub">Tout ce que vous devez savoir sur Zerionyx. Si vous ne trouvez pas la réponse ici, écrivez-nous à <a href="mailto:contact@zerionyx.fr">contact@zerionyx.fr</a></p>
+    <h1 class="faq-hero-title">Vos <span class="t-gradient">questions</span></h1>
+    <p class="faq-hero-sub">Si la réponse n'est pas ici, écrivez-nous à <a href="mailto:contact@zerionyx.fr">contact@zerionyx.fr</a> — on répond sous 24h.</p>
   </section>
 
   <div class="faq-page">
@@ -27,11 +28,11 @@ import Footer from '../components/Footer.astro';
         <div class="faq-list" data-group="general">
           <div class="faq-item">
             <div class="faq-q">C'est quoi Zerionyx exactement ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
-            <div class="faq-a">Zerionyx est une application mobile (iOS & Android) conçue pour les artisans et techniciens de terrain. Elle remplace vos fiches papier par des fiches numériques que vous remplissez en 2 minutes sur votre téléphone. Le client signe directement sur l'écran, et un rapport PDF professionnel est généré et envoyé automatiquement par email. Vous gagnez du temps, vous avez une image professionnelle, et vous êtes protégé en cas de litige.</div>
+            <div class="faq-a">C'est une app mobile pour les artisans et techniciens. Vous remplissez vos fiches sur le téléphone en 2 minutes, le client signe sur l'écran, et un rapport PDF pro part tout seul par email. Moins de paperasse, plus de temps pour bosser.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q">À qui s'adresse Zerionyx ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
-            <div class="faq-a">Zerionyx s'adresse à tous les professionnels qui interviennent chez des clients : chauffagistes, électriciens, plombiers, climaticiens, techniciens de maintenance, maçons, et bien d'autres. Que vous soyez indépendant ou que vous gériez une équipe de techniciens, Zerionyx s'adapte à votre organisation.</div>
+            <div class="faq-a">Tous les pros qui se déplacent chez des clients : chauffagistes, électriciens, plombiers, climaticiens, techniciens de maintenance, maçons... Que vous soyez seul ou avec une équipe, ça s'adapte.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q">Est-ce que ça fonctionne sur mon téléphone ?<div class="faq-arr"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
@@ -138,11 +139,12 @@ import Footer from '../components/Footer.astro';
     <div class="faq-cta-inner">
       <h2 class="faq-cta-title">Vous avez une autre question ?</h2>
       <p class="faq-cta-sub">Écrivez-nous à <a href="mailto:contact@zerionyx.fr" class="faq-cta-link">contact@zerionyx.fr</a> — on répond sous 24h.</p>
-      <a href="/#inscription" class="btn-hero-primary" style="display:inline-flex;margin-top:24px">🚀 Rejoindre la liste d'attente</a>
+      <a href="/#inscription" class="btn-hero-primary" style="display:inline-flex;margin-top:24px">Essayer gratuitement</a>
     </div>
   </section>
 
   <Footer />
+  <SignupModal />
 </Layout>
 
 <style>

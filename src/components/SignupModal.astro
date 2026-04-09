@@ -1,0 +1,223 @@
+---
+const API_URL = import.meta.env.PUBLIC_API_URL;
+---
+
+<div class="modal-overlay" id="signup-modal">
+  <div class="modal-card">
+    <button class="modal-close" id="modal-close" aria-label="Fermer">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <h2 class="modal-title">Prêt à lâcher le papier ?</h2>
+    <p class="modal-sub">Inscrivez-vous, on vous contacte dès l'ouverture.</p>
+    <div class="modal-form" id="modal-form">
+      <div class="modal-row">
+        <input type="text" class="f-input" id="modal-fp" placeholder="Votre prénom *" required minlength="2" maxlength="100">
+        <input type="email" class="f-input" id="modal-fe" placeholder="Email professionnel *" required maxlength="200">
+      </div>
+      <div class="modal-row">
+        <select class="f-select" id="modal-fm">
+          <option value="" disabled selected>Votre métier</option>
+          <option value="Chauffagiste">Chauffagiste</option>
+          <option value="Électricien">Électricien</option>
+          <option value="Plombier">Plombier</option>
+          <option value="Maçon">Maçon</option>
+          <option value="Climatisation / PAC">Climatisation / PAC</option>
+          <option value="Maintenance industrielle">Maintenance industrielle</option>
+          <option value="Autre">Autre</option>
+        </select>
+        <select class="f-select" id="modal-ft">
+          <option value="" disabled selected>Taille équipe</option>
+          <option value="solo">Je travaille seul</option>
+          <option value="2-5">2 à 5 techniciens</option>
+          <option value="6-15">6 à 15 techniciens</option>
+          <option value="15+">Plus de 15 techniciens</option>
+        </select>
+      </div>
+      <input type="text" name="website" id="modal-fh" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" tabindex="-1" autocomplete="off">
+      <button type="button" class="f-submit" id="modal-submit">Rejoindre la liste — 2 mois offerts →</button>
+      <div class="f-error" id="modal-error" style="display:none;color:#d32f2f;font-size:13px;margin-top:8px;text-align:center"></div>
+      <div class="f-note">🔒 Données confidentielles · Sans engagement · Réponse sous 24h</div>
+    </div>
+    <div class="modal-success" id="modal-suc">
+      <div class="s-ico"><svg width="28" height="22" viewBox="0 0 28 22" fill="none"><path d="M2 11l7 8L26 2" stroke="#00D084" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3>Vous êtes sur la liste !</h3>
+      <p>On vous contacte en avant-première dès l'ouverture de Zerionyx.</p>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .modal-overlay{
+    display:none;position:fixed;inset:0;z-index:1000;
+    background:rgba(10,22,40,0.6);backdrop-filter:blur(6px);
+    align-items:center;justify-content:center;padding:20px;
+    opacity:0;transition:opacity .25s ease;
+  }
+  .modal-overlay.open{
+    display:flex;
+  }
+  .modal-overlay.visible{
+    opacity:1;
+  }
+  .modal-card{
+    position:relative;background:var(--surface);border:1px solid var(--border);
+    border-radius:20px;padding:36px 32px;max-width:540px;width:100%;
+    box-shadow:0 24px 64px rgba(10,22,40,0.2);
+    backdrop-filter:blur(12px);
+    transform:translateY(16px);transition:transform .3s ease;
+  }
+  .modal-overlay.visible .modal-card{
+    transform:translateY(0);
+  }
+  .modal-close{
+    position:absolute;top:16px;right:16px;
+    width:32px;height:32px;border-radius:8px;border:1px solid var(--border);
+    background:var(--bg);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--text3);transition:all .2s;
+  }
+  .modal-close:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-glow)}
+  .modal-title{
+    font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3vw,32px);
+    font-weight:700;letter-spacing:-1.5px;line-height:1.1;
+    margin-bottom:8px;color:var(--text);text-align:center;
+  }
+  .modal-sub{
+    font-size:15px;color:var(--text2);text-align:center;margin-bottom:24px;line-height:1.7;
+  }
+  .modal-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+  /* Form fields — match FinalCta design */
+  .modal-form .f-input{background:var(--bg);border:1.5px solid var(--border2);border-radius:9px;padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);outline:none;width:100%;transition:border-color .2s}
+  .modal-form .f-input:focus{border-color:var(--blue);background:#fff}
+  .modal-form .f-input::placeholder{color:var(--text3)}
+  .modal-form .f-select{background:var(--bg);border:1.5px solid var(--border2);border-radius:9px;padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text2);outline:none;width:100%;cursor:pointer;appearance:none;transition:border-color .2s}
+  .modal-form .f-select:focus{border-color:var(--blue)}
+  .modal-form .f-submit{width:100%;background:var(--blue);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;padding:15px;border-radius:10px;border:none;cursor:pointer;margin-top:10px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(26,111,212,0.3)}
+  .modal-form .f-submit:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,111,212,0.4)}
+  .modal-form .f-note{font-size:12px;color:var(--text3);margin-top:12px;text-align:center}
+  .modal-success{display:none;text-align:center;padding:16px 0}
+  .modal-success.show{display:block}
+  .modal-success .s-ico{width:60px;height:60px;border-radius:50%;background:var(--green-light);border:2px solid rgba(0,208,132,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .modal-success h3{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#005C35;margin-bottom:8px}
+  .modal-success p{font-size:15px;color:var(--text2)}
+
+  @media(max-width:600px){
+    .modal-card{padding:28px 20px}
+    .modal-row{grid-template-columns:1fr}
+  }
+</style>
+
+<script define:vars={{ API_URL }}>
+  // Open modal on CTA click
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href="#inscription"], a[href="/#inscription"]');
+    if (!link) return;
+    e.preventDefault();
+    const modal = document.getElementById('signup-modal');
+    if (modal) {
+      modal.classList.add('open');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => modal.classList.add('visible'));
+      });
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  function closeModal() {
+    const modal = document.getElementById('signup-modal');
+    if (modal) {
+      modal.classList.remove('visible');
+      setTimeout(() => {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }, 250);
+    }
+  }
+
+  // Close on X button
+  document.getElementById('modal-close')?.addEventListener('click', closeModal);
+
+  // Close on backdrop click
+  document.getElementById('signup-modal')?.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Form submission
+  document.getElementById('modal-submit')?.addEventListener('click', async () => {
+    const btn = document.getElementById('modal-submit');
+    const errEl = document.getElementById('modal-error');
+    const first_name = document.getElementById('modal-fp').value.trim();
+    const email = document.getElementById('modal-fe').value.trim();
+    const trade = document.getElementById('modal-fm').value;
+    const team_size = document.getElementById('modal-ft').value;
+    const website = document.getElementById('modal-fh').value;
+
+    errEl.style.display = 'none';
+
+    if (!first_name || first_name.length < 2) {
+      errEl.textContent = 'Le prénom doit contenir au moins 2 caractères.';
+      errEl.style.display = 'block';
+      return;
+    }
+    if (!email) {
+      errEl.textContent = 'Veuillez entrer votre email.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours...';
+
+    try {
+      const body = { first_name, email, website };
+      if (trade) body.trade = trade;
+      if (team_size) body.team_size = team_size;
+
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      if (res.ok) {
+        document.getElementById('modal-form').style.display = 'none';
+        document.getElementById('modal-suc').classList.add('show');
+        // Also update inline form if it exists
+        const inlineForm = document.getElementById('the-form');
+        const inlineSuc = document.getElementById('suc');
+        if (inlineForm) inlineForm.style.display = 'none';
+        if (inlineSuc) inlineSuc.classList.add('show');
+        // Update counters
+        const cnt = document.getElementById('cnt');
+        const barSpots = document.getElementById('bar-spots');
+        if (cnt) cnt.textContent = String(Math.max(43, parseInt(cnt.textContent) - 1));
+        if (barSpots) barSpots.textContent = String(Math.max(43, parseInt(barSpots.textContent) - 1));
+        return;
+      }
+
+      if (res.status === 409) {
+        errEl.textContent = 'Cet email est déjà inscrit sur la liste d\'attente.';
+      } else if (res.status === 429) {
+        errEl.textContent = 'Trop de tentatives. Veuillez patienter quelques minutes.';
+      } else if (res.status === 400) {
+        const data = await res.json().catch(() => null);
+        errEl.textContent = data?.message || 'Veuillez vérifier les informations saisies.';
+      } else {
+        errEl.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+      }
+      errEl.style.display = 'block';
+    } catch (e) {
+      console.error('Erreur waitlist:', e);
+      errEl.textContent = 'Impossible de contacter le serveur. Veuillez réessayer.';
+      errEl.style.display = 'block';
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Rejoindre la liste — 2 mois offerts →';
+  });
+</script>
